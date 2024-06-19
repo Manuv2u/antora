@@ -1,7 +1,7 @@
 site:
   title: cloudcatalyst
   url: https://cloudcatalyst.blogspot.com/
-  start_page: Documentation::index.adoc
+  start_page: architecture-Documentation::index.adoc
 content:
   sources:
     - url: https://github.com/Manuv2u/antora.git
