@@ -1,4 +1,45 @@
-== Welcome To InterviewInsights
+= InterviewInsights
+Welcome to InterviewInsights 🎓
 
-//image:https://kanilebettu.com/wp-content/uploads/2021/09/md-logo-1-100x100.png[https://kanilebettu.com/wp-content/uploads/2021/09/md-logo-1-100x100]
+== Introduction
+Welcome to InterviewInsights, your go-to resource for efficient interview preparation. This repository offers concise notes, key concepts, practical examples, and shortcuts to help you ace your interviews, with a special focus on AWS DevOps tools.
+
+// == Table of Contents
+// 1. <<AWSDevOpsTools, AWS DevOps Tools>> 📦
+// 2. <<TechnicalConcepts, Technical Concepts>> 💡
+// 3. <<CodingPractices, Coding Practices>> 💻
+// 4. <<SystemDesign, System Design>> 🏗️
+// 5. <<BehavioralQuestions, Behavioral Questions>> 🗣️
+// 6. <<ShortcutsAndTips, Shortcuts and Tips>> 🚀
+// 7. <<PracticeProblems, Practice Problems>> 📝
+
+== AWS DevOps Tools
+This section provides interview questions and answers related to various AWS DevOps tools. 📦
+
+1. xref:VPC:pages/Basics of VPC.adoc[VPC Related - QA] 🌐
+
+== Technical Concepts
+This section covers essential technical concepts you need to know for interviews. 💡
+
+Coming Soon.. 📅
+
+// == Coding Practices
+// Learn best coding practices and patterns to solve common interview questions. 💻
+//
+// == System Design
+// Understand the principles of system design with practical examples and case studies. 🏗️
+//
+// == Behavioral Questions
+// Prepare for behavioral interview questions with tips and sample answers. 🗣️
+
+== Shortcuts and Tips
+Discover useful shortcuts and tips for rapid learning and efficient problem-solving. 🚀
+
+Coming Soon.. 📅
+
+== Practice Problems
+Hands-on practice problems to test your knowledge and improve your skills. 📝
+
+ Coming Soon.. 📅
+
 

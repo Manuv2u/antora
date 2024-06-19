@@ -1,12 +1,11 @@
-.*DevOps*
-* AWS
+.*AWS*
 //
 // ** IAM
 // *** xref:Create New User in AWS.adoc[Create New User in AWS]
 // *** xref:Generating AWS Access Key and Secret Key.adoc[Generating AWS Access Key and Secret Key]
 
-** VPC
-*** xref:Basics of VPC.adoc[Basics of VPC]
+
+*** xref:Basics of VPC.adoc[VPC Related - QA]
 // *** xref:vpc_cidr.adoc[VPC Design]
 //
 // ** CloudWatch
