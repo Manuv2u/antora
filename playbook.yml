@@ -6,8 +6,8 @@ content:
   sources:
     - url: https://github.com/Manuv2u/antora.git
       branches: InterviewInsights
-    - url: https://github.com/Manuv2u/antora.git
-      branches: demo_projects
+#    - url: https://github.com/Manuv2u/antora.git
+#      branches: demo_projects
     - url: https://github.com/Manuv2u/antora.git
       branches: architecture
 #      start_path: docs
@@ -28,3 +28,6 @@ ui:
 output: 
   clean: true 
   dir: ./public
+
+#  antora --git-credentials-path=./.git-credentials playbook.yml --fetch --stacktrace
+#  antora playbook.yml --fetch --stacktrace
