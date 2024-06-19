@@ -1,5 +1,5 @@
-name: Documentation # all files will save using this name (test)
-title: Contents #This is web page title (content in web page)
+name: projects-Documentation # all files will save using this name (test)
+title: projects #This is web page title (content in web page)
 version: 0.1 #define version (public/test/0.1/all files will save here repo path)
 asciidoc:
   attributes:
