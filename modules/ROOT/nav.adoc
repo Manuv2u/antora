@@ -1,2 +1,2 @@
-* xref:index.adoc[Welcome]
+* xref:index.adoc[Architecture Insights]
 

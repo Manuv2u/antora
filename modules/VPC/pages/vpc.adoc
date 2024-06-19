@@ -1,0 +1,87 @@
+= VPC Architecture
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+
+== Introduction to VPC Architecture
+
+AWS Virtual Private Cloud (VPC) allows you to create a logically isolated section of the AWS Cloud where you can launch AWS resources in a virtual network that you define. This document provides an in-depth look into VPC architecture, its components, best practices, and considerations.
+
+=== What is a VPC?
+
+A Virtual Private Cloud (VPC) is a virtual network dedicated to your AWS account. It provides control over your AWS environment's network settings, including IP address ranges, subnets, route tables, and network gateways.
+
+=== Key Components of VPC
+
+==== Subnets
+
+Subnets are segments of the VPC's IP address range where you can place groups of resources. They can be public (accessible from the internet) or private (accessible only from within the VPC or via a VPN/Direct Connect).
+
+==== Route Tables
+
+Route tables define rules for routing traffic between subnets, internet gateways (IGWs), virtual private gateways (VGWs), VPC peering connections, and other network interfaces.
+
+==== Internet Gateway (IGW)
+
+An Internet Gateway allows resources within your VPC to access the internet and enables internet-initiated connections to resources in the VPC.
+
+==== NAT Gateway/NAT Instance
+
+A Network Address Translation (NAT) Gateway or NAT Instance allows instances in private subnets to initiate outbound traffic to the internet while preventing inbound traffic from initiating a connection with them.
+
+==== VPC Peering
+
+VPC Peering enables you to connect one VPC with another VPC within the same AWS region, allowing instances to communicate securely with each other.
+
+==== Virtual Private Gateway (VGW)
+
+A Virtual Private Gateway is the VPN concentrator on the Amazon side of a VPN connection between your on-premises network and your VPC.
+
+==== VPC Endpoints
+
+VPC Endpoints enable private connectivity to AWS services without requiring an internet gateway, NAT device, VPN connection, or AWS Direct Connect connection.
+
+=== Best Practices for VPC Design
+
+==== Designing CIDR Blocks
+
+Carefully plan your VPC CIDR block to avoid IP address conflicts and to align with your organization's network structure.
+
+==== Multi-Availability Zone (AZ) Deployment
+
+Deploy your VPC across multiple Availability Zones for high availability and fault tolerance.
+
+==== Security Considerations
+
+Implement Security Groups and Network ACLs to control inbound and outbound traffic to instances in your VPC. Follow the principle of least privilege.
+
+==== Monitoring and Logging
+
+Enable VPC Flow Logs to capture information about IP traffic going to and from network interfaces in your VPC for security analysis, troubleshooting, and compliance.
+
+=== Example VPC Architecture
+
+[source,plaintext]
+----
+VPC:
+  CIDR: 10.0.0.0/16
+  Subnets:
+    - Public Subnet: 10.0.1.0/24
+    - Private Subnet A: 10.0.2.0/24
+    - Private Subnet B: 10.0.3.0/24
+  Internet Gateway: Yes
+  NAT Gateway: Yes
+  Route Tables:
+    - Public Route Table:
+        - Route to IGW
+    - Private Route Table A:
+        - Route to NAT Gateway
+    - Private Route Table B:
+        - Route to NAT Gateway
+----
+
+Comming Soon.. more
+
+== References
+
+- AWS Documentation: https://docs.aws.amazon.com/vpc/[link]

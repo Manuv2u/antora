@@ -1,4 +1,4 @@
-name: architecture-Documentation # all files will save using this name (test)
+name: architecture # all files will save using this name (test)
 title: architecture #This is web page title (content in web page)
 version: 0.1 #define version (public/test/0.1/all files will save here repo path)
 asciidoc:
@@ -7,5 +7,7 @@ asciidoc:
     table-caption: false
 nav:
   - modules/ROOT/nav.adoc
-  - modules/Devops/nav.adoc
+#  - modules/ANTORA/nav.adoc
+  - modules/VPC/nav.adoc
+  -
 

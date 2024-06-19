@@ -1,4 +1,77 @@
-== Welcome
+= Architecture Insights
+Welcome to Architecture Insights 🏗️
 
-//image:https://kanilebettu.com/wp-content/uploads/2021/09/md-logo-1-100x100.png[https://kanilebettu.com/wp-content/uploads/2021/09/md-logo-1-100x100]
+== Introduction
+Welcome to Architecture Insights, your comprehensive resource for understanding architectural designs and workflows. This repository provides detailed explanations, diagrams, and examples of various architectures and their associated workflows, with a focus on DevOps tools.
 
+// == Table of Contents
+// 1. <<Docker, Docker>> 🐳
+// 2. <<Git, Git>> 🔧
+// 3. <<Kubernetes, Kubernetes>> ☸️
+// 4. <<Terraform, Terraform>> 🌍
+// 5. <<GitLab, GitLab>> 🦊
+// 6. <<Maven, Maven>> ⚙️
+// 7. <<Helm, Helm>> 🎯
+// 8. <<SonarQube, SonarQube>> 📊
+// 9. <<OtherDevOpsTools, Other DevOps Tools>> 🛠️
+// 10. <<AWS, AWS>> ☁️
+// 11. <<Antora, Antora>> 📘
+
+
+
+== AWS
+This section provides comprehensive information about AWS (Amazon Web Services), covering various services, architectures, and best practices for cloud computing.
+
+- xref:VPC:pages/VCP.adoc [ VPC Architecture ]
+
+Coming soon.. 📅
+
+== Antora
+Learn about Antora, a static site generator designed for creating documentation sites, including setup, configuration, and best practices for managing documentation projects.
+
+Coming soon.. 📅
+
+== Docker
+This section provides detailed information on Docker, including containerization concepts, Dockerfile best practices, and orchestration with Docker Compose and Swarm.
+
+Coming soon.. 📅
+
+== Git
+Explore the fundamentals of Git, version control concepts, branching strategies, and workflows that optimize collaboration and code management.
+
+Coming soon.. 📅
+
+== Kubernetes
+Learn about Kubernetes architecture, key components, and best practices for deploying, scaling, and managing containerized applications.
+
+Coming soon.. 📅
+
+== Terraform
+Understand the principles of infrastructure as code with Terraform, covering configuration, state management, and module reuse for scalable and maintainable infrastructure.
+
+Coming soon.. 📅
+
+== GitLab
+Delve into GitLab, exploring CI/CD pipelines, version control, and collaborative development practices to enhance software delivery.
+
+Coming soon.. 📅
+
+== Maven
+Discover how to use Maven for project management and comprehension, focusing on dependency management, build lifecycle, and plugin integration.
+
+Coming soon.. 📅
+
+== Helm
+Learn about Helm, the package manager for Kubernetes, including creating Helm charts, managing releases, and best practices for application deployment.
+
+Coming soon.. 📅
+
+== SonarQube
+Explore SonarQube, a tool for continuous inspection of code quality, covering setup, configuration, and integration with CI/CD pipelines.
+
+Coming soon.. 📅
+
+== Other DevOps Tools
+This section covers various other DevOps tools that play a crucial role in modern development and operations workflows, including Ansible, Jenkins, Prometheus, and more.
+
+Coming soon.. 📅
