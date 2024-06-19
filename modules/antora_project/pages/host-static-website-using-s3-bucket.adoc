@@ -1,0 +1,93 @@
+== Configuring the S3 Bucket for Static Website Hosting
+==== Step 1: Open AWS Management Console
+
+Open a web browser and go to the AWS Management Console.
+
+image::s3_home_page.png[Open AWS Management Console]
+
+=== Step 2: Setting up an S3 Bucket
+
+1) Navigate to the Amazon S3 service.
+
+image::s3_bucket_list.png[S3 Bucket]
+
+2) Click **Create bucket** or Select **Exiting Bucket**  +
+
+NOTE: *Bucket name should be `dns` name mandatory* +
+
+3) While Creating bucket click `**ACLs enabled**` and un-check `**block all public access**`.
+if you are select exiting bucket check the ACLs enabled and un-check block all public Access. In Permission tab.
+
+image::s3_acl_enable.png[S3 Bucket]
+
+4.Click `**Create**`.
+
+=== Step 3: Make Your Website Publicly Accessible
+
+1. Select S3 Bucket - Add Bucket Policy to publicly accessible. +
+
+Goto Permissions tab +
+
+image::Permissions_tab.png[]
+and scroll down to Bucket policy - `Edit`
+[source, json]
+----
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::<bucket_name>/*"
+        }
+    ]
+}
+----
+Copy this policy and  past it, change `<bucket_name>`  in Resource section and *Save* +
+
+
+
+=== Step 4: Static web site using Creation
+
+
+1. Select the newly created bucket.
+
+2. Click **Properties** and then **Static website hosting**.
+
+image::static_web_edit.png[]
+
+3.Choose **Use this bucket to host a website**.
+
+image::static_web_hosting.png[]
+
+4.In the **Index document** field, enter the name of the start page of your Antora website (e.g., `index.html`).
+
+image::s3_index-html.png[]
+
+5.Optionally, provide a custom `error` document for handling 404 errors.
+
+6.Upload `index.html` and `error.html` using console
+
+image::s3_upload_file.png[]
+
+7.Click **Save**. and **Copy** Statis website endpoint `URL` in same tab and Browse it.
+[source, html]
+----
+ex:
+http://docs.kanilebettu.in.s3-website.ap-south-1.amazonaws.com
+----
+
+
+// == Step 5: Configure DNS (Route53)
+//
+// 1. If you have a custom domain name and want to associate it with your S3 bucket, follow these steps:
+//
+// 2. In the S3 bucket properties, note down the Endpoint URL.
+//
+// 3. Go to your DNS provider's website or domain registrar.
+//
+// 4. Create a CNAME record or an ALIAS/ANAME record, pointing to the S3 bucket endpoint.
+//
+// 5. Wait for DNS propagation (may take some time) before accessing your website using the custom domain.
