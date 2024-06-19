@@ -7,4 +7,5 @@ asciidoc:
     table-caption: false
 nav:
   - modules/Devops/nav.adoc
+  - modules/ROOT/nav.adoc
 
