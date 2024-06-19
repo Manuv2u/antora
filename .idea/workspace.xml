@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02b37482-30e6-4dc9-8b40-a1b4d4b67686" name="Changes" comment="added paybook.yaml" />
+    <list default="true" id="02b37482-30e6-4dc9-8b40-a1b4d4b67686" name="Changes" comment="added architecture docs" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,7 +13,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="architecture" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -64,12 +64,30 @@
       <option name="project" value="LOCAL" />
       <updated>1718816341931</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="added interview docs">
+      <option name="closed" value="true" />
+      <created>1718818482451</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1718818482451</updated>
+    </task>
+    <task id="LOCAL-00003" summary="added architecture docs">
+      <option name="closed" value="true" />
+      <created>1718818686629</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1718818686629</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added paybook.yaml" />
-    <option name="LAST_COMMIT_MESSAGE" value="added paybook.yaml" />
+    <MESSAGE value="added interview docs" />
+    <MESSAGE value="added architecture docs" />
+    <option name="LAST_COMMIT_MESSAGE" value="added architecture docs" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
