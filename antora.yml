@@ -6,6 +6,7 @@ asciidoc:
     source-language: asciidoc@
     table-caption: false
 nav:
-  - modules/Devops/nav.adoc
   - modules/ROOT/nav.adoc
+  - modules/Devops/nav.adoc
+
 
