@@ -1,5 +1,3 @@
 
 .*Antora*
-
-
-* xref:Host Website Using Antora.adoc[Host Website Using Antora]
+* xref:host-static-website-using-s3-bucket.adoc[Host Website Using Antora]
