@@ -1,0 +1,30 @@
+site:
+  title: cloudcatalyst
+  url: https://cloudcatalyst.blogspot.com/
+  start_page: Documentation::index.adoc
+content:
+  sources:
+    - url: https://github.com/Manuv2u/antora.git
+      branches: InterviewInsights
+    - url: https://github.com/Manuv2u/antora.git
+      branches: demo_projects
+    - url: https://github.com/Manuv2u/antora.git
+      branches: architecture
+#      start_path: docs
+
+
+asciidoc:
+  attributes:
+    Devops_docs: ture
+    Prahari_docs: false
+    idprefix: custom-prefix
+    idseparator: '-'
+    page-pagination: simple
+    
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true   
+output: 
+  clean: true 
+  dir: ./public
