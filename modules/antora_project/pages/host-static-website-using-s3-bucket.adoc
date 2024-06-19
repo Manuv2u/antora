@@ -76,7 +76,7 @@ image::s3_upload_file.png[]
 [source, html]
 ----
 ex:
-http://docs.kanilebettu.in.s3-website.ap-south-1.amazonaws.com
+http://<bucketname>.in.s3-website.ap-south-1.amazonaws.com
 ----
 
 

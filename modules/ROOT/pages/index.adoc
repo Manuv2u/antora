@@ -1,3 +1,51 @@
-== Welcome to demo_projects.
+= Project List and Explanations
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
 
-* xref:antora_project:Host Website Using Antora.adoc[demo project Host Website Using Antora]
+== Introduction
+
+Welcome to the Project List and Explanations! Explore various projects and their brief descriptions below.
+
+== Table of Contents ( project List )
+
+1. <<ProjectS3, Configuring the S3 Bucket for Static Website Hosting>>
+2. <<ProjectA, Project A>> coming soon..
+3. <<ProjectB, Project B>> coming soon..
+4. <<ProjectC, Project C>> coming soon..
+5. <<ProjectD, Project D>> coming soon..
+6. <<ProjectE, Project E>> coming soon..
+
+== Configuring the S3 Bucket for Static Website Hosting
+
+Learn how to set up an S3 bucket to host a static website using AWS services.
+
+1. xref:antor_project:pages/Host Website Using Antora.adoc[Host Website Using Antora]
+
+== Project A
+
+Project A is a web application built with React and Node.js, featuring real-time data visualization and analytics.
+
+== Project B
+
+Project B is a Python-based automation tool for cloud infrastructure management using Terraform and AWS services.
+
+== Project C
+
+Project C is a microservices architecture implemented with Docker and Kubernetes, demonstrating scalability and fault tolerance.
+
+== Project D
+
+Project D is an e-commerce platform built with Django and PostgreSQL, showcasing CRUD operations and user authentication.
+
+== Project E
+
+Project E is a CI/CD pipeline setup using Jenkins and GitLab, integrating automated testing and deployment workflows.
+
+== Conclusion
+
+Explore each project in detail to understand its architecture, technologies used, and practical applications.
+
+== Additional Resources
+
+- AsciiDoc Guide: https://asciidoctor.org/docs/asciidoc-syntax-quick-reference/
