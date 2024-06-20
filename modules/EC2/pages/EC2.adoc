@@ -1,4 +1,4 @@
-= AWS Concepts
+= EC2 Concepts
 
 == What is Elastic IP?
 
