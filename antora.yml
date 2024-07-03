@@ -1,4 +1,4 @@
-name: iinterviewInsights # all files will save using this name (test)
+name: interviewInsights # all files will save using this name (test)
 title: interviewInsights #This is web page title (content in web page)
 version: 0.1 #define version (public/test/0.1/all files will save here repo path)
 asciidoc:
