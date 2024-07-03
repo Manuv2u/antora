@@ -22,7 +22,10 @@ Welcome to Architecture Insights, your comprehensive resource for understanding 
 == AWS
 This section provides comprehensive information about AWS (Amazon Web Services), covering various services, architectures, and best practices for cloud computing.
 
-- xref:VPC:pages/VCP.adoc [ VPC Architecture ]
+- xref:InterviewInsights:VPC:VCP.adoc [ VPC Architecture ]
+
+// xref:version@component:module:file-coordinate-of-target-page.adoc[optional link text]
+// xref:component:module:file-coordinate-of-target-page.adoc[optional link text]
 
 Coming soon.. 📅
 
