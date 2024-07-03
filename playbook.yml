@@ -15,12 +15,12 @@ content:
 
 asciidoc:
   attributes:
-    Devops_docs: ture
-    Prahari_docs: false
     idprefix: custom-prefix
     idseparator: '-'
     page-pagination: simple
-    
+    experimental: ''
+
+
 ui:
   bundle:
     url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
