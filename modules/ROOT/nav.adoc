@@ -5,3 +5,4 @@
 
 * VPC
 ** xref:VPC:vpc.adoc[VPC Architecture]
+** xref:VPC:ipaddress.adoc[IP Addressing and Subnetting]
