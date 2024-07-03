@@ -7,5 +7,5 @@ asciidoc:
     table-caption: false
 nav:
   - modules/ROOT/nav.adoc
-  - modules/antora_project/nav.adoc
+#  - modules/antora_project/nav.adoc
 

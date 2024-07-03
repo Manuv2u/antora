@@ -8,19 +8,19 @@
 Welcome to the Project List and Explanations! Explore various projects and their brief descriptions below.
 
 == Table of Contents ( project List )
-
-1. <<ProjectS3, Configuring the S3 Bucket for Static Website Hosting>>
-2. <<ProjectA, Project A>> coming soon..
-3. <<ProjectB, Project B>> coming soon..
-4. <<ProjectC, Project C>> coming soon..
-5. <<ProjectD, Project D>> coming soon..
-6. <<ProjectE, Project E>> coming soon..
+//
+// 1. <<ProjectS3, Configuring the S3 Bucket for Static Website Hosting>>
+// 2. <<ProjectA, Project A>> coming soon..
+// 3. <<ProjectB, Project B>> coming soon..
+// 4. <<ProjectC, Project C>> coming soon..
+// 5. <<ProjectD, Project D>> coming soon..
+// 6. <<ProjectE, Project E>> coming soon..
 
 == Configuring the S3 Bucket for Static Website Hosting
 
 Learn how to set up an S3 bucket to host a static website using AWS services.
 
-1. xref:antor_project:pages/Host Website Using Antora.adoc[Host Website Using Antora]
+1. xref:antora_project:host-static-website-using-s3-bucket.adoc[Host Website Using Antora]
 
 == Project A
 
@@ -42,9 +42,9 @@ Project D is an e-commerce platform built with Django and PostgreSQL, showcasing
 
 Project E is a CI/CD pipeline setup using Jenkins and GitLab, integrating automated testing and deployment workflows.
 
-== Conclusion
-
-Explore each project in detail to understand its architecture, technologies used, and practical applications.
+// == Conclusion
+//
+// Explore each project in detail to understand its architecture, technologies used, and practical applications.
 
 == Additional Resources
 
