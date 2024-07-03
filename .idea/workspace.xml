@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02b37482-30e6-4dc9-8b40-a1b4d4b67686" name="Changes" comment="updated and added .gitignore">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_19_06_2024_23_41__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_19_06_2024_23_41__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="02b37482-30e6-4dc9-8b40-a1b4d4b67686" name="Changes" comment="updated">
+      <change beforePath="$PROJECT_DIR$/modules/Elastic-Compute-Cloud/nav.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/modules/EC2/nav.adoc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/Elastic-Compute-Cloud/pages/EC2.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/modules/EC2/pages/EC2.adoc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/ROOT/pages/index.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/modules/ROOT/pages/index.adoc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -131,7 +131,8 @@
     <MESSAGE value="added architecture docs" />
     <MESSAGE value="added asscidoc docs" />
     <MESSAGE value="updated and added .gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated and added .gitignore" />
+    <MESSAGE value="updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
