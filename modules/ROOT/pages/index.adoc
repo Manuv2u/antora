@@ -2,7 +2,7 @@
 Welcome to InterviewInsights 🎓
 
 == Introduction
-Welcome to InterviewInsights, your go-to resource for efficient interview preparation. This repository offers concise notes, key concepts, practical examples, and shortcuts to help you ace your interviews, with a special focus on AWS DevOps tools.
+Welcome to InterviewInsights, your go-to resource for efficient interview preparation. This repository offers concise notes, key concepts,  and shortcuts to help you ace your interviews, with a special focus on AWS DevOps tools.
 
 // == Table of Contents
 // 1. <<AWSDevOpsTools, AWS DevOps Tools>> 📦
@@ -13,33 +13,43 @@ Welcome to InterviewInsights, your go-to resource for efficient interview prepar
 // 6. <<ShortcutsAndTips, Shortcuts and Tips>> 🚀
 // 7. <<PracticeProblems, Practice Problems>> 📝
 
-== AWS DevOps Tools
+== AWS(Amazon Web Service) - Tools
 This section provides interview questions and answers related to various AWS DevOps tools. 📦
 
-1. xref:VPC:pages/Basics of VPC.adoc[VPC Related - QA] 🌐
+1. xref:EC2:EC2.adoc [EC2 Related - QA] 🌐
+2. xref:VPC:Basics of VPC.adoc[VPC Related - QA] 🌐
+3. Coming Soon.. 📅
 
-== Technical Concepts
-This section covers essential technical concepts you need to know for interviews. 💡
 
-Coming Soon.. 📅
 
-// == Coding Practices
-// Learn best coding practices and patterns to solve common interview questions. 💻
+== DevOps - Tools
+
+1. Coming Soon.. 📅
+2. Coming Soon.. 📅
+3. Coming Soon.. 📅
 //
-// == System Design
-// Understand the principles of system design with practical examples and case studies. 🏗️
+// == Technical Concepts
+// This section covers essential technical concepts you need to know for interviews. 💡
 //
-// == Behavioral Questions
-// Prepare for behavioral interview questions with tips and sample answers. 🗣️
-
-== Shortcuts and Tips
-Discover useful shortcuts and tips for rapid learning and efficient problem-solving. 🚀
-
-Coming Soon.. 📅
-
-== Practice Problems
-Hands-on practice problems to test your knowledge and improve your skills. 📝
-
- Coming Soon.. 📅
-
-
+// Coming Soon.. 📅
+//
+// // == Coding Practices
+// // Learn best coding practices and patterns to solve common interview questions. 💻
+// //
+// // == System Design
+// // Understand the principles of system design with practical examples and case studies. 🏗️
+// //
+// // == Behavioral Questions
+// // Prepare for behavioral interview questions with tips and sample answers. 🗣️
+//
+// == Shortcuts and Tips
+// Discover useful shortcuts and tips for rapid learning and efficient problem-solving. 🚀
+//
+// Coming Soon.. 📅
+//
+// == Practice Problems
+// Hands-on practice problems to test your knowledge and improve your skills. 📝
+//
+//  Coming Soon.. 📅
+//
+//

@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02b37482-30e6-4dc9-8b40-a1b4d4b67686" name="Changes" comment="added asscidoc docs">
+    <list default="true" id="02b37482-30e6-4dc9-8b40-a1b4d4b67686" name="Changes" comment="updated and added .gitignore">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_19_06_2024_23_41__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_19_06_2024_23_41__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/ROOT/pages/index.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/modules/ROOT/pages/index.adoc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +46,7 @@
     "DefaultPlantUmlFileTemplate": "Empty",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "InterviewInsights",
     "last_opened_file_path": "C:/Users/manuv/IdeaProjects/antora",
     "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
   }
@@ -119,7 +122,8 @@
     <MESSAGE value="added interview docs" />
     <MESSAGE value="added architecture docs" />
     <MESSAGE value="added asscidoc docs" />
-    <option name="LAST_COMMIT_MESSAGE" value="added asscidoc docs" />
+    <MESSAGE value="updated and added .gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated and added .gitignore" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
