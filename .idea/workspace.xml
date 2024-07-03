@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02b37482-30e6-4dc9-8b40-a1b4d4b67686" name="Changes" comment="updated">
-      <change beforePath="$PROJECT_DIR$/modules/Elastic-Compute-Cloud/nav.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/modules/EC2/nav.adoc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/Elastic-Compute-Cloud/pages/EC2.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/modules/EC2/pages/EC2.adoc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/ROOT/pages/index.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/modules/ROOT/pages/index.adoc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/ROOT/nav.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/modules/ROOT/nav.adoc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/VPC/nav.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/modules/VPC/nav.adoc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -8,6 +8,6 @@ asciidoc:
 nav:
   - modules/ROOT/nav.adoc
   - modules/VPC/nav.adoc
-  - modules/Elastic-Compute-Cloud/nav.adoc
+  - modules/Elastic Compute Cloud/nav.adoc
 
 
