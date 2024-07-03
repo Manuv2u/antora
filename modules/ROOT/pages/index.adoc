@@ -22,7 +22,7 @@ Welcome to Architecture Insights, your comprehensive resource for understanding 
 == AWS
 This section provides comprehensive information about AWS (Amazon Web Services), covering various services, architectures, and best practices for cloud computing.
 
-- xref:VPC:VCP.adoc [ VPC Architecture ]
+- xref:VPC:vpc.adoc[ VPC Architecture ]
 
 // xref:version@component:module:file-coordinate-of-target-page.adoc[optional link text]
 // xref:component:module:file-coordinate-of-target-page.adoc[optional link text]
@@ -32,7 +32,7 @@ Coming soon.. 📅
 == Antora
 Learn about Antora, a static site generator designed for creating documentation sites, including setup, configuration, and best practices for managing documentation projects.
 
-- xref:ANTORA:AsciiDoc Snippets.adoc [ Antora Architecture ]
+- xref:ANTORA:AsciiDoc Snippets.adoc[ Antora Architecture ]
 
 
 == Docker

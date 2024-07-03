@@ -1,4 +1,4 @@
-.*ARCHITECTURE*
+// .*ARCHITECTURE*
 // * AWS
 //
 // ** IAM
@@ -24,8 +24,8 @@
 // * Linux
 // ** xref:cronjob_postgres_database.adoc[PG Backup with Cron & S3]
 
-* Antora
-** xref:AsciiDoc Snippets.adoc[AsciiDoc Snippets]
+// * Antora
+// ** xref:AsciiDoc Snippets.adoc[AsciiDoc Snippets]
 // ** xref:Host Website Using Antora.adoc[Host Website Using Antora]
 // ** xref:Antora Folder Structure.adoc[Antora Folder Structure]
 // * ECS

@@ -1,2 +1,7 @@
 * xref:index.adoc[Architecture Insights]
 
+* Antora
+** xref:ANTORA:AsciiDoc Snippets.adoc[AsciiDoc Snippets]
+
+* VPC
+** xref:VPC:vpc.adoc[VPC Architecture]
