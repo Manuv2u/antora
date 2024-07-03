@@ -1,4 +1,4 @@
-.*AWS*
+// .*AWS*
 //
 // ** IAM
 // *** xref:Create New User in AWS.adoc[Create New User in AWS]

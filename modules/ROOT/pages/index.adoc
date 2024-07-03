@@ -16,8 +16,8 @@ Welcome to InterviewInsights, your go-to resource for efficient interview prepar
 == AWS(Amazon Web Service) - Tools
 This section provides interview questions and answers related to various AWS DevOps tools. 📦
 
-1. xref:0.1@EC2:EC2.adoc [EC2 Related - QA] 🌐
-2. xref:0.1@VPC:Basics of VPC.adoc[VPC Related - QA] 🌐
+1. xref:EC2:EC2.adoc [EC2 Related - QA] 🌐
+2. xref:VPC:Basics of VPC.adoc[VPC Related - QA] 🌐
 3. Coming Soon.. 📅
 
 
