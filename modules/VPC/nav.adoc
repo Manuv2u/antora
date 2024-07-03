@@ -5,7 +5,7 @@
 // *** xref:Generating AWS Access Key and Secret Key.adoc[Generating AWS Access Key and Secret Key]
 
 
-*** xref:Basics of VPC.adoc[VPC Related - QA]
+// *** xref:Basics of VPC.adoc[VPC Related - QA]
 // *** xref:vpc_cidr.adoc[VPC Design]
 //
 // ** CloudWatch

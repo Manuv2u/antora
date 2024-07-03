@@ -7,7 +7,7 @@ asciidoc:
     table-caption: false
 nav:
   - modules/ROOT/nav.adoc
-  - modules/VPC/nav.adoc
-  - modules/Elastic Compute Cloud/nav.adoc
+#  - modules/VPC/nav.adoc
+#  - modules/Elastic Compute Cloud/nav.adoc
 
 
