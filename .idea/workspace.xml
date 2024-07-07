@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02b37482-30e6-4dc9-8b40-a1b4d4b67686" name="Changes" comment="updated">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_07_2024_15_25__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_07_2024_15_25__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_07_2024_15_28__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_07_2024_15_28__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_07_2024_15_44__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_07_2024_15_44__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/ANTORA/nav.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/modules/ANTORA/nav.adoc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/ROOT/nav.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/modules/ROOT/nav.adoc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/ROOT/pages/index.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/modules/ROOT/pages/index.adoc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/VPC/nav.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/modules/VPC/nav.adoc" afterDir="false" />
-    </list>
+    <list default="true" id="084bc472-698c-4d59-a54d-668518f43fe2" name="Changes" comment="updated  IP Addressing" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,9 +25,6 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GithubDefaultAccount">
-    <option name="defaultAccountId" value="54f4438c-1380-4ce4-9fb1-67c0645e6089" />
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -53,7 +42,7 @@
     "DefaultPlantUmlFileTemplate": "Empty",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/manuv/IdeaProjects/antora",
+    "last_opened_file_path": "C:/Users/Manu/IdeaProjects/antora/modules",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -63,6 +52,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Manu\IdeaProjects\antora\modules" />
       <recent name="C:\Users\manuv\IdeaProjects\antora" />
     </key>
   </component>

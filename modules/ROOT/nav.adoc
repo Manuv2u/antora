@@ -3,6 +3,11 @@
 * Antora
 ** xref:ANTORA:AsciiDoc Snippets.adoc[AsciiDoc Snippets]
 
-* VPC
-** xref:VPC:vpc.adoc[VPC Architecture]
-** xref:VPC:ipaddress.adoc[IP Addressing and Subnetting]
+* AWS
+
+** VPC
+*** xref:VPC:vpc.adoc[VPC Architecture]
+*** xref:VPC:ipaddress.adoc[IP Addressing and Subnetting]
+
+** RDS
+*** xref:RDS:rds.adoc[RDS Architecture]
