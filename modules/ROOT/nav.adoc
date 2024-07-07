@@ -5,3 +5,6 @@
 *** xref:Elastic Compute Cloud:Elastic Compute Cloud.adoc[EC2 Related - QA]
 *** xref:VPC:Basics of VPC.adoc[VPC Related - QA]
 
+.*DevOps*
+
+*** xref:GIT&GITHUB:git&github.adoc[Git and GitHub -QA]

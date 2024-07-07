@@ -1,0 +1,78 @@
+// .*AWS*
+//
+// ** IAM
+// *** xref:Create New User in AWS.adoc[Create New User in AWS]
+// *** xref:Generating AWS Access Key and Secret Key.adoc[Generating AWS Access Key and Secret Key]
+
+
+// *** xref:Basics of VPC.adoc[VPC Related - QA]
+// *** xref:vpc_cidr.adoc[VPC Design]
+//
+// ** CloudWatch
+// *** xref:Exporting Logs to S3 bucket using Lambda function.adoc[Exporting CloudWatch Logs to an Amazon S3 bucket using an AWS Lambda function]
+//
+// ** Lambda
+// *** xref:Datasybchronization for ms_md_reports.adoc[Data Synchronisation for Reports using lambda with Event Bridge and KMS]
+//
+// ** CloudFront
+// *** xref:cloud_distribution_for_s3.adoc[CloudFront to serve HTTPS requests to S3]
+//
+// ** xref:Install AWS-CLI on windows.adoc[Install AWS-CLI on windows]
+// ** xref:Cost Allocation Tags and Cost Explorer.adoc[Cost Allocation Tags and Cost Explorer]
+//
+// * Linux
+// ** xref:cronjob_postgres_database.adoc[PG Backup with Cron & S3]
+//
+// * Antora
+// ** xref:AsciiDoc Snippets.adoc[AsciiDoc Snippets]
+// ** xref:Host Website Using Antora.adoc[Host Website Using Antora]
+// ** xref:Antora Folder Structure.adoc[Antora Folder Structure]
+// * ECS
+// ** xref:KBT Infrastructure Diagram for ECS.adoc[KBT Infrastructure Diagram for ECS]
+// ** xref:ECS Setup for production Environment.adoc[ECS Setup for production Environment ]
+// ** xref:Amazon ECS Service Connect Enabling Easy Communication Between Microservices.adoc[ECS Service Connect Communication Between Microservices]
+// * Kubernetes - EKS
+// ** xref:Managed Kubernetes Installation on EC2.adoc[Managed Kubernetes Installation on EC2]
+// ** xref:Infrastructure Diagram for EKS.adoc[Infrastructure Diagram for EKS]
+// ** xref:EKS Installation.adoc[EKS Installation]
+// ** xref:IAM user access to EKS cluster.adoc[IAM Users Access To The Existing EKS Cluster]
+// ** xref:EKS External Application Loadbalancer.adoc[EKS External Application Load balancer]
+// ** xref:Deploy microservices on EKS using YAML.adoc[Deploy microservices on EKS using YAML]
+// ** xref:AutoScaling in EKS_HPA_VPA.adoc[AutoScaling in EKS - HPA & VPA]
+// ** xref:Secrets_configuration_on_yaml_file_for_EKS.adoc[Secrets Manager For EKS Cluster Using Helm Chart]
+//
+// * ISTIO
+// ** xref:istioctl_for_windows.adoc[Setup Istioctl on Windows]
+// ** xref:Istio Setup.adoc[Istio Setup]
+// ** xref:Infrastructure changes for ISTIO.adoc[Infrastructure changes for ISTIO]
+// * Prometheus and Grafana
+// ** xref:Prometheus and Grafana for Microservices.adoc[Prometheus and Grafana for Microservices]
+// ** xref:Keycloak OAuth SSO.adoc[Setting Keycloak as an authentication provider in Grafana (SSO)]
+// ** xref:AWS EKS Cluster Monitoring Using kube-prometheus-stack.adoc[EKS - Prometheus & Grafana using kube-prometheus-stack ]
+//
+// * Helm
+// ** xref:helm for one microservice.adoc[helm for one microservice]
+// * Terraform
+// ** xref:Terraform Installation.adoc[Terraform Installation]
+// ** xref:Mattermost Installation using Terraform.adoc[Mattermost Installation using Terraform]
+// ** xref:Keycloak.adoc[Keycloak Installation using Terraform]
+// ** xref:Microservices.adoc[Microservices Deploy using Terraform]
+// * Git/Git-lab
+// **  Git
+// *** xref:Basics-of-git.adoc[Basics Of Git]
+// *** xref:gitlab-branching-stratergies.adoc[Gitlab Branching Strategies]
+// ** Git-lab
+// *** xref:Setting-up-SSH-KEY.adoc[Setting up SSH key to GitLab]
+// *** xref:Issues project management guidelines.adoc[Issues project management guidelines]
+// *** xref:Git-folw.adoc[Git Flow & Git Branching Strategies]
+// *** xref:gitlab runner.adoc[Gitlab runner Configuration]
+// *** xref:releasenote.adoc[Code Merge and Release Documentation]
+// * SecurityChecklist
+// ** xref:Security Settings Keycloak using OAuth2.0.adoc[Security Settings Keycloak using OAuth2.0]
+// ** xref:security checklist.adoc[Security Check List For Production ]
+// * Performance checklist
+// ** xref:ECS cluster setup for all env.adoc[ECS Cluster Setup]
+// ** xref:ECS Performance checklist.adoc[Performance Check List For Production]
+// * Sonarqube
+// ** xref:SonarQube.adoc[SonarQube Configuration]
+// *
