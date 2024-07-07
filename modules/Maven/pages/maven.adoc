@@ -1,0 +1,182 @@
+= Maven - QA
+
+== Q1. What is Maven?
+Maven is a popular open-source build tool developed by the Apache Group to build, publish, and deploy projects. It simplifies project management tasks for Java-based projects.
+
+== Q2. What does Maven help with?
+Apache Maven manages processes like building, documentation, releasing, and distribution. It automates project builds and handles dependencies.
+
+== Q3. What elements does Maven take care of?
+Maven manages builds, dependencies, reports, distribution, releases, and mailing lists in project management.
+
+== Q4. What is the difference between ANT and Maven?
+[cols="1,1", options="header"]
+|===
+| Q4.1. ANT | Q4.2. Maven
+| ANT uses build.xml for configuration. | Maven uses pom.xml and follows conventions.
+| ANT is procedural. | Maven is declarative.
+| ANT lacks a lifecycle. | Maven has a defined lifecycle.
+| ANT scripts are less reusable. | Maven plugins offer reusable project management.
+| ANT is a specific build tool. | Maven is a comprehensive project management tool.
+|===
+
+== Q5. What is POM?
+Project Object Model (POM) is an XML file in the project root directory that defines project configuration and metadata.
+
+== Q6. What is included in the POM?
+The POM includes dependencies, developers, contributors, plugins, plugin configurations, and resources.
+
+== Q7. What are the minimum required elements for POM?
+The minimum required elements are groupId, artifactId, version, and modelVersion (which should be 4.0.0).
+
+== Q8. What is a Build Tool?
+A build tool automates tasks like source code generation, compilation, packaging, and deployment.
+
+== Q9. Steps to install Maven on Windows?
+Download Maven, set JAVA_HOME and MAVEN_HOME environment variables, add Maven to PATH, and verify with `mvn -version`.
+
+== Q10. Steps to install Maven on Ubuntu?
+Install Java, download Maven, configure environment variables, and verify installation with `mvn -version`.
+
+== Q11. Command to install JAR files in the Local Repository?
+Use `mvn install` to install JAR files into the local Maven repository.
+
+== Q12. How to check the version of Maven being used?
+Execute `mvn -version` to display the installed Maven version.
+
+== Q13. What is Clean, Default, and Site in Maven?
+Maven has built-in lifecycles:
+- Clean: Deletes build files.
+- Default: Handles project deployment.
+- Site: Generates project site documentation.
+
+== Q14. What is a Maven Repository?
+Maven repositories store packaged JAR files and their metadata, facilitating dependency management.
+
+== Q15. What are the different types of Maven Repositories?
+Maven has Local, Remote, and Central repositories for managing project dependencies.
+
+== Q16. What is Maven Build Lifecycle?
+Maven Build Lifecycle defines a sequence of phases (e.g., clean, deploy) to manage project builds.
+
+== Q17. How does Maven Architecture work?
+Maven reads pom.xml, downloads dependencies, and executes lifecycle phases, goals, and plugins.
+
+== Q18. What are the different phases in the Maven Build Lifecycle?
+Maven Build Lifecycle phases include:
+- Validate
+- Compile
+- Test
+- Package
+- Verify
+- Install
+- Deploy
+
+== Q19. Command to build a Maven site?
+Use `mvn site` to generate a Maven project site.
+
+== Q20. Conventions used in naming a project in Maven?
+Projects are named as `<groupId>:<artifactId>:<version>` (e.g., `org.apache.maven:maven-core:2.0.1`).
+
+== Q21. What is a Maven Artifact?
+A Maven Artifact is a deployable component, typically a JAR file, identified by groupId, artifactId, and version.
+
+== Q22. Phases of a Clean Lifecycle?
+Clean Lifecycle includes pre-clean, clean, and post-clean phases.
+
+== Q23. Phases of a Site Lifecycle?
+Site Lifecycle phases include pre-site, site, post-site, and site-deploy.
+
+== Q24. What are Maven Plugins?
+Maven Plugins extend Maven's capabilities, performing tasks like compilation, testing, and packaging.
+
+== Q25. Why are Maven Plugins used?
+Maven Plugins automate common tasks like generating JAR files, compiling code, and creating documentation.
+
+== Q26. Types of Maven Plugins?
+Maven Plugins include build plugins (configured in `<build/>` element) and reporting plugins (configured in `<reporting/>` element).
+
+== Q27. Why does Maven use "convention over configuration"?
+Maven's conventions reduce the need for configuration by providing default project structures and build processes.
+
+== Q28. Difference between Convention and Configuration in Maven?
+[cols="1,1", options="header"]
+|===
+| Convention | Configuration
+| Maven provides default settings and structures. | Configuration requires explicit setup and details.
+| Maven simplifies project setup and build. | Configuration involves specifying every detail.
+|===
+
+== Q29. Maven's order of inheritance?
+Maven settings inherit from settings, CLI parameters, parent POM, and project POM.
+
+== Q30. Build Life Cycles and phases in Maven?
+Build Lifecycles consist of phases, each containing goals executed in sequence to build and manage projects.
+
+== Q31. What is a Goal in Maven?
+A Goal is a specific task or target executed during a Maven Build Lifecycle phase.
+
+== Q32. Dependencies and Repositories in Maven?
+Dependencies are Java libraries needed by a project. Repositories are directories storing packaged JAR files and their metadata.
+
+== Q33. What is a Snapshot in Maven?
+A Snapshot is a version in Maven's remote repository indicating the latest development copy.
+
+== Q34. Types of projects in Maven?
+Maven provides templates for various Java projects (e.g., Spring, Spring MVC) to simplify project setup.
+
+== Q35. What is a Maven Archetype?
+Maven Archetype is a template plugin for generating project structures based on predefined templates.
+
+== Q36. Command to create a new project based on an archetype?
+Use `mvn archetype:generate` to create a new Maven project based on an archetype.
+
+== Q37. What does "Maven Clean" imply?
+Maven Clean plugin removes generated files and directories (e.g., target folder) from the project.
+
+== Q38. What is a Build Profile?
+A Build Profile provides different configurations for building projects, enabling customization for different environments.
+
+== Q39. Types of Build Profiles?
+Build Profiles can be defined per-project (in pom.xml), per-user (in settings.xml), or globally (in global settings.xml).
+
+== Q40. What is a System Dependency?
+A System Dependency in Maven is a dependency with a system scope, typically provided by the JDK or VM.
+
+== Q41. Why use Optional Dependencies?
+Optional Dependencies reduce the transitive burden of libraries that are not always required for a project.
+
+== Q42. Dependency Scope types?
+Dependency Scope includes compile, provided, runtime, test, system, and import scopes in Maven.
+
+== Q43. Transitive Dependency in Maven?
+Transitive Dependency means Maven automatically includes dependencies needed by other dependencies.
+
+== Q44. Activating Maven Build Profile?
+Maven Build Profiles can be activated through command-line input, settings, environment variables, OS settings, or file conditions.
+
+== Q45. Dependency Exclusion in Maven?
+Dependency Exclusion in Maven excludes transitive dependencies to prevent conflicts or unwanted dependencies.
+
+== Q46. What is MOJO in Maven?
+MOJO (Maven Plain Old Java Object) is an executable goal in Maven, distributed via plugins to extend Maven's functionality.
+
+== Q47. Command to create a new project based on an archetype?
+Use `mvn archetype:create` to create a new Maven project based on an archetype.
+
+== Q48. What does "Super POM" imply?
+Super POM refers to the default POM in Maven, providing default configurations and settings for Maven projects.
+
+== Q49. What is the Maven settings.xml file?
+Maven settings.xml file contains configurations for Maven execution, including proxy settings, repository configurations, and more.
+
+== Q50. Where are Maven dependencies stored?
+Maven dependencies, including JAR files, are stored in the Maven local repository on the local system.
+
+== Q51. What is the difference between mvn install and mvn deploy?
+- `mvn install`: Installs the project artifacts into the local repository.
+- `mvn deploy`: Deploys the project artifacts into the remote repository.
+
+== References
+
+- Apache Maven Documentation: link:http://maven.apache.org/[http://maven.apache.org/]

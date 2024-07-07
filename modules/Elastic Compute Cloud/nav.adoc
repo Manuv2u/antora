@@ -1,3 +1,0 @@
-// .*AWS*
-//
-// *** xref:Elastic Compute Cloud.adoc[EC2 Related - QA]
