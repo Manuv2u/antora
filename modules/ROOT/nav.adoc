@@ -7,4 +7,10 @@
 
 .*DevOps*
 
+** GIT
+
 *** xref:GIT:git.adoc[Git and GitHub -QA]
+
+** Maven
+
+*** xref:Maven:maven.adoc[Maven -QA]
