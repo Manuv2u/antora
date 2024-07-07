@@ -7,4 +7,4 @@
 
 .*DevOps*
 
-*** xref:GIT&GITHUB:git&github.adoc[Git and GitHub -QA]
+*** xref:GIT:git.adoc[Git and GitHub -QA]
