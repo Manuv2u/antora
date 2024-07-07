@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02b37482-30e6-4dc9-8b40-a1b4d4b67686" name="Changes" comment="updated git &amp; github">
-      <change afterPath="$PROJECT_DIR$/modules/Maven/pages/maven.adoc" afterDir="false" />
+    <list default="true" id="02b37482-30e6-4dc9-8b40-a1b4d4b67686" name="Changes" comment="updated Maven - QA">
+      <change afterPath="$PROJECT_DIR$/modules/Docker/pages/docker.adoc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/Jenkins/pages/jenkins.adoc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_19_06_2024_23_41__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_19_06_2024_23_41__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/Elastic Compute Cloud/nav.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/GIT/nav.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/Maven/pages/maven.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/modules/Maven/pages/maven.adoc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/ROOT/nav.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/modules/ROOT/nav.adoc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/ROOT/pages/index.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/modules/ROOT/pages/index.adoc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/VPC/nav.adoc" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +143,8 @@
     <MESSAGE value="updated" />
     <MESSAGE value="updated git and github - QA" />
     <MESSAGE value="updated git &amp; github" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated git &amp; github" />
+    <MESSAGE value="updated Maven - QA" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated Maven - QA" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
