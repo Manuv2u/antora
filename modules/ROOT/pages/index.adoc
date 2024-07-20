@@ -17,6 +17,9 @@ Welcome to Architecture Insights, your comprehensive resource for understanding 
 // 10. <<AWS, AWS>> ☁️
 // 11. <<Antora, Antora>> 📘
 
+== Linux
+
+- xref:Linux:linux.adoc[Linux Basic to Advance level]
 
 
 == AWS
