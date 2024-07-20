@@ -1,0 +1,56 @@
+== Linux Basic to Advance
+
+==== What is operating System
+
+image::os.png[Operting System]
+
+An operating system is the program taht after being initially into tha computer by boot programing , managers all of the other application program in a computer
+
+**Functions**
+. Interface between a computer user and computer hardware
+. An operating system is system software that managers computer hardware, software resources and provides common service for computer programs
+
+==== What is Linux ?
+
+A Linux is a open source operating system (os), An operating system is the software that directly manages a systems hardware & resources like CPU, MEMORY & STORAGE. The od sits between all of your software and the physical resources that do tha work
+
+=== Linux HELP Options
+
+1. What is command
+2. command --help
+3. man command
+4. info command
+5. pinfo command
+
+1. **What is command**: it's show one line discriptions of the command.
+
+NOTE: If it's not working run -> updatedb
+
+2. **command --help**: we get list & information about current directory all possible option, it's show's along with discription and dificult to read and understand.
+
+3. **man command**:
+. to install package:
+
+[source,bash]
+----
+yum install man* -y
+----
+
+- we get name of command & synopsis and description of command.
+- Easy to read and understand.
+- To get more details -> man man
+- 8 Manual sections
+ 1. user commands
+ 2. system calls
+ 3. C library funcations
+ 4. Devices and special files
+ 5. Files Formate and convention
+ 6. Games et. al.
+ 7. Miscellanea
+ 8. System Administration tools and Demons
+
+4. ** info command**: it's shows full information, it's give more depth information
+
+5. **Pinfo command**: All information about every thing fletching details. path: /usr/share/doc
+
+

@@ -1,0 +1,81 @@
+
+
+
+AWS ProviderThe Amazon Web Services (AWS) provider is used to interact with the many resources supported by AWS. Theprovider needs to be configured with the proper credentials before it can be used.Use the navigation to the left to read about the available resources
+
+
+
+Example Usage
+[source,yaml]
+----
+provider "aws" {
+    version = "~> 3.0"
+    region = "us-east-1"
+    }
+
+resource "aws_vpc" "example" {
+  cidr_block = "10.0.0.0/16"
+}
+----
+
+==== Authentication
+The AWS provider offers a flexible means of providing credentials for authentication.
+
+The following methods aresupported, in this order, and explained below:
+
+. Static credentials
+. Environment variables
+. Shared credentials/configuration file
+. CodeBuild, ECS, and EKS Roles
+. EC2 Instance Metadata Service (IMDS and IMDSv2)
+
+
+
+== Static Credentials Warning
+
+WARNING: Hard-coding credentials into any Terraform configuration is not recommended, and risks secret leakage should this file ever be committed to a public version control system.
+
+== Ways to Provide AWS Credentials in Terraform
+
+=== Inline Credentials
+
+You can provide static credentials directly in the AWS provider block:
+
+[source,terraform]
+----
+provider "aws" {
+  region     = "us-west-2"
+  access_key = "my-access-key"
+  secret_key = "my-secret-key"
+}
+----
+
+=== Environment Variables
+
+Another method is using environment variables `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`:
+
+[source,shell]
+----
+$ export AWS_ACCESS_KEY_ID="anaccesskey"
+$ export AWS_SECRET_ACCESS_KEY="asecretkey"
+$ export AWS_DEFAULT_REGION="us-west-2"
+$ terraform plan
+----
+
+Setting AWS credentials using these environment variables will override `AWS_SHARED_CREDENTIALS_FILE` and `AWS_PROFILE`. `AWS_DEFAULT_REGION` and `AWS_SESSION_TOKEN` are also utilized if applicable.
+
+=== Shared Credentials File
+
+You can specify AWS credentials using a credentials file:
+
+[source,terraform]
+----
+provider "aws" {
+  region                  = "us-west-2"
+  shared_credentials_file = "/Users/tf_user/.aws/creds"
+  profile                 = "customprofile"
+}
+----
+
+The default location for the credentials file is `$HOME/.aws/credentials` on Linux and macOS, or `%USERPROFILE%\.aws\credentials` on Windows. You can specify a different location using the `shared_credentials_file` argument or `AWS_SHARED_CREDENTIALS_FILE` environment variable. This method also supports configuring profiles using the `AWS_PROFILE` environment variable.
+
