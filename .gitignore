@@ -1,5 +1,9 @@
-.idea
+/.idea
 .test.adoc
 /.idea/*
 .idea/workspace.xml
 .idea/shelf/Uncommitted_changes_before_Checkout_at_19_06_2024_23_41__Changes_.xml
+
+*/.idea/workspace.xml
+*/.idea/tasks.xml
+**/.idea/workspace.xml **/.idea/tasks.xml

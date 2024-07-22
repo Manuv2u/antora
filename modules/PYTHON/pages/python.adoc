@@ -211,10 +211,206 @@ a = b = c = 10
 ----
 
 
+== DataTypes
+
+Datatype is used to represent what type of values are going to store inside the variable.
+
+=== Basic Datatype
+// . None
+// . Numeric
+// - int
+// - float
+// - bool
+// - complex
+//
+// . Sequence Datatype:
+//
+// -  String
+// -  list
+// - tuple
+// - set
+// - dict
+// - range
+// - bytes
+// - bytearray
+// - fronzenset
+
+|===
+| Basic Datatype | Description
+
+| None(ex:01)
+| Represents the absence of a value
+
+| Numeric
+| Represents numeric values
+
+| int (ex:02)
+| Integer numbers (e.g., -1, 0, 42)
+
+| float (ex:02)
+| Floating-point numbers (e.g., 3.14, -0.001)
+
+| bool
+| Boolean values (True or False)
+
+| complex
+| Complex numbers with a real and imaginary part
+
+| Sequence Datatype
+| Description
+
+| String
+| Ordered collection of characters (immutable)
+
+| list
+| Ordered collection of items (mutable)
+
+| tuple
+| Ordered collection of items (immutable)
+
+| set
+| Unordered collection of unique items
+
+| dict
+| Collection of key-value pairs
+
+| range
+| Sequence of numbers commonly used for looping
+
+| bytes
+| Sequence of integers representing raw binary data (immutable)
+
+| bytearray
+| Mutable sequence of integers representing binary data
+
+| frozen set
+| Immutable set of unique items
+
+|===
+
+
+
+ex:01
+[source,python]
+----
+a = None #in python
+b = null #in other langauges
+  print(a)
+  print(b)
+  print(type(a))
+  print(type(b)) # you will get error and difference for python and other langauges
+----
+
+
+ex:02
+[source,python]
+----
+c = 10 # int
+d = 5.5  # float
+  print(c)
+  print(d)
+  print(type(c))
+  print(type(d))
+
+# how to convert int to float
+
+e = float(c)
+ print(e)
+ print(type(e)) # converted `int to float`
+
+ # how to convert   float to int
+
+f = int(d)
+ print(f)
+ print(type(f)) # converted ` float to int`
+----
+
+ex:
+[source,python]
+----
+name = " raju "
+  print("your name is:",name)   #
+name = input("Enter your Name:")  # run time inputs
+  print("your name is:",name)
+  print(type(name))
+----
 
 
 ex:
 [source,python]
 ----
+a = input("Enter A number:") # by default it will take as string so you need change to int
+ print(type(a))
+x = int(a)
+ print(type(a))
+b = input("Enter B number:") # by default it will take as string so you need change
+ print(type(b))
+y = int(b)
+ print(type(y))
+c = a+b
+z = x+b
+print(The result is:",c)
+print(The result is:",z)
+#output
+#1020
 
 ----
+NOTE: All inputs are taken as strings by default; explicit conversion is required for other data types. Conversion mechanism only for runtime execution
+
+ex:
+[source,python]
+----
+a = input(Enter Num1:")
+b = input(Enter Num2:")
+ print("result is:",a+b)
+
+x = float(input(Enter Num1:"))
+y = float(input(Enter Num2:"))
+ print("result is:",x+y)
+----
+
+====  bool Datatype
+
+only allowed value True as 1 and False as 0
+
+ex: 01
+[source,python]
+----
+a = 10
+b = 20
+c=a<b  #True
+d=a>b  #False
+ print(C)
+ print(d)
+ print(type(c))
+ print(type(d))
+ print(True+True)
+ print(True+9)
+----
+
+==== complex
+a+bj # j is imagernay numbers
+ex:01
+[source,python]
+----
+a=2
+b=3
+c=complex(a,b)
+ print(c)
+ print(type(c))
+ print(c.real) # To print real and imagenary values
+ print(c.imag)  # To print real and imagenary values 
+----
+
+ex:02
+[source,python]
+----
+a=2+3j
+b=5+2j
+ print(a+b)
+----
+
+
+==== Sequence Datatype
+
+**String**   :  String is a sequence of characters or group od characture string can be represnt with string and string can be create by using '' or "" or '''  ''' or """ """

@@ -1,5 +1,9 @@
 * xref:index.adoc[Architecture Insights]
 
+* PYTHON
+** xref:PYTHON:python.adoc[Python]
+
+
 * Antora
 ** xref:ANTORA:AsciiDoc Snippets.adoc[AsciiDoc Snippets]
 
