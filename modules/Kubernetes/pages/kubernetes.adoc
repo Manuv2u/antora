@@ -1,0 +1,66 @@
+== Kubernetes - [EKS]
+
+=== Implement Kubernetes Resources Limits and Quotas on AWS EKS
+
+The reources quota is the total avaliable resources for a particular namespacem while llimit range is used to assign llimits for pods running inside the namespace
+
+==== CPU Measurement Units
+
+Units: Cores and Milicores(M)
+
+AWS - 1 vCPU +
+AZURE - 1 vCore +
+Google Cloud - Core
+
+==== Memory Measurement Units
+
+Units: Frequently used: Mebibytes (Mi), Gibibytes (Gi), Tebibytes(Ti), Other units (Ei,Ki,Gi,Ki)
+
+Examples: 1Mi = 1.048Mb, 1Ti =1.995 Tb
+
+
+=== Set Resources quotas
+
+Use the ResourcesQuota object to limit down the total amount of resource used by the namespace
+
+[source,yaml]
+----
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: resource-quota-monitoring
+#  namespace: monitoring
+spec:
+  hard:
+    pods: "20"        # Maximum number of pods in the namespace
+    requests.cpu: "1" # Total CPU request limit (in cores)
+    requests.memory: 1Gi # Total memory request limit
+    limits.cpu: "1.5"   # Total CPU limit (in cores)
+    limits.memory: 2.5Gi # Total memory limit
+    persistentvolumeclaims: "4" # Number of persistent volume claims
+
+----
+
+=== Set a Limit range
+
+LimitRange object in our namespace which can be used to set limits on resources on pods running within the namespace.
+
+[source,yaml]
+----
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: cpu-resource-constraint
+spec:
+  limits:
+  - default: # this section defines default limits
+      cpu: 500m
+    defaultRequest: # this section defines default requests
+      cpu: 500m
+    max: # max and min define the limit range
+      cpu: "1"
+    min:
+      cpu: 100m
+    type: Container
+
+----
