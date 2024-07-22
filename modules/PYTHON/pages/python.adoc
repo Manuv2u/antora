@@ -1,0 +1,220 @@
+== Python
+
+Python was designed and developed by Guido Van Rossum.
+The name comes from the Monty Python's Circus show on the BBC.
+Official website: http://www.python.org
+
+Python is a programming language used to write the coding part for application development.
+
+== Django
+
+Django is a web application development framework used to design and develop websites.
+
+== Python Features
+
+Python is a general-purpose, high-level, interpreted, dynamically typed, and case-sensitive programming language.
+
+- *High level*: No need to manage memory and security-related aspects; these are handled by default.
+- *Interpreted*: Python and JavaScript are interpreted languages, meaning they check and execute code line by line. They are also **dynamically typed**.
+
+Example of dynamically typed:
+
+ex:
+
+    datatype varibalename=value
+    a=10
+
+- *Compiler-based*: Group of lines (the whole program code) are checked once and executed. These are **statically typed** languages. Examples include Java, C, C++, C#, and .NET.
+
+Example of statically typed:
+
+ex:
+
+ datatype variablename = value;
+ int x = 10;
+
+why python?
+
+huge standard libraries
+
+== Application area of python:
+
+1. Standalone or desktop app -  console App(CUI) and Desktop GUI
+2. web application(Django framework or flask)
+3. Databased application
+4. Gaming application
+5. Data analysis (Datascience)
+6. Statistical analysis
+7. Testing, AI, ML, Devops, IOT, Business app, Network programming.
+
+== Features of Python
+
+. Simple and easy to learn
+. Free and Open Source
+. High Level
+. Platform Independent (cross-platform)
+. Portability ( one platform(windows) to other(linux) platform shift easy)
+. Dynamically typed
+. Procedure and object-oriented
+. Extensible and Extensive library
+
+
+== Different ways t write python script and execute:
+
+1. Using Interactive mode
+2. Using script mode(.py)
+3. Using python IDLE
+4. Using Pycharm editor
+
+
+== Fundamental Concepts
+
+1. Comments in python
+
+- Single line comment
+
+ex:
+[source,python]
+----
+#this is single line comment
+This is un-comment line
+----
+
+- Multi line comment
+
+ex:
+[source,python]
+----
+'''
+this is multi line
+comment example
+'''
+this is un-comment line
+----
+
+2. Keywords and reserved words
+
+keyword is library and this keyword are reserved form python, keywords cant be used as variable or personal use case.
+
+ex:
+[source,python]
+----
+import keyword
+print(keyword.kwlist)
+----
+
+Output:
+
+  ['False', 'None', 'True', 'and', 'as', 'assert', 'async', 'await', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield']
+
+
+3. Indentation
+
+
+4 spaces
+
+4. Identifiers
+
+- Rule to define Identifier
+. lowercase or Uppercase (ex:01)
+. case sensitive
+. allow digits(0-9) it should not Start with digits (ex:02)
+. should not be two parts (ex:03)
+. allow underscore(_)
+. if an identifier starts with underscore then it is private
+. we cant use any keyword or reserved word as identifier (ex:04)
+
+
+ex:01
+[source,python]
+----
+empid = 1234
+   print(EMPID) # This is wrong it should be match with variable
+   print(empid) # This is correct
+----
+NOTE: Always use lowercase for best pratices
+
+ex:02
+[source,python]
+----
+empid01 = 1234
+01empid = 1234
+   print(empid01) # This is correct
+   print(01empid)  # This is wrong it should not start with digits
+----
+
+(ex:03)
+[source,python]
+----
+emp id = 1234
+empid = 1234
+   print(emp id) # This is wrong it should not be two parts
+   print(empid) # This is correct
+----
+
+(ex:04)
+[source,python]
+----
+def = 1234
+deff = 1234
+   print(deff) # This is correct
+   print(def) # This is wrong it should not keyword or reserved word as identifier
+----
+
+
+5. Variables
+
+. Variable is also consider as identifier
+. variable is a named memory location
+. while declaring the variable in python we needd not specify any datatype because python is dynamically typed programming languages
+. based on the value datatype will decide implicitly
+
+(ex:01)
+[source,python]
+----
+a = 1234
+b = 10.9
+c = "s"
+   print(a)
+   print(type(a)
+   print(b)
+   print(type(b)
+   print(c)
+   print(type(c)
+----
+
+6. Multiple assignment
+
+. Is the process of assigning the multiple value to multiple variables (ex:01)
+. Is the process of assigning a single value to multiple variables (ex:02)
+
+
+ex:01
+[source,python]
+----
+a,b,c=10,20,30
+    print(a,end=",")
+    print(b,end=",")
+    print(c) # here there is value for c attribute so we cant use end attribute for `c` value
+
+----
+
+ex:02
+[source,python]
+----
+a = b = c = 10
+   print(a,b,c) #or
+   print(a)
+   print(b)
+   print(c)
+   print(a,b,c,sep=":")
+----
+
+
+
+
+ex:
+[source,python]
+----
+
+----
