@@ -37,6 +37,10 @@ why python?
 
 huge standard libraries
 
+NOTE: **immutable** : cannot change and **mutable** : can change
+
+
+
 == Application area of python:
 
 1. Standalone or desktop app -  console App(CUI) and Desktop GUI
@@ -413,4 +417,65 @@ b=5+2j
 
 ==== Sequence Datatype
 
-**String**   :  String is a sequence of characters or group od characture string can be represnt with string and string can be create by using '' or "" or '''  ''' or """ """
+**String**   :  String is a sequence of characters or group od character string can be represented with string and string can be created by using '' or "" or '''  ''' or """ """
+
+
+
+
+print(dir(list))
+
+
+help(str) #any str like list, tuple
+
+
+**list** :
+
+. List is ordered collection of elements
+. list can be created by using []
+. List will allow duplicate elements
+. List contains different datatype elements
+. List is mutable, once we create wa list that can change
+
+ex:01
+[source,python]
+----
+l = [10,20,30,"a",20,50]
+  print(l)
+  print(type(l))
+----
+**tuple** :
+
+. tuple is ordered collection of elements
+. tuple can be created by using () but brackets are optional
+. tuple will allow duplicate elements
+. tuple contains different datatype elements
+. tuple is immutable, once we create a tuple that cannot be change
+
+NOTE: To create tuple with single element, after element we should give comma(,)
+
+ex:01
+[source,python]
+----
+t = (10,) #here for single element
+  print(t)
+  print(type(t))
+
+----
+
+
+ex:02
+[source,python]
+----
+t = (10.0, 10, 20, "xyz", 'a', 23)
+  print(t)
+  print(type(t))
+----
+
+
+**set** :
+
+. set is unordered collection of unique element.
+. set can be create by using { }.
+. set contains differnet datatype elements.
+. set is mutable once we create a set that can be modify.
+. set will not allow duplicate values.
