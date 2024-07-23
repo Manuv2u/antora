@@ -1,8 +1,8 @@
 == Python
 
-Python was designed and developed by Guido Van Rossum.
-The name comes from the Monty Python's Circus show on the BBC.
-Official website: http://www.python.org
+Python was designed and developed by **Guido Van Rossum**. +
+The name comes from the Monty Python's Circus show on the BBC. +
+Official website: http://www.python.org +
 
 Python is a programming language used to write the coding part for application development.
 
@@ -170,7 +170,7 @@ deff = 1234
 
 . Variable is also consider as identifier
 . variable is a named memory location
-. while declaring the variable in python we needd not specify any datatype because python is dynamically typed programming languages
+. while declaring the variable in python we need not specify any datatype because python is dynamically typed programming languages
 . based on the value datatype will decide implicitly
 
 (ex:01)
@@ -242,13 +242,13 @@ Datatype is used to represent what type of values are going to store inside the 
 |===
 | Basic Datatype | Description
 
-| None(ex:01)
+| None <<ex:01>>
 | Represents the absence of a value
 
 | Numeric
 | Represents numeric values
 
-| int (ex:02)
+| int <<ex:02>>
 | Integer numbers (e.g., -1, 0, 42)
 
 | float (ex:02)
@@ -272,7 +272,7 @@ Datatype is used to represent what type of values are going to store inside the 
 | tuple
 | Ordered collection of items (immutable)
 
-| set
+| <<set,set >>
 | Unordered collection of unique items
 
 | dict
@@ -294,7 +294,7 @@ Datatype is used to represent what type of values are going to store inside the 
 
 
 
-ex:01
+<<ex:01>>
 [source,python]
 ----
 a = None #in python
@@ -306,7 +306,7 @@ b = null #in other langauges
 ----
 
 
-ex:02
+<<ex:02>>
 [source,python]
 ----
 c = 10 # int
@@ -427,11 +427,27 @@ print(dir(list))
 
 help(str) #any str like list, tuple
 
+=== Properties of Python Data Structures
+
+
+[cols="1,1,1,1,1,1"]
+|===
+| DS      | create   | ordered | mutable    | immutable | duplicate
+
+| str     | '' or "" | yes     | no         | yes       | yes
+| list    | []       | yes     | yes        | no        | yes
+| tuple   | ()       | yes     | no         | yes       | yes
+| set     | {}       | no      | yes        | no        | no
+| dict    | {}       | no      | keys: no  values: yes  | keys: yes values: no| keys: no values: yes
+| range   | range()  | yes     | no        | yes       | no
+|===
+
+
 
 **list** :
 
 . List is ordered collection of elements
-. list can be created by using []
+. list can be created by using` []`
 . List will allow duplicate elements
 . List contains different datatype elements
 . List is mutable, once we create wa list that can change
@@ -446,7 +462,7 @@ l = [10,20,30,"a",20,50]
 **tuple** :
 
 . tuple is ordered collection of elements
-. tuple can be created by using () but brackets are optional
+. tuple can be created by using `()` but brackets are optional
 . tuple will allow duplicate elements
 . tuple contains different datatype elements
 . tuple is immutable, once we create a tuple that cannot be change
@@ -472,10 +488,357 @@ t = (10.0, 10, 20, "xyz", 'a', 23)
 ----
 
 
-**set** :
+<<set,set :>>
 
 . set is unordered collection of unique element.
-. set can be create by using { }.
-. set contains differnet datatype elements.
-. set is mutable once we create a set that can be modify.
+. set can be created by using `{ }`.
+. set contains different datatype elements.
+. set is mutable once we create a set that can be modified.
 . set will not allow duplicate values.
+. To create an empty set then we use set() function.
+
+NOTE:
+
+ex:01
+[source,python]
+----
+s = set()
+q = {10, "sai", 'a', 20.3, 10,'a'} # no duplicate allowed, un-orderd(indexing is not fallowed).
+  print(s)
+  print(q)
+  print(type(s))
+  print(type(q))
+----
+
+**dect** :
+
+. dect is unorderd collection of items.
+. dict can be create by using {}.
+. In dict each item can be a pair i.e key and value.
+. keys are immutable, we cant change and values are mutable, we can change the values.
+. In dict keys and value can be any type
+. In dict keys must be unique and value need not to be unique.
+
+ex:01
+[source,python]
+----
+d = {}
+d1 = {1:"sai", name:"xyz", 3:"23.43"}
+ print(type(d))
+ print(type(d1))
+
+----
+
+**range** :
+
+. range is ordered collection of values.
+. range is used to generate sequence of values.
+. range is immutable, once we create a range that cant change by default range will start from Zero
+. To create range of values then we use range function.
+
+ex:01
+[source,python]
+----
+r = range(10)
+a = range(2,11,2) #start stop step
+  print(d)
+  print(type(r))
+  print(list(r)) #to print all sequence of value
+  print(list(a)) # here we cna use tuple or any datatype
+----
+== Operators in python
+
+Operater is symbole which is used to perform required operations. Python supports tha fallowing operators
+
+1. Arithmetic
+2. Relational
+3. Assignment
+4. Logical
+5. Membership
+6. Identity
+7. Bitwise
+
+=== Arithmentic:
+
+==== Python Arithmetic Operators
+
+[cols="1,1"]
+|===
+| Symbol  | Operation
+
+| +       | addition
+| -       | subtraction
+| *       | multiplication
+| **      | exponentiation(Power)
+| /       | division
+| //      | floor division
+| %       | modulus
+|===
+
+ex:01
+[source,python]
+----
+a = 10
+b = 5
+print(a+b) #addition
+print(a-b) #subtraction
+print(a*b) #multiplication
+print(a**b) #exponentiation(Power)
+print(a/b) #division
+print(a//b) #floor division
+print(a%b) #modulus
+----
+
+=== Relational:
+
+=== Python Comparison Operators
+
+[cols="1,1"]
+|===
+| Symbol  | Operation
+
+| <       | less than
+| >       | greater than
+| < =      | less than or equal to
+| >=      | greater than or equal to
+| ==      | equal to
+| !=      | not equal to
+|===
+
+ex:01
+[source,python]
+----
+print(3<2)
+print(3>2)
+print(3>=2)
+print(3<=2)
+print(3==2)
+print(3!=2)
+----
+
+=== Assignment
+
+=== Python Assignment Operators
+
+[cols="1,1"]
+|===
+| Symbol  | Operation
+
+| =       | assign
+| +=      | add and assign
+| -=      | subtract and assign
+| *=      | multiply and assign
+| /=      | divide and assign
+| //=     | floor divide and assign
+| %=      | modulus and assign
+|===
+
+
+ex:01
+[source,python]
+----
+a = 5
+ print(a)
+
+a+=2
+ print(a)
+
+b-=2
+ print(b)
+
+c*=2
+  print(c)
+
+d/=2
+ print(d)
+
+a//=2
+  print(a)
+
+a%=2
+  print(a)
+----
+
+
+=== Logical
+
+=== Python Logical Operators
+
+[cols="1,1"]
+|===
+| Symbol | Operation
+
+| and    | returns true if both conditions are true, else false
+| or     | returns true if any one of the conditions is true or both conditions are true, else false
+| not    | returns true if the condition is false, returns false if the condition is true
+|===
+
+ex:01
+[source,python]
+----
+print(3<2 and 4<5)
+print(3>2 and 4<5)
+
+print(3<2 or 4<5)
+print(3>2 or 4<5)
+print(3<2 or 4>5)
+
+print(not 4<5)
+print(not 4>5)
+
+
+----
+
+
+=== Membership :
+Membership operator are used to check whether than value is present in given sequence or not
+
+=== Python Membership Operators
+
+[cols="1,1"]
+|===
+| Symbol   | Operation
+
+| in       | returns true if the value is present in the given sequence, else false
+| not in   | returns true if the value is not present in the given sequence, else false
+|===
+
+
+
+ex:01
+[source,python]
+----
+l = [10,20,30,40,50]
+ print(10 in l)
+ print(70 in l)
+
+ print(100 not in l)
+ print(10 not in l)
+
+ print( 'r' in "Ranga")
+ print( 'x' in "Ranga")
+
+----
+
+=== Idenetity :
+Idenetity operators are used to check whether tha varibales or any python objects are having same identity or not.
+
+=== Python Identity Operators
+
+[cols="1,1"]
+|===
+| Symbol | Operation
+
+| is     | returns true if the variables have the same identity, else false
+| is not | returns true if the variables do not have the same identity, else false
+|===
+
+
+NOTE: id() : it is a builtin function in python, ir is used to find memory address of the object and it will return always unique interger.
+
+ex:01
+[source,python]
+----
+a = 2
+b = 2
+c = 4
+d = 5
+ print(a is b)
+ print(a is not b)
+ print(c is d)
+ print( c is not d)
+----
+
+
+ex:01
+[source,python]
+----
+a = "sai"
+b = "sai"
+
+ print(id(a)) # here memory address will be same a & b
+ print(id(b))
+----
+
+=== Bitwise operators:
+1. bitwise AND(&)
+2. bitwise OR(|)
+3. bitwise XOR(^)
+4. bitwise NOR(~)
+5. leftshift (<<)
+6. rightshift (<<)
+
+ex:01
+[source,python]
+----
+
+----
+
+
+=== Control flow statements:
+1. Conditional Statements
+2. Iterative Statements
+3. Transfer statements
+
+
+==== Conditional Statements:
+. **if** : `if` is used to test specific condition, if the condition is ture `if` block will execute
+. **if else**
+[source,python]
+----
+if condition:
+statement
+----
+
+
+ex:01
+[source,python]
+----
+n = int(input("Enter a number:"))
+
+if n%2==0:
+  print(n, "is Even")
+else
+  print(n, "is Odd")
+
+i = 10
+if i == 100:
+   print("true")
+else:
+   print("false")
+
+----
+
+. **nested if** : Is used to check multiple conditions using `if` and `else if`
+. **elif** : elif us the short form of `else if`
+
+ex:01
+[source,python]
+----
+i = int(input("Enter a number:" )) #i : 17
+
+if i>20:
+  print(i, "Is garter than 20")
+else:
+  if i>15:
+    print(i, "Is garter than 15")
+  else:
+    print(i, "Is not garter than 15 and 20")
+
+
+----
+
+
+
+
+
+
+==== Iterative Statements
+. **for**
+. **while**
+
+==== Transfer statements
+
+. **break**
+. **continue**
+. **pass**
