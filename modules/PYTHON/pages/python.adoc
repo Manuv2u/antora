@@ -768,17 +768,17 @@ b = "sai"
 5. leftshift (<<)
 6. rightshift (<<)
 
-ex:01
-[source,python]
-----
-
-----
+// ex:01
+// [source,python]
+// ----
+//
+// ----
 
 
 === Control flow statements:
-1. Conditional Statements
-2. Iterative Statements
-3. Transfer statements
+1. Conditional Statements (**if, if else,nested if,elif** )
+2. Iterative Statements (**for, while** )
+3. Transfer statements (**break,continue,pass** )
 
 
 ==== Conditional Statements:
@@ -810,7 +810,6 @@ else:
 ----
 
 . **nested if** : Is used to check multiple conditions using `if` and `else if`
-. **elif** : elif us the short form of `else if`
 
 ex:01
 [source,python]
@@ -828,17 +827,153 @@ else:
 
 ----
 
+. **elif** : elif us the short form of `else if`
 
-
-
-
+ex:01
+[source,python]
+----
+i = int(input("Enter a number:"))
+#here it will check all conditation if you given correct number
+if i == 1:
+     print("one")
+elif i == 2:
+     print("two")
+elif i == 3:
+     print("three")
+elif i == 4:
+     print("four")
+else:
+     print("Invalid Number")
+----
 
 ==== Iterative Statements
-. **for**
-. **while**
+. **for**:
+for loop is used to iterate tha element of collection whar tha order they apper
 
+[source,python]
+----
+for varibalename in sequence:
+    statements
+----
+ex:01
+[source,python]
+----
+#    0   1  2  3  4
+l = [10,20,30,40,50,"xyz",20.15,'a',75]
+
+print(l[0])
+print(l[0])# here we cant print one by one
+
+for i in l:
+  print(i)
+  print(type(i))
+----
+
+
+. **Nested for loop**:
+A for loop which is having one more for loop within is called nested for loop.
+
+[source,python]
+----
+for variablename in sequence:
+    statements
+     for variablename in sequence:
+        statements
+----
+
+ex:01
+[source,python]
+----
+#          0   1  2  3  4
+numlist = [10,20,30,40,50]
+charlist = ['a', 'b', 'c', 'd']
+
+for n in numlist:
+    print(n)
+    for e in charlist:
+          print(e)
+
+----
+
+
+
+NOTE: for every iteration of outer loop, inner loops should finish it's all iterations then only outer loop will start with next interation
+
+
+. **while** : unknown iteration, like till the condition match
+
+[source,python]
+----
+while condition:
+    statements
+----
+
+ex:01
+[source,python]
+----
+i = 1
+  while i<=10:
+         print(i,end=" ") # end function is to print all value in same name.
+         i+=1 #i=i+1
+----
 ==== Transfer statements
 
-. **break**
-. **continue**
-. **pass**
+===== **break**: break is used to stop the iteration based on condition.
+
+ex:01
+[source,python]
+----
+for i in range(10):
+   if i==4;
+       break
+   print(i,end=" ")
+----
+
+===== **continue**: continue is used to skip the current iteration and continue with the next iteration
+
+ex:01
+[source,python]
+----
+for i in range(10):
+   if i==4 or i==6:
+       continue
+   print(i,end=" ") #it will skip that 4th number
+----
+
+ex:01
+[source,python]
+----
+i = 1
+while i<=10:
+   if i==4:
+        i+=1
+       continue
+   print(i,end=" ")
+   i+=1
+----
+===== **pass**
+
+ex:01
+[source,python]
+----
+i = 1
+while i<=10:
+      pass
+
+for i in range(10):
+    pass
+
+a = 10
+if i==10:
+   print("ture")
+else:
+   print("false")
+----
+
+
+
+=== String Datastructures
+
+----
+print(dir(str))
+----
