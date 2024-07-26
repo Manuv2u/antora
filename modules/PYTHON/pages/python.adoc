@@ -435,10 +435,10 @@ help(str) #any str like list, tuple
 | DS      | create   | ordered | mutable    | immutable | duplicate
 
 | str     | '' or "" | yes     | no         | yes       | yes
-| list    | []       | yes     | yes        | no        | yes
-| tuple   | ()       | yes     | no         | yes       | yes
-| set     | {}       | no      | yes        | no        | no
-| dict    | {}       | no      | keys: no  values: yes  | keys: yes values: no| keys: no values: yes
+| list    | [ ]       | yes     | yes        | no        | yes
+| tuple   | ( )       | yes     | no         | yes       | yes
+| set     | { }       | no      | yes        | no        | no
+| dict    | { }       | no      | keys: no  values: yes  | keys: yes values: no| keys: no values: yes
 | range   | range()  | yes     | no        | yes       | no
 |===
 
@@ -447,7 +447,7 @@ help(str) #any str like list, tuple
 **list** :
 
 . List is ordered collection of elements
-. list can be created by using` []`
+. list can be created by using` [ ]`
 . List will allow duplicate elements
 . List contains different datatype elements
 . List is mutable, once we create wa list that can change
@@ -462,7 +462,7 @@ l = [10,20,30,"a",20,50]
 **tuple** :
 
 . tuple is ordered collection of elements
-. tuple can be created by using `()` but brackets are optional
+. tuple can be created by using `( )` but brackets are optional
 . tuple will allow duplicate elements
 . tuple contains different datatype elements
 . tuple is immutable, once we create a tuple that cannot be change
@@ -513,11 +513,11 @@ q = {10, "sai", 'a', 20.3, 10,'a'} # no duplicate allowed, un-orderd(indexing is
 **dect** :
 
 . dect is unorderd collection of items.
-. dict can be create by using {}.
+. dict can be created by using { }.
 . In dict each item can be a pair i.e key and value.
 . keys are immutable, we cant change and values are mutable, we can change the values.
 . In dict keys and value can be any type
-. In dict keys must be unique and value need not to be unique.
+. In dict keys must be unique and value need not be unique.
 
 ex:01
 [source,python]
@@ -977,3 +977,480 @@ else:
 ----
 print(dir(str))
 ----
+
+1. How to create string
+
+ex:01
+[source,python]
+----
+name = "cloudcatalist"
+  print(name)
+  print(type(name)) #here we can use '' or "" or '''
+----
+
+ex:01
+[source,python]
+----
+
+s = ''' hi this is
+cloudcatalyst doc'''
+ print(s)# multiple line string
+----
+
+ex:01
+[source,python]
+----
+m = "cloudcatalyst's"
+  print(m)
+----
+
+=== String indexing and string slicing
+backward direction is not possible in string
+
+ex:01
+[source,python]
+----
+# 0     1    2     3    4     5     6     7     8     9    10    11    12
+# c     l    o     u    d     c     a     t     a     l    y     s      t
+# -13  -12  -11   -10  -9    -8    -7    -6    -5    -4   -3    -2     -1
+
+
+s = "cloudcatalyst"
+  print(s[0:5]) # output : cloud
+  print(s[-7:0])
+  print(s[:]) #it will take 0 to 12
+  print(s[0:9:1]) #start stop step
+  print(s[::-1]) # we can revers
+  print()
+----
+
+
+=== string concatenation and string multiplication
+
+ex:01
+[source,python]
+----
+s1 = "cloud"
+s2 = "catalyst"
+  print(s1+" "+s2) # string concatenation
+  print((s1+" ")*3) # to print multiple times (multiplication)
+----
+=== string split and max split
+
+ex:01
+[source,python]
+----
+s = "c l o u d c a t a l y s t"
+  print(s)
+s1=s.split(" ")
+  print(s1)
+  print(type(s1))
+a= "python is very easy"
+
+s2=a.split(",",4)
+  print(s2)
+  print(type(s2))
+----
+
+=== string capatlis
+
+ex:01
+[source,python]
+----
+
+a="python is very easy"
+
+  print(a)
+  print(a.capitalize)# it will return start latter as capitalize
+or
+s1=a.capitalize
+  print(s1)
+
+
+ print(s.title)# here very word as return as capitalize
+----
+
+
+=== string count
+
+ex:01
+[source,python]
+----
+s = "python is vary easy and it is oop and it is interperted"
+
+substring="is"
+ print(s.count(substring))# to know repeted char
+ print(s.count(" "))# to know the space
+
+----
+
+
+=== string replace
+
+ex:01
+[source,python]
+----
+s = "python is vary easy and it is oop and it is interperted"
+
+  print(s.replace("python","java")) # it will replace python to java
+  print(s.replace(" ","*"))# it will replace space(_) to *
+
+----
+
+=== string upper and lower case
+
+ex:01
+[source,python]
+----
+s = "python is vary easy and it is oop and it is interperted"
+ print(s)
+ print(s.upper())
+ print(s.lower())
+----
+=== string swap case
+
+ex:01
+[source,python]
+----
+s = "pyThon is vAry easy aNd It is PPp AND it Is interPErted"
+ print(s)
+ print(s.swapcase())
+
+----
+
+=== string revers
+
+ex:01
+[source,python]
+----
+s = "python"
+ print(s)
+ print(::-1)
+----
+
+ex:01
+[source,python]
+----
+l = ["sai","ram","raj"]
+ print(" ".join(resersed(l)))
+ print(":".join(resersed("ramu")))
+----
+
+=== string sort
+
+Directly we can't apply sort to string, need to convert into sort and print
+
+ex:01
+[source,python]
+----
+s = "python is very easy"
+s1=s,split(" ")
+s1.sort()
+ print(s1)
+s1.sort(reverse=Ture)
+ print(s1)
+
+----
+
+=== string - strip()
+It returns a copy of string with both leading and trailing character removed
+
+ex:01
+[source,python]
+----
+s = "   ramu   "
+
+ print(s)#there is a space in rigth and left side
+
+ print(s.strip(" "))
+
+OR
+
+a = "AramuA"
+
+ print(s)#there is a "A" in rigth and left side
+
+ print(s.strip("A"))
+
+
+
+----
+
+
+=== string - lstrip()
+It returns a copy of the string with leading characture removed.
+
+ex:01
+[source,python]
+----
+h = "AramuA"
+
+ print(h)#there is a "A" in rigth and left side
+
+ print(h.ltrip("A"))
+
+----
+
+
+=== string - rstrip()
+It returns a copy of the string with trailing charature removed.
+
+ex:01
+[source,python]
+----
+r = "AramuA"
+
+ print(r)#there is a "A" in rigth and left side
+
+ print(r.rtrip("A"))
+
+----
+
+=== string - length
+It is used to find length of string
+
+
+ex:01
+[source,python]
+----
+r = "python is vary easy and it is oop and it is interperted"
+
+  print(s)
+  print(len(s)) # it will consider spaces also
+
+----
+
+=== string - Find and index and rindex
+It is used to find substring from given string, and return -1 if there is no substring
+
+
+index: index is used to find substring from given string , and it return error
+
+ex:01
+[source,python]
+----
+op = "python is vary easy and it is oop and it is interperted"
+
+ print(op.find("is")) # it will fine first one (occourent)
+ print(op.find("x"))# it will return -1 becouse there is no x on "op"
+
+ print(op.index("is"))
+ print(op.index("x"))# it will return error
+
+ print(op.rindex("is")) # it will return highest index of given string
+ print(op.rindex("x"))# it will return error
+
+----
+
+=== string - max( ) and min ( )
+
+Max( ): Highest alphabetical character in string
+min ( ): List alphabetical character in string
+
+ex:01
+[source,python]
+----
+a = "alphabetICAl"
+
+ print(max(a))
+  print(min(a))
+
+  print(ord("a"))# It will return accsi value of character
+  print(ord("A"))
+----
+
+
+=== string - partition( )
+Split the string at the first occurrence of the separator and returns a tuple format.
+
+ex:01
+[source,python]
+----
+p = "python is vary easy and it is oop and it is interperted"
+ print(p.partition("is"))
+ print(type(p.partition("is")))
+
+----
+
+=== string - startswith( )
+
+Startswith return Ture if a string starts with the given suffix otherwise returns False.
+
+
+ex:01
+[source,python]
+----
+s = "python"
+ print(s.startswith("P")) #it will give you false becouse it cap case
+ print(s.startswith("p")) #it's correct
+
+----
+
+
+=== string - endswith( )
+Endswith return Ture if a string ends with the given suffix otherwise returns False.
+
+
+ex:01
+[source,python]
+----
+s = "python"
+ print(s.endswith("N")) #it will give you false becouse it cap case
+ print(s.endswith("p")) #it's correct (here you can check with spcae also)
+
+----
+=== string - isdigit( )
+
+Isdigit return "True" if all characters in the string are digits, otherwise, it returns "False".
+
+ex:01
+[source,python]
+----
+s = "1234563211"
+  print(s.isdigit())# Ture
+
+
+a = "123321a"
+  print(a.isdigit())# False
+----
+
+
+=== string - isalpha( )
+
+isalpha return "True" if all characters in the string are alphabets, otherwise, it returns "False".
+
+
+ex:01
+[source,python]
+----
+s = "abcdfegk"
+  print(s.isalpha())# Ture
+
+a = "abcd321a"
+  print(a.isalpha())# False (even if its space also given False)
+----
+
+
+=== string - isalnum( )
+
+isalnum return "True" if all characters in a given string are alphabets or numeric oe alphanumeric, otherwise, it returns "False".
+
+
+ex:01
+[source,python]
+----
+s = "abc"
+  print(s.isalnum())# Ture
+
+a = "321"
+  print(a.isalnum())# Ture
+
+i = "321#213"
+  print(a.isalnum())# False
+
+----
+
+=== List Datastructures
+
+----
+print(dir(list))
+----
+
+Nested list : we can crate list in side other list
+
+
+ex:01
+[source,python]
+----
+
+#    0   1  2     3        4  5
+#    0   1  2[  0     1  ] 4  5
+l = [10,20,30,["sai","ram"],40,50]
+
+ print(l(3))
+ print(l(11))
+----
+
+
+
+=== list slicing and indexing..
+ex:01
+[source,python]
+----
+l = [10,20,30,40,50]
+ print(l(3:4))
+ print(l(11))
+----
+
+=== Changing and adding element to list
+ex:01( update / replace)
+[source,python]
+----
+#    0  1  2  3  4
+l = [10,20,30,40,50]
+  print(l)
+
+l[1]=33 # here 1 is index and 33 is value
+  print(l)
+
+----
+ex:01( insert  )
+[source,python]
+----
+#    0  1  2  3  4
+l = [10,20,30,40,50]
+  print(l)
+
+l.insert(1,33) # here we can insert value for 1 index
+  print(l)
+
+----
+
+append and expend : append is for only one value at a time and expend is used add multiple value to the method. at the end of the list
+
+ex:01 (append and expend)
+
+[source,python]
+----
+l = [10,20,30,40,50]
+  print(l)
+
+l.append(80)
+  print(l)
+
+l.extend(["ram","raj",12,12.5])
+  print(l)
+----
+
+=== Delete or remove element from list
+
+ex:01
+
+[source,python]
+----
+l = [10,20,30,40,50]
+  print(l)
+
+l.remove(20) # value method we can remove the value
+  print(l)
+
+l.pop(4) # to remove using index method
+ print(l)
+
+l.clear()
+ print(l)# if you want to delete only item from the list, we can add value later
+
+
+del l
+ perint(l) # to delete l list
+----
+
+
+take a string any thing
+
+ouput = print even position charters and odd position characters saparate.
+
+     0123456789
+s = "ptyojnkjsd"
+
+next 12th video
