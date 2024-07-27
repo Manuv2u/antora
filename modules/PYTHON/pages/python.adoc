@@ -73,7 +73,7 @@ NOTE: **immutable** : cannot change and **mutable** : can change
 
 == Fundamental Concepts
 
-1. Comments in python
+===  1. Comments in python
 
 - Single line comment
 
@@ -96,7 +96,7 @@ comment example
 this is un-comment line
 ----
 
-2. Keywords and reserved words
+=== 2. Keywords and reserved words
 
 keyword is library and this keyword are reserved form python, keywords cant be used as variable or personal use case.
 
@@ -112,12 +112,12 @@ Output:
   ['False', 'None', 'True', 'and', 'as', 'assert', 'async', 'await', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield']
 
 
-3. Indentation
+=== 3. Indentation
 
 
 4 spaces
 
-4. Identifiers
+=== 4. Identifiers
 
 - Rule to define Identifier
 . lowercase or Uppercase (ex:01)
@@ -166,7 +166,7 @@ deff = 1234
 ----
 
 
-5. Variables
+=== 5. Variables
 
 . Variable is also consider as identifier
 . variable is a named memory location
@@ -187,8 +187,7 @@ c = "s"
    print(type(c)
 ----
 
-6. Multiple assignment
-
+==== 6. Multiple assignment
 . Is the process of assigning the multiple value to multiple variables (ex:01)
 . Is the process of assigning a single value to multiple variables (ex:02)
 
@@ -242,13 +241,13 @@ Datatype is used to represent what type of values are going to store inside the 
 |===
 | Basic Datatype | Description
 
-| None <<ex:01>>
+| None
 | Represents the absence of a value
 
 | Numeric
 | Represents numeric values
 
-| int <<ex:02>>
+| int
 | Integer numbers (e.g., -1, 0, 42)
 
 | float (ex:02)
@@ -272,7 +271,7 @@ Datatype is used to represent what type of values are going to store inside the 
 | tuple
 | Ordered collection of items (immutable)
 
-| <<set,set >>
+| set
 | Unordered collection of unique items
 
 | dict
@@ -294,7 +293,7 @@ Datatype is used to represent what type of values are going to store inside the 
 
 
 
-<<ex:01>>
+ex:
 [source,python]
 ----
 a = None #in python
@@ -306,7 +305,7 @@ b = null #in other langauges
 ----
 
 
-<<ex:02>>
+ex:
 [source,python]
 ----
 c = 10 # int
@@ -488,7 +487,7 @@ t = (10.0, 10, 20, "xyz", 'a', 23)
 ----
 
 
-<<set,set :>>
+set :
 
 . set is unordered collection of unique element.
 . set can be created by using `{ }`.
@@ -1446,11 +1445,808 @@ del l
 ----
 
 
-take a string any thing
+=== list sort
+sort is the build in funcation, by default and its arrang items in ascending order
 
-ouput = print even position charters and odd position characters saparate.
 
-     0123456789
-s = "ptyojnkjsd"
+ex:01
 
-next 12th video
+[source,python]
+----
+l = [1,2,3,4,5,6,7,8,9]
+
+  print(l)
+l.sort(l)
+l.sort(reverse=Ture)
+----
+
+
+=== list copy
+shallow copy and deep copy two types
+
+ex:01
+
+[source,python]
+----
+l = [1,2,3,4,5,6,7,8,9]
+
+l1 = l
+ print(l1) #shallow copy (it depend on first copy (l))
+
+
+l1 = l.copy
+ print(l1) #shallow copy (it depend on first copy (l))
+
+
+l1.append(14)
+
+ print(l1)#deep copy (it will not effect on first copy (l1))
+
+----
+=== list count and index
+
+
+ Count is used to find number of values(occurrence)
+
+ex:01
+
+[source,python]
+----
+l = [1,2,3,4,5,2,7,8,3,4,9,4,7,6,2,1,4,0,6,7]
+
+  print(l.count(2))# count
+  print(l.count(7))
+  print(l.count(0))
+
+  print(l.index(2))#index
+  print(l.index(7))
+  print(l.index(0))
+
+----
+
+=== Creating List from user input values
+
+ex:01
+
+[source,python]
+----
+l = []
+
+item1 = int(input("Enter int value:"))
+item2 = input("Enter string value:")
+item3 = float(input("Enter float value:"))
+
+
+l.append(item1)# here only one value is possible
+l.append(item2)
+l.append(item3)
+
+print(l)
+
+l1 = []
+
+l1.extend(item1,item2,item3)# here we can add multiple values
+
+print(l1)
+
+
+----
+
+
+
+=== Creating List using range function
+
+ex:01
+
+[source,python]
+----
+l = []
+
+n = int(int("Enter length of the list:"))
+
+for i in range(n):
+  x = int(input("Enter the value:"))
+  l.append(x)
+
+print(l)
+
+print(list(range(2,10,3)))
+
+print(list(range(10)))
+----
+
+
+=== tuple Datastructures
+
+=== len(), max(), min(), sum()
+
+
+==== Converting a string into tuple
+
+ex:01
+
+[source,python]
+----
+s = "coludcatayist"
+ print(s)
+ print(type(s))
+
+t=tuple(s)
+ print(t)
+ print(type(t))
+
+----
+
+==== Converting a list into tuple
+
+ex:01
+
+[source,python]
+----
+s = "10,20,30,40"
+ print(s)
+ print(type(s))
+
+t=tuple(s)
+ print(t)
+ print(type(t))
+
+----
+
+
+==== Converting tuple into string
+
+
+
+=== tuple packing and unpacking
+
+ex:01
+
+[source,python]
+----
+a = 10
+b = 20
+c = 30
+d = 40
+
+t = a,b,c,d
+
+print(t) # packing
+print(type(t))
+
+t = (10,20,30)
+
+a,b,c,d = t
+ print("a=",a)
+ print("b=",b)
+ print("c=",c)
+----
+
+
+// take a string any thing
+//
+// ouput = print even position charters and odd position characters saparate.
+//
+//      0123456789
+// s = "ptyojnkjsd"
+//
+// s = "pythonisgood"
+//
+// print("Even position characture:",s[0::2])
+// print("Odd position characture:",s[0::1])
+//
+//
+// or
+
+=== Set Datastructures
+
+1. Set not have any index becouse set is un-order
+
+===  How to change set ( add and update)
+ex:01
+
+[source,python]
+----
+S = {} # its dic not set
+s1 = set() # to create empty set
+s2 = {10,20,30,10,45.5,"python"}
+  print(s)# it will remove duplicate value
+  print(type(s))
+----
+
+=== add and update in set
+. add is used to update only one value
+. update will allow multiple value to set
+
+ex:01
+
+[source,python]
+----
+s2 = {10,20,30,10,45.5,"python"}
+
+ print(s2)
+
+s2.add(98) # only one value to set use `add`
+
+  print(s2)
+
+s2.update(23,"cloud")
+
+  print(s2) # multiple value to add use `update`
+----
+
+=== Remove elements form set (discard(), remove(), clear() and del() )
+
+
+ex:01
+
+[source,python]
+----
+s2 = {10,20,30,10,45.5,"python"}
+
+ print(s2)
+
+s2.discard(100)
+  print(s2) # it will not give any error if that value is not persent in discard.
+
+
+s2.remove(100)
+  print(s2) #keyerror - if value is not there in set
+
+
+s3 = {10,20,30,10,45.5,"python"}
+
+ print(s3)
+
+s3.clear() # will clear all value in set(total set as empty)
+  print(s3)
+
+----
+
+=== Set Operation { union(|), intersection(&), difference(-), symmetric difference(^) }
+. union
+
+
+ex:01
+
+[source,python]
+----
+a = {1,2,3,4,5,6,7}
+b = {8,9,7,6,5,4,1}
+ print(a|b) # union
+print(a.union(b))
+
+
+c = {1,2,3,4,5,6,7}
+d = {8,9,7,6,5,4,1}
+ print(c&d) # intersection
+ print(c.intersection(d))
+
+e = {1,2,3,4,5,6,7}
+f = {8,9,7,6,5,4,1}
+ print(e-f) # difference
+ print(e.difference(f))
+
+
+g = {1,2,3,4,5,6,7}
+h = {8,9,7,6,5,4,1}
+ print(g^h) # symmetric_difference
+ print(g.symmetric_difference(h))
+----
+
+
+=== membership test
+
+ex:01
+
+[source,python]
+----
+a = {1,2,3,4,5,6,7}
+
+ print(100 in a) # membership test ( to check number is there or not )
+
+----
+
+
+=== len( ), max( ), min( ) and sum( )
+
+ex:01
+
+[source,python]
+----
+# coming soon
+----
+
+=== Dictionary Datastructures
+
+1. what is dictionary ?
+2. Creating dictionary
+3. access
+
+
+
+ex:01
+
+[source,python]
+----
+
+d = {}
+
+  print(d)
+  print(type(d))
+
+d1 = {1:"python", 2.1:"is", id:"easy",(1,2,3):"to",4:"learn"}
+
+   print(d1(1))
+   print(d1.get(1))
+----
+
+=== change or update
+
+ex:01
+
+[source,python]
+----
+
+d1 = {1:"python", 2.1:"is", id:"easy",(1,2,3):"to",4:"learn"}
+d1["id"]="slno"
+   print(d1) # if there is no key and value then that it will update new key value
+
+
+#delete
+
+d = {1:"python", 2.1:"is", id:"easy",(1,2,3):"to",4:"learn"}
+
+  print(d)
+
+del d["id"]
+  print(d) # to delete perticulr key value
+
+
+del d
+  print(d) # to delete hole dic
+
+# copy
+
+d = {"id":"1235", "name":"python"}
+d1=d.copy()
+
+d1=["id"]=4355
+ print(d1)
+
+
+# items, key, value
+
+d = {"id":"1235", "name":"python", "age":15}
+
+  print(d)
+  print(d.items())
+  print(d.values())
+  print(d.keys())
+
+
+# membership test
+
+d = {"id":"1235", "name":"python", "age":15}
+
+ print(d)
+
+ print("id" in d) # here we can check key only not for value it not possiable
+
+# len
+
+d = {"id":"1235", "name":"python", "age":15}
+
+ print(d)
+ print(len(d))
+
+# pop
+
+
+d = {"id":"1235", "name":"python", "age":15}
+
+ print(d)
+
+d1=d.pop("name") # delete using key
+
+ print(d1)
+
+#popiteam
+
+
+d = {"id":"1235", "name":"python", "age":15}
+
+ print(d)
+
+d1=d.popitem()# last key:value will be deleted
+
+ print(d1)
+----
+
+
+=== bytes
+bytes is used to represent byte number just like an array the only allowed value for bytes is 0 to 256, and bytes is immuyable(we cant change).
+
+
+=== bytearray
+
+bytearray is used to represent byte number just like an array that only allowed values for bytearray is 0 to 256 and bytearray is mutable (we can change)
+
+
+=== frozenset
+ frozenset is mutable(we cant change)
+
+
+
+== Function in python:
+
+A function in Python is a reusable block of code that performs a specific task. It is defined using the def keyword followed by the function name and parentheses () which may include parameters. Functions help in organizing code, making it more readable, and avoiding repetition.
+
+
+=== two type functions
+
+1. perdefined function
+
+ ex: print(),input(),type(),id()
+
+2. userdefined function
+
+----
+
+import keyword
+print(keyword.kwlist)
+----
+
+ex: syntax for function
+[source,python]
+----
+def function_name(parameters): #parameters are input values
+     '''docstring''' # distribution for funcation
+     statements  # main task or any logic
+     return statement # return is keyword that gives some output
+----
+
+ex:01
+[source,python]
+----
+def f1():
+  print("hello")
+
+f1()
+--
+def f2():
+    for i in range(100):
+        print("hello")
+--
+def f5():
+  pass # we can skip that function
+--
+def f6(name):
+    print("hello:",name)
+
+f6("coludcatayist")
+---
+def f7(n):
+    print("square of",n, "is",n*n)
+f7(5)
+---
+def add(a,b):
+    print("sum is:",a+b)
+
+add(5,20)
+add(11.2,65.78)
+---
+a = int(input("Enter num1:")) # giving value at run time
+b = int(input("Enter num2:")) # giving value at run time
+def add(a,b):
+    print("sum is:",a+b)
+--or--
+a = int(input("Enter num1:")) # giving value at run time
+b = int(input("Enter num2:")) # giving value at run time
+
+add(a=int(input("Enter num1:")),b=int(input("Enter num2:")))
+---
+def iseven(x):
+     if x%2==0
+        print(x, "is Eeven")
+     else:
+        print(x, "is odd")
+iseven(3)
+iseven(4)
+----
+ex:
+[source,python]
+----
+def add(a,b):
+    #print("sum is:", a+b)
+    return a+b #
+
+
+print("sum is:",add(20,60))
+r = add(20,60)
+
+def sub(r,c)
+    print("sub is:",r-c)
+
+
+sub(r,6)
+
+
+----
+
+==== single function can retrun multiple values
+
+
+ex:
+[source,python]
+----
+def sum_sub(a,b):
+    sum=a+b
+    sub=a-b
+    mul=a*b
+    return sum,sub,mul
+
+
+x,y,z= sum_sub(10,20)
+
+print("Sum is:",x)
+print("Sub is:",y)#this is not good pratices
+print("mul is:",z)# here we can do only sum or mul or sub (like addition only)
+----
+
+ex:
+[source,python]
+----
+def sum(a,b)
+     return a+b
+
+def sub(a,b)
+    return a-b
+
+
+def mul(a,b)
+    return a*b
+
+x=sum(10,20)
+y=sub(30,20)
+z=mul(20,10)
+
+print("Sum is:",x)
+print("Sub is:",y)
+print("mul is:",z)
+
+----
+=== Types of variables in funcation (local and global variables)
+
+1. Local variables:
+
+The variables which are declare inside the function and that variables are only available to thet  function is called local variables.
+
+local variables can't access outside the funcation
+
+
+ex:
+[source,python]
+----
+def f1():
+    a=10
+    print(a)
+
+def f2():
+    b=20
+    print(b)
+    print(a)# here we cant use `a` that variable is not define in this function
+
+f1()
+f2()
+
+----
+
+
+==== 2. Global variable:
+
+The variables which are declare outside the function and that variables are only available to all function in the program is called global variables.
+
+
+==== Global keyword
+
+Global key is used to make global variable available to a particular function for required modification.
+----
+import keyword
+print(keyword.kwlist)# to print all keyword in python
+----
+ex:
+[source,python]
+----
+a=10#this are global variables
+b=20# it available to access not for modification.
+
+def f1():
+    print(a)
+
+def f2():
+    print(b)
+
+f1()
+f2()
+
+----
+
+
+ex:
+[source,python]
+----
+a=10
+
+def f1():
+    global a
+    a=99
+    print(a)
+
+def f2():
+    print(a)
+
+
+f1()
+f2()
+----
+
+ex:
+[source,python]
+----
+a=10
+
+def f1():
+    a=99 # here local and globale variable both are same then first perferance is local variable
+    print(a)
+    print(globals()['a']) # here am calling global variable
+
+def f2():
+    print(a)
+
+
+f1()
+f2()
+----
+
+=== Different type of arguments(paraments)
+
+==== There are four types of arguments
+
+- positional arguments
+- keyword arguments
+- default arguments
+- variable length arguments
+
+
+==== 1. positional arguments
+
+The argument which are passed to a function in correct positional order is called positional arguments
+
+if we change order or position then result may change, if we increase or decrease the no of arguments then we get error.
+
+
+ex:
+[source,python]
+----
+def add(a,b):
+    print(a-b)
+
+sub(10,20) # here a,b are formal arguments and 10,20 are actual arguments
+sub(20,10) # ex: sub(10,20,30) and sub(10) here check the definition
+
+----
+
+
+==== 2. keyword arguments
+
+The arguments which are passed to a function with keyword or parameter name is called keyword arguments.
+
+while working with keyword arguments the order or position is not important but keyword are important.
+
+ex:
+[source,python]
+----
+
+def f1(name,msg):
+    print("Hello:",name,msg)
+
+#keyword args
+f1(name="chiru",msg="Good Morning")
+f1(msg="Good Morning",name="chiru")# here if i change order result will be same
+
+
+#positional args
+f1("chiru","Good Morning")
+f1("Good Morning","chiru")# here there based on order you will get
+
+#one  positional and one keyword args
+#make sure that first we have to mention positional args then after keyword args
+
+f1("chiru",msg="Good Morning") #correct
+f1(name="chiru","Good Morning") #wrong (error will occure)
+----
+
+==== 3. default arguments
+
+if you dont set any args,
+
+function with default value will take that value
+
+ex:
+[source,python]
+----
+def f1(course="python"): # here i define default value as python
+    print("course is:",course)
+
+f1("c")
+
+f1("java")
+
+f1() # here am not given any args so it will take default value to the parameter
+
+# one default one non default argument, make sure that first non default argument and then after default argument
+def f2(course="python",name): # here i define default value as python
+    print(name,"course is:",course)
+
+f2("java","sumanth") #here we need to pass non default args first
+f2("chiru","c") # correct
+f2("chiru") # here i define default value as python
+----
+
+==== 4. variable length arguments
+
+some time we can call a function with multiple values including zero(0) value
+ex:
+[source,python]
+----
+def f1(*a): # here `*` is most important for variable args
+    print(a)
+
+f1()
+f1(10)
+f1(10,20)
+f1(10,20,30)
+f1(10,20,30,40,50)
+
+
+----
+
+ex:
+[source,python]
+----
+def add(*n):
+    s=0
+    for i in n:
+        s=s+i
+    print("Sum is:",s)
+
+add()
+add(10)
+add(10,20)
+add(10,20.2,0,995,65.45)
+----
+
+
+IMPORTANT: Interview Question ( What is `*args` and **kwargs ?)
+----
+*args allows us to pass no zero(0) value to the function including zero +
+*args will store the value in tuple formate +
+**kwargs allow us to pass no of keyword arguments to the funcation +
+**kwargs will store the values in dict formate+
+----
+
+ex:
+[source,python]
+----
+def f1(**kwargs):
+    for k,v in kwarges,items():
+        print(_k_,"=",v)
+
+f1(a=20,b=20,c=30)
+f1(eid=125,ename="chiru",eaddress="bang")
+
+
+----
+
+next video 17
