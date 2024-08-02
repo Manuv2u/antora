@@ -2129,7 +2129,7 @@ if we change order or position then result may change, if we increase or decreas
 ex:
 [source,python]
 ----
-def add(a,b):
+def sub(a,b):
     print(a-b)
 
 sub(10,20) # here a,b are formal arguments and 10,20 are actual arguments
@@ -2169,7 +2169,7 @@ f1(name="chiru","Good Morning") #wrong (error will occure)
 
 ==== 3. default arguments
 
-if you dont set any args,
+if you don't set any args,
 
 function with default value will take that value
 
@@ -2228,7 +2228,7 @@ add(10,20.2,0,995,65.45)
 ----
 
 
-IMPORTANT: Interview Question ( What is `*args` and **kwargs ?)
+IMPORTANT: Interview Question - ( What is `*args` and **kwargs ?)
 ----
 *args allows us to pass no zero(0) value to the function including zero +
 *args will store the value in tuple formate +
@@ -2249,4 +2249,956 @@ f1(eid=125,ename="chiru",eaddress="bang")
 
 ----
 
-next video 17
+==== Positional only arguments and Keyword only arguments
+ex:
+[source,python]
+----
+def add(a,b): # here it will accepts both
+    print(a+b)
+
+add(10,20)# positional arguments
+add(a=10,b=20)# keyword arguments
+
+# how to pass only positional argumenets
+
+def sum(x,y,/): # here we need to use `/`
+    print(x+y)
+
+sum(10,20)# it will accept only positional arguments
+sum(x=10,y=20)# error
+
+# how to pass only keyword argumenets
+
+def sub(*,s,r): # here we need usr `*`
+    print(s-r)
+
+sub(10,20)#  error
+sub(s=10,r=20)# it will accept only keyword arguments
+
+# Note: we cant use both like
+
+def sum(*,a,b,/): # wrong we can use both args
+    print(a+b)
+
+----
+
+==== nested function
+A function which is having one or more function within it is called nested function
+
+ex:
+[source,python]
+----
+def f1():
+    print("hello")
+
+    def f2():
+        print("welcome to python")
+
+        def f3():
+            print(learing..)
+
+         f3() # its depends on f2 function
+
+    f2()# its depends on f1 function
+
+f1() #here with out f1 function f2 and f3 function will not work
+----
+
+==== recursion function
+
+factorial(n)=n*factorial(n-1)
+factorial(3)=3*factorial(2-1)
+             3*2*factorial(1)
+             3*factorial(0)
+
+
+ex:
+[source,python]
+----
+def factorial(n):
+    if n==0:
+       result=1
+    else:
+       result=n*factorial(n-1)
+    return result
+print("Factorial of ,n is",factorial(3))
+
+or
+
+import math
+
+print(math.factorial(3))
+print(math.sqrt(4))
+print(math.pow(3,2))
+print(math.ceil(34.2))
+print(math.floor(43.6))
+
+or
+# here without using alias name here we need call module in different style
+
+from math import *
+
+print(factorial(3))
+print(sqrt(4))
+print(pow(3,2))
+print(ceil(34.2))
+print(floor(43.6))
+----
+
+==== Anonymous or lambda function
+
+When we create(some times) a function without any name such kind of nameless function are called anonymous or lambda function.
+
+
+. using lambda we can write concise code(short hand way if writing code).
+. using lambda we can reduce length of code.
+. using lambda we can improve the readability of program.
+. using lambda we can almost singlr line expression.
+. lambdas are for instant usage.
+
+----
+#To get all keywords in python
+import keyword
+print(keyword.kwlist)
+----
+
+----
+#sytax of lambda function
+lambda argumenetslist:experssion
+----
+
+ex:
+[source,python]
+----
+lambda n : n*n # squar of given number
+
+lambda a,b : a+b #To find sum of number
+
+s =lambda n: n*n
+
+  print(s(3))
+
+# To find sum of two numbers using lambda function
+
+a =lambda x,y: x+y
+
+  print(a(3,5))
+
+
+# To find biggest number in lambda function
+
+q = lambda a,b:a if a>b else b
+
+print(q(5,6))
+
+
+s = lambda a,b,c:a if a>b and a>c else b if b>c else c
+
+print(a(9,6,1))
+
+# To find even or odd number using lambda function
+
+a = lambda n:"is even" if n%==0 elsw "is odd"
+
+print(a(2))
+print(a(7))
+----
+
+==== Use case of lambda (advantage)
+
+. sometime we should pass a function as an argument to other function in this situation lambda is the best choice.
+
+. In Python programming some function will expect other finction as an argument then we use lambda
+
+. filter( ),map(),reduce( )
+
+- filter( ) :
+ filter is used to filter the value from given sequence based on the condition
+
+----
+syntax : filter(function,sequence)
+----
+
+here first parameter is a function for conditional check, here second parameter is a sequence and it can be  a list,tuple,set
+
+ex:
+[source,python]
+----
+# without lambda
+
+def iseven(x):
+    if x%==0:
+       return True
+    else:
+       return False
+
+iseven(10)
+
+l= [2,3,4,5,6,7,8,9,10]
+
+#filter(function,sequence)
+l1=list(filter(iseven,l))
+
+print(l1)
+
+
+#with lambda
+
+l= [2,3,4,5,6,7,8,9,10]
+
+#filter(function,sequence)
+l1=list(filter(lambda x:x%2==0,l))
+
+print(l1)
+
+----
+
+- map( )
+
+For every element present in the sequence, apply some condition and return the new sequence of element then we use map() function.
+
+
+----
+syntax : map(function,sequence)
+----
+ex:
+[source,python]
+----
+# without lambda
+def dbl(x):
+     return 2*x # use can you any alg like 2**x
+
+l= [2,3,4,5,6,7,8,9,10]
+
+#map(function,sequence)
+l1=list(map(dbl,l))
+
+print(l1)
+
+#with lambda
+
+l= [2,3,4,5,6,7,8,9,10]
+
+#map(function,sequence)
+l1=list(map(lambda x:x*x,l))
+
+print(l1)
+
+----
+
+- reduce( ) #it not available as default keyword, so we need to use labiary
+
+it is used to reduce the values of sequence and return the result as one value.
+
+----
+syntax : reduce(function,sequence)
+----
+
+
+ex:
+[source,python]
+----
+
+# without lambda
+
+from functools import * # to call all labiary is not good practices only use what every function you need
+# from functools import reduce
+def f1(x,y):
+    return x+y # here you can use any
+
+l=[1,2,3,4,5,6,7,8,9,10]
+
+result= reduce(f1, l)
+
+print(result)
+
+# with lambda
+
+from functools import reduce
+
+l=[1,2,3,4,5,6,7,8,9,10]
+
+result= reduce(lambda x,y:x+y, l)
+
+print(l)
+
+----
+
+== modules in python
+
+. Group of variables, functions and classes are store into a file which is nothing but module.
+. In python every .py file acts as module and module is for re-usability of enter the program code
+
+
+ex:
+
+[source,python]
+----
+#sample.py(file1)
+
+a =100
+
+def add(x,y):
+    print("sum is:",x+y)
+
+def sub(x,y):
+    print("sub is :",x-y)
+
+#test.py(file2)
+
+import sample #here we need to mention file name
+
+print(sample.a) # how to call varibale form one file to other
+
+# how to call function form sample.py file
+
+sample.add(20,10)
+sample.sum(50,60)
+----
+
+=== module aliasing
+ just giving other name to a module is called module aliasing
+
+
+ex:
+[source,python]
+----
+import sample as s #always we need to use alias name only, we can't use main name
+
+
+# without using module name how to use module for that we need to use from
+
+from sample import a,add # here iam accessing a and add functions form sample file
+
+
+
+----
+
+=== member aliasing
+ just giving other name to a member is called member aliasing
+
+ex:
+[source,python]
+----
+from sample import a as b,add as sum,sub
+
+print(b)
+sum(20,10)
+sub(3,1)
+----
+
+=== How to import multiple modules
+
+. user define
+. build in module
+.
+
+
+ex:
+[source,python]
+----
+#sample.py (file1)
+
+a = 200
+
+def mul(x,y):
+    print("mul is:",x*y)
+
+#test.py (file2)
+
+
+a = 100
+
+def add(x,y):
+    print("sum is:",x+y)
+
+def sub(x,y):
+    print("sub is :",x-y)
+
+#test2.py (file3)
+
+
+import sample
+import test
+
+#from sample import *
+#from test import * # here with using module name we can use
+
+print(sample.a)
+sample.mul(10,5)
+
+print(test.a)
+test.add(10,20)
+test.sub(20,30)
+
+----
+
+=== How get all information about any module
+
+ex:
+[source,python]
+----
+import sample
+help(sample)
+
+import functools
+help(functools)
+
+import os
+help(os)
+----
+
+=== Different ways to call module
+
+
+ex:
+[source,python]
+----
+import module1
+import module1 as m1
+import module1,module2
+import module as m1,module2 as m2
+
+form module1 import *
+from module1 import member1
+from module1 import member1 as m1
+from module1 import member1,member2
+from module1 import member1 as m1,module2 as m2
+
+----
+=== Special varibale:
+
+----
+__name__
+----
+special variable name is used to check wreath the program execute as is individual program, or it's execeuted by other program
+
+If the program executed as an individual program then the value of special variable is
+----
+__name__
+----
+
+If the program executed from other program then the value of special variable is the module name where it is defined.
+
+ex:
+[source,python]
+----
+test.py(file1)
+
+def f1()
+    if __name__=='__main__':
+        print("Executed as an individual program")
+    else:
+        print("Executed from some other program")
+
+f1()
+print(__name__) # To print name of module
+#output
+Executed as an individual program
+__main__
+----
+
+ex:
+[source,python]
+----
+import test1
+
+test.f1()
+print(__name__) # To print name of that module
+#output
+Executed from some other program
+test1
+
+----
+
+=== built in modules in Python
+
+ex:
+[source,python]
+----
+import math
+#from math import *
+print(math.sqrt(4))
+print(math.factorial(3))
+print(math.ceil(34.2))
+print(math.floor(34.4))
+--------------------------
+import datetime #
+#from datetime import *
+x = datetime.datetime.now()
+print(x)
+print(x.date())# only for date
+print(x.time())# only for time
+print(x.year())
+print(x.hour())
+print(x.minute())
+print(x.seconds())
+print(x.microsecond())
+
+x=date(2024,7,29)#(year,month,day)
+  print(x)
+
+y=datetime(2024,7,29,2,35,45)#(year,month,day,hour,minute,second)
+  print(x)
+------------------
+# To print in string formate
+from datetime import *
+x=datetime.now()
+  print(x.strftimr("%A")) #Weekday full version
+  print(x.strftimr("%a")) #weekday short version
+  print(x.strftimr("%B")) #month full version
+  print(x.strftimr("%b")) #month short version
+  print(x.strftimr("%Y")) #year full version
+  print(x.strftimr("%y")) #year short version
+----------------------------------
+
+from calendar import *
+#help(calendar)
+y = 2002
+m = 6
+
+print(month(y,m))
+print(month(2002,6))
+print(calendar(2002,2,1,6,))#y,w,l,c
+#y=year
+#w=width of the characters
+#l=lines per week
+#c=column separation
+----
+
+=== Working with random module
+
+1. random() : It will generate random flot values by default between 0 and 1 (not-include(0 and 1))
+2. randint() : It will generate random int values  between two given numbers (include(two given number))
+3. uniform() : It will generate random flot values by default between two given number (include - two given number)
+4. randrange() : Start,stop,step
+5. choice() : it will not generate any random value, it will generate random object
+
+
+ex:
+[source,python]
+----
+#random function
+from random import *
+
+for i in range(10):
+     print(random())
+
+
+#randint function
+
+for i in range(25): #output of range value
+     print(randint(0000,9999))
+
+
+#uniform function
+for i in range(15): #output of range value
+     print(randint(3,18))
+
+
+#randrange function
+for i in range(10): #output of range value
+     print(randrange(2,20,2))
+
+#choice function
+l = ["ranga","chiru","sumanth","vinay"]
+print(choice(l))
+
+----
+
+=== array and numpy  modules
+
+==== array
+
+array is user define similar data type collection (homogenious element)
+only we can create single dimension array
+
+. **Single dimension array** : An array which contains only one row or one column
+. **Two dimension array** : An array which contains more than one row or one column
+
+----
+[10,20,20,30,40]
+["ranga","chiru","sumanth","vinay"]
+[11.2,56.4,45.3,87.01,53.15]
+#list[]  -> heterogenious elements
+----
+
+
+#need to install the package
+
+it used to create multiple array
+
+ex:
+[source,python]
+----
+import array
+#from array import *
+#from array import
+#type code varibale
+
+A = arry.arry(['i',10,20,30,40,50,60,70]) # here we need to give type code variable
+B = arry.arry(['f',10,20,30,40,50,60,70])#float
+C = arry.arry(['D',10,20,30,40,50,60,70])#float
+D = arry.arry(['I',10,20,30,40,50,60,70])#interger
+E = arry.arry(['i',10,20,30,40,50,60,70])#unicode character
+
+print(type(A))
+print(A.typecode)
+print(A) # same as all B,C,D,E try your self
+print(a[1])#how to access or printe array
+A.remove(2)# how to remove values
+print(A)
+A.inster(1,33)#insert ( index,value)
+A.reverse()# how to reverse
+
+
+for i in A:
+    print(i)
+
+for i in range(4):
+     print(A[i])
+
+for i in len(A):
+     print(A[i])
+
+----
+
+==== How to create array in run time
+
+ex:
+[source,python]
+----
+from array import *
+
+A = array('i',[])
+
+n = int(input("Enter length of the array))
+
+for i in range(n):
+    x=int(input("Enter the value:"))
+    A.append(x)
+print(A)
+
+----
+
+==== numpy :
+1. array( )
+2. linspace( )
+3. logspace( )
+4. arange( )
+5. zeros( )
+6. ones( )
+
+
+ex:
+[source,python]
+----
+#array
+import numpy
+#import numpy as np
+#from numpy import *
+
+X = numpy.array ([10,20,30,40.8])
+A = numpy.array ([10,20,30,40.8]) # here we give any float value, it automatically converted into float
+B = numpy.arry([10,20,30,40.8],int)
+
+print(X)
+print(type(X))
+print(A)
+print(type(A))
+print(B)
+print(type(B)) #int32
+Print(B.dtype) #4
+Print(B.size) #1
+Print(B.shape) #(4,)
+
+
+#linspace (start,stop,no of parts )# matlab function
+
+C = numpy.linspace(2,20,7)#(start,stop,no of parts )
+print(C)
+
+#logspace (start,stop,no of parts )# matlab function
+
+D = numpy.logspace(2,20,7)#(start,stop,no of parts )
+print(D) # [1.00000000e+02, 3.1617766e+11, 3.16227766+e15, 1.000000000+e20]
+
+#arange (start,stop,no of parts )# matlab function
+
+E = numpy.arange(2,20,3)#(start,stop,no of parts )
+print(E)# [2 5 8 11 14 17]
+
+#zeros (start,stop,no of parts )# matlab function
+
+F = numpy.zeros(10, dtype=int)
+print(F)# [0 0 0 0 0 0 0 0 0 0]
+
+#ones (start,stop,no of parts )# matlab function
+G = numpy.ones(10, dtype=int)
+print(G)# [1 1 1 1 1 1 1 1 1 1]
+----
+
+ex:
+[source,python]
+----
+# mutli dimenation array
+
+import numpy as np
+
+A = np.array([[10,20,30,40]),
+            ([15,25,35,45]),
+            ([43,87,93,21]])
+
+print(A)
+print(A.ndin)
+print(A.size)
+print(A.shap)
+print(A[2][0])
+
+
+# how to find max element and min element
+print("Max elemenr is:" A.max())
+print("Min elemenr is:" A.min())
+
+print("Row wise Max elemenr is:" A.max(axis=1))# here to access row wise axis = 1
+print("Row wise min elemenr is:" A.min(axis=1))
+
+print("Columm wise Max elemenr is:" A.max(axis=0))# here to access cloumm wise axis = 0
+print("Columm wise min elemenr is:" A.min(axis=0))
+
+print("Sum of all element:"A.sum())
+
+#flatted = it's converted all row and colum into single row( single dimention)
+print(A.ndim)
+P = A.flatted()
+print(P)
+print(p.ndim)
+----
+
+
+== Advance Python
+
+
+=== Object Oriented programming ( OOP'S)
+
+==== Advantage or Benefits
+
+. Security
+. Reusability
+. Application Enhancement
+
+
+---
+1.class :
+class is a collection if variables and method
+
+2.object :
+Object is an instance of class or it is used to represent a class
+
+==== Features of OOP's:
+
+. Encapsulation
+. Abstraction
+. Polymorphism
+. Inheritance
+
+1.Encapsulation : Encapsulation is the process of providing restriction to access variables and method
+
+- why we need Encapsulation
+
+. To prevent the data from modification
+. We can achieve the encapsulation by using private variables and methods
+
+
+2.Abstraction : Abstraction is the process of hiding the implementation but providing the service
+
+
+
+3.Polymorphism : Poly means many and morph means behavior
+
+. Static or Compiletime (overloading)
+. dynamic or runtime (overriding)
+
+4.Inheritance :  Inheritance is the process of creating new class from existing class.
+
+ - Existing class are parent class or base class or super class
+ - New class are child class or derived class or subclass
+
+==== Types of Inheritance
+. Single
+. Multiple
+. Multilevel
+. Hybrid
+. Hierarchical
+
+==== Syntax to Create class
+
+ex:
+[source,python]
+----
+Class classname:
+#Class stuent:
+
+----
+==== Syntax to Create object
+
+ex:
+[source,python]
+----
+objectreferencevariablename = Classname()
+#s = Student()
+
+----
+
+==== How to Prepare class
+
+ex:
+[source,python]
+----
+Class Student:
+     ''' This is a student class to display student details '''
+
+// help(student)
+// s = Student()
+// print(s.__doc__) #this called as magic method
+
+    def __init__(self):
+        self.sid=2345
+        self.sname="ram"
+        self.saddress="bang"
+
+    def display(self):
+        print("Student id is:", self.sid)
+        print("Student name is:", self.sname)
+        print("Student Address is:", self.saddress)
+
+
+s = student() # s is object, student is class
+s.display()
+
+----
+
+==== What is constructor ?
+. Constructor is a special method of class.
+. Constructor name should be "_ _ init _ _" (self) # In other lang name of the constructor should be  same as class name
+. Self is the first parameter of constructor
+. Constructor is used to declare and initialize the values to the variables
+. Constructor will execute automatically when create objcet to the class.
+. We can create any no of objects to the class, for every object constructor will execute once.
+
+#In other languages name of the constructor should be same as class name. +
+#In python always Constructor name is "_ _ init _ _"
+
+
+==== What is Method ?
+. Method is a reusable piece of code which can be called again and again when it is required.
+. Method mame can be of any name
+. self is the first parameter of the method
+. In side method we can write any business logic code
+. Method will execute only when we call that
+. For every object we can call a method with any number of times
+
+
+ex:
+[source,python]
+----
+
+#constructor and Method
+#constructor
+class Studnet:
+     def __init__(self,sid,sname,saddress): #(self,x,y,z) or
+         self.sid=sid #self.sid=x
+         self.sname=sname #self.sname=y
+         self.saddress=sadress #self.saddress=z
+#Method
+     def display(self):
+         print("Student id is :",self.sid)
+         print("Student name is :",self.sname)
+         print("Student Address is :", self.saddress)
+
+
+s1=Studnet(101,"ranga","D-Rampura")# (inside class)
+s2=Studnet(102,"Chiru","KB-cross")
+s1.display()#s1 is object reference (outside class)
+s2.display()
+
+----
+
+
+ex:
+[source,python]
+----
+#if you dont have any method how to print (using dict)
+#constructor
+class Studnet:
+     def __init__(self,x,y,z): #(self,x,y,z)(self,sid,sname,saddress) or
+         self.sid=x
+         self.sname=y
+         self.saddress=z
+
+s1=Studnet(101,"ranga","D-Rampura")
+s2=Studnet(102,"Chiru","KB-cross")
+
+#if you dont have any method how to print (using dict)
+
+print(s1.__dict__)
+print(s2.__dict__)
+
+----
+
+ex:
+[source,python]
+----
+# if we dont have any constructor
+class Studnet:
+     def getdata(self):
+         self.sid=int(input("Enter sid:"))
+         self.sname=input("Enter sname:")
+         self.saddress=input("Enter saddress:")
+#Method
+     def display(self):
+         print("Student id is :",self.sid)
+         print("Student name is :",self.sname)
+         print("Student Address is :", self.saddress)
+
+s1=Studnet()
+s2=Studnet()
+s1.getdata()
+s2.getdata()
+s1.display()
+s2.display()
+----
+
+
+ex:
+[source,python]
+----
+class Studnet:
+     def getdata(self):
+         self.sid=int(input("Enter sid:"))
+         self.sname=input("Enter sname:")
+         self.saddress=input("Enter saddress:")
+#Method
+     def display(self):
+        # print(self.sid ,"\n",self.sname,"\n",self.saddress) # "\n" is next line"
+        # print("{}'s id is{}".format(self.sname,self. sid, self.saddress))#string
+        print("{0}'s id is{1} and address is {2}".format(self.sname,self. sid, self.saddress))#based on index we can get result
+s1=Studnet()
+s2=Studnet()
+s1.getdata()
+s2.getdata()
+s1.display()
+s2.display()
+----
+
+ex:
+[source,python]
+----
+
+----
+
+ex:
+[source,python]
+----
+
+----
