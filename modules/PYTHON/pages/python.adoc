@@ -2984,18 +2984,19 @@ print(p.ndim)
 ==== Advantage or Benefits
 
 . Security
-. Reusability
+. Re-usability
 . Application Enhancement
 
 
----
+
+
 1.class :
 class is a collection if variables and method
 
 2.object :
-Object is an instance of class or it is used to represent a class
+Object is an instance of class or it is used to represent a class +
 
-==== Features of OOP's:
+==== Features of OOPs
 
 . Encapsulation
 . Abstraction
@@ -3190,15 +3191,447 @@ s2.getdata()
 s1.display()
 s2.display()
 ----
+=== Type of variables are allowed in python class
+
+. Instance variable(object level)
+. Static variables (class level)
+. local variables (method level)
+
+==== Instance variables (object level)
+- If the value of variable is varied(different) from object to object then such type of variables called instance variables.
+- Where we can declare instance variables
+. inside the constructor by using self
+. inside the instance method by using self
+. outside the class by using object reference
+
+
+ex:
+[source,python]
+----
+class Test:
+    def __init__(self): # "__init__ (constructor))"
+       self.a =10
+
+    def m1(self):
+        self.b=20
+
+t = Test()
+t.m1()
+t.c=30
+
+print(t.__dict__)
+
+
+#output
+
+{'a': 10, 'b': 20, 'c': 30}
+
+----
+
+==== How to access instance variables
+
+- We can access instance variables with the class by using self
+- we can access instance variables outside the class by using object reference
+
 
 ex:
 [source,python]
 ----
 
+class Test:
+    def __init__(self):
+        self.a=10
+        self.b=20
+    def m1(self):
+        print(self.a)# inside of the class we can access the instance variables
+        print(self.b)# self will work only inside class
+
+t = Test()
+print(t.a)# outside of the class we can access the instance variables
+print(t.b)
+
+----
+
+
+
+==== How to delete instance variables
+
+- We can delete instance variables within the class as follows
+----
+ del self.variablesname
+----
+
+- We can delete instance variables outside of the class as follows
+----
+ del objectreference.variablesname
+----
+
+NOTE: We can create any number of object to the class, for every object a separate copy of instance variables will be created if we change or delete one copy of instance variable then other copy od instance variables will not affect.
+
+ex:
+[source,python]
+----
+class Test:
+    def __init__(self):
+        self.a=10
+        self.b=20
+        self.c=30
+
+    def m1(self):
+        del self.a
+
+t = Test()
+print(t.__dict__)
+
+#output
+{'a': 10, 'b': 20, 'c': 30}
+
+---
+# with in the class and # ( outside class) object reference
+class Test:
+    def __init__(self):
+        self.a=10
+        self.b=20
+        self.c=30
+
+    def m1(self):
+        del self.a
+
+t1 = Test()
+t2 = Test()
+print(t1.__dict__)
+print(t2.__dict__)
+t1.m1()# with in the class
+del t2.b # ( outside class) object reference
+print(t1.__dict__)
+print(t2.__dict__)
+
+
+
+#output
+
+{'a': 10, 'b': 20, 'c': 30}
+{'a': 10, 'b': 20, 'c': 30}
+{'b': 20, 'c': 30}
+{'a': 10, 'c': 30}
+
+----
+
+==== Static variables (class level)
+
+- If the value of variable is varied(different) from object to object then such type of variable we can declare directly inside the class but outside the methods are called static or class level variables.
+- The variables which are declare within the class but outside the methods is called static variables
+- For all object there is only one copy of static variables will be created.
+- We can access static variables either by using class name or object reference
+
+
+
+ex:
+[source,python]
+----
+class Test:
+    a = 10 # static or class level variable
+
+    def __init__(self):
+        self.b=20 #instance Variable
+
+t1 = Test()
+t2 = Test()
+
+print(t1.a,t1.b)
+print(t2.a,t2.b)
+
+Test.a=98
+t1.b=55
+
+print(t1.a,t1.b)
+print(t2.a,t2.b)
+
+----
+
+=== Where we can access static variable
+
+- In side the constructor by using `self` or `classname`
+- Inside the instance method by using `self` or `classname`
+- Inside the class method by using `cls` or `classname`
+- Inside the static method by using class name only
+- Outside the class by using `object reference` or `classname`
+
+ex:
+[source,python]
+----
+class Test:
+    a = 100 #static variable
+
+    def __init__(self):
+        print("Inside the constructor")
+        print(self.a) #using Inside the construtor
+        print(Test.a) # using
+
+    def m1(self):
+        print("Inside the constructor")
+        print(self.a) #using Inside the construtor
+        print(Test.a)
+
+    @classmethod
+    def m2(cls):
+        print("Inside the class mehtod")
+        print(cls.a)
+        print(Test.a)
+
+    @staticmethod
+    def m3():
+        print("Inside the static method")
+        print(Test.a)
+
+t = Test()
+t.m1()
+t.m2()
+t.m3()
+print("Outside of the class")
+print(t.a)
+print(Test.a)
+
+----
+
+==== how to delete static variables
+
+- We can delete static variable anywhere as follows
+
+----
+del classname.variablename
+
 ----
 
 ex:
 [source,python]
 ----
+class Test:
+    a = 100 #static variable
+
+    def __init__(self):
+        print("Inside the constructor")
+        print(self.a) #using Inside the construtor
+        print(Test.a) # using
+
+    def m1(self):
+        print("Inside the constructor")
+        print(self.a) #using Inside the construtor
+        print(Test.a)
+    #   del Test.a
+
+    @classmethod
+    def m2(cls):
+        print("Inside the class mehtod")
+        print(cls.a)
+        print(Test.a)
+        del Test.a
+
+    @staticmethod
+    def m3():
+        print("Inside the static method")
+        print(Test.a)
+
+t = Test()
+t.m1()
+t.m2()
+t.m3()
+print("Outside of the class")
+print(t.a)
+print(Test.a)
 
 ----
+
+
+
+==== local variable or method level variables
+
+. The variables which are declared inside the particular methods and that variables are available to only that method is called local or method variables
+. Local variables are also called as temporary variables because these variables will create when we execute the methods once method execution completes the these variables will be destroy.
+
+ex:
+[source,python]
+----
+class Test:
+    def m1(self):
+        a=10
+        print(a)
+
+    def m2(self):
+        b=20
+        print(b)
+        # print(a) # here we cant access a variable
+
+t=Test()
+t.m1()
+t.m2()
+
+----
+
+=== Types of methods are all allowed in python class
+
+1. Instance methods
+2. class methods
+3. static methods
+
+==== Instance methods
+- In side method implementation when we use instance variables then such type of methods are called as instance method.
+- While declaring instance methods we should pass self
+- Self is the first parameter of  within instance methods
+- we can access instance methods with in the class by using self
+- we can access instance methods within the class by using self
+- we can access instance methods outside the clss using object reference
+
+ex:
+[source,python]
+----
+class Student:
+    def __init__(self,m1,m2,m3):
+        self.m1=m1
+        self.m2=m2
+        self.m3=m3
+        self.average()#inside the class
+
+    def average(self): # this is instance method
+        print ((self.m1+self.m2+self.m2)/3)
+        #return (self.m1+self.m2+self.m2)/3
+s1 = Student(67,89,56)
+s2 = Student(54,65,84)
+
+# print(s1.average())#Outside class
+# print(s2.average())#outside class
+
+----
+
+
+==== class methods
+
+- class methods are very rarely used methods in python
+- Inside the method implemenation when we use static or class level variable then such type of methods are called methods
+- While declering class methods we should pass class variable that is `cls`
+- Using `cls` we can access static varibales inside the class methods
+- In python to make any methods as class method then we use `@classmethod` decorator
+- We can access (call) class method either by using classname or object reference
+ex:
+[source,python]
+----
+class Student:
+    inst="cloudcatasyst" #static method
+    def __init__(self,m1,m2,m3):
+        self.m1=m1
+        self.m2=m2
+        self.m3=m3
+
+    def average(self): # this is instance method
+        print ((self.m1+self.m2+self.m2)/3)
+
+    @classmethod
+    def m1(cls):
+        print(cls.inst)
+
+#how to call cls method
+
+s1 = Student(67,89,56)
+s2 = Student(54,65,84)
+
+s1.average()
+s2.average()
+
+Student.m1()
+----
+==== static methods
+
+- These methods are general utility methods
+- While declaring static methods we should not pass any `self` or `cls`
+- To make method as static then we use `@staticmethod` decorator
+- We can access static methods either by using `classname` or `object` reference
+
+
+ex:
+[source,python]
+----
+class Test:
+    a = 100 #static variable
+
+    def __init__(self):
+        print("Inside the constructor")
+        print(self.a) #using Inside the construtor
+        print(Test.a)
+
+    def m1(self):
+        print("Inside the constructor")
+        print(self.a) #using Inside the construtor
+        print(Test.a)
+
+    @classmethod
+    def m2(cls):
+        print("Inside the class mehtod")
+        print(cls.a)
+        print(Test.a)
+
+    @staticmethod
+    def m3():
+        print("Inside the static method")
+        print(Test.a)
+
+t = Test()
+t.m1()
+t.m2()
+t.m3()
+print("Outside of the class")
+print(t.a)
+print(Test.a)
+----
+
+
+=== GC (Garbage collector)
+
+- Automatic Memory management
+
+==== How do we check GC is enabled or not
+- isenabled(): true or false
+- disable(): to disable GC explicitly
+- enable(): to enable GC explicitly
+
+ex:
+[source,python]
+----
+import gc
+
+print(gc.isenabled)
+gc.disable()
+print(gc.isenabled)
+gc.enable()
+print(gc.isenabled)
+
+----
+
+=== Destructor
+
+destructor is a special method of class
+
+----
+destructor name is : __del__(self):
+
+----
+
+NOTE: it's only used to clean up active not for deleting object
+
+EX:
+[source,python]
+----
+import time
+
+class Test:
+    def __init__(self):
+        print("Constructor execution")
+
+    def __del___(self):
+        print("Destructor execution")
+
+t = Test()
+time.sleep(3)
+----
+
+
+next vidoe 27
