@@ -2406,7 +2406,7 @@ print(a(7))
 
 ==== Use case of lambda (advantage)
 
-. sometime we should pass a function as an argument to other function in this situation lambda is the best choice.
+. sometimes we should pass a function as an argument to other function in this situation lambda is the best choice.
 
 . In Python programming some function will expect other finction as an argument then we use lambda
 
@@ -3634,4 +3634,752 @@ time.sleep(3)
 ----
 
 
-next vidoe 27
+== Inner and Outer class mechanism
+- Inside class, we can declare other class that called inner class
+- Without existing one type of oject if there is no chance of existing another type of object then we use inner class
+----
+class Car:
+     code...
+
+     class Brain:
+        code...
+----
+
+
+
+ex:
+[source,python]
+----
+# inner class
+
+class Outer:
+    def __init__(self):
+        print("Outer class constructor")
+
+    def f1(self):
+        print("Outer class method")
+
+    class Inner:
+        def __init__(self):
+            print("Inner class constructor")
+
+        def m1(self):
+            print("Inner class method")
+
+o = Outer()
+o.f1()
+i = o.Inner()
+i.m1()
+#or
+i = Outer().Inner()
+i.m1()
+#or
+Outer().Inner().m1()
+Outer().f1()
+
+----
+
+IMPORTANT: X = 10 #public +
+_ y = 20 #protected +
+_ _ z = 30 #private
+
+ex:
+[source,python]
+----
+class Test:
+    x = 10 #public
+    _y = 20 #protected
+    __z = 30 # private
+
+    def __init__(self):
+        print(self.x)
+        print(self._y)
+        print(self.__z)
+
+t = Test()
+print(t.x)
+print(t._y)
+# print(t.__z) #private variable not able to access and modifiy
+----
+
+
+=== Encapsulation
+
+ex:
+[source,python]
+----
+class Car:
+    def __init__(self):
+        self.__updatesoftware() # if we comment this line, we cant access __updatesoftware
+
+    def __updatesoftware(self):
+        print("Update car software")
+
+c = Car()
+c.__updatesoftware() # from here also not possibale becouse it private
+
+----
+
+ex:
+[source,python]
+----
+class Car:
+    __name=""
+    __maxspeed=0 # try with maxspped you can access this
+
+    def __init__(self):
+        self.__name="figo"
+        self.__maxspeed=100 # try with self.maxspped you can access this
+
+    def drive(self):
+        print("Car name")
+        print("Driving with the speed:",self.__maxspeed) # try with self.maxspped you can access this
+
+c = Car()
+c.drive()
+c.__maxspeed=200 #here we cant modify this becouse its private
+# c.maxspeed=300 #here its public it can be accesable
+c.drive()
+
+----
+
+=== How to implement inheritence
+
+processing of creating new class form existing class.
+
+- Exiting class as Base class or Parent class or Super class. +
+- New class as Derived class or child class or sbu class
+
+image::inheritence.jpg[inheritence and it's types]
+
+. Single -> Create new class from single base class
+. Multi level -> Creating new class from already derived class ( extensibility )
+. Hierarchical -> Creating multiple child class from single parent class
+. Multiple -> Is the process of Creating new class from two or more base classes
+. Hybrid ->
+
+==== isinstance():
+Is used to check whether the object is an instance of particular class or not.
+
+
+
+
+
+
+ex:
+[source,python]
+----
+#isinstance()
+class Parent:
+    def p1(self):
+        print("Parent class function")
+
+class Child(Parent):
+    def c1(self):
+        print("Child class fucntion")
+
+class Child2(Parent):
+    def c2(self):
+        print("Child2 class function")
+
+obj1 = Child()
+obj1.p1()
+obj1.c1()
+
+obj2 = Child2()
+obj2.p1()
+obj2.c2()
+
+print(isinstance(obj1,Child2)) # Flase
+print(isinstance(obj1,Child))
+print(isinstance(obj2,Parent))
+
+----
+
+==== issubclass():
+Is used to check the  class is a sub class of particular class or not.
+
+
+ex:
+[source,python]
+----
+class Parent:
+    def p1(self):
+        print("Parent class function")
+
+class Child(Parent):
+    def c1(self):
+        print("Child class fucntion")
+
+class Child2(Parent):
+    def c2(self):
+        print("Child2 class function")
+
+obj1 = Child()
+obj1.p1()
+obj1.c1()
+
+obj2 = Child2()
+obj2.p1()
+obj2.c2()
+
+print(issubclass(Child,Parent))#True
+print(issubclass(Child2,Parent))#True
+print(issubclass(Child,Child2))#False
+----
+
+
+ex:
+[source,python]
+----
+#parent (Single)
+class Branch:
+    def get_branch_data(self):
+        self.bcode=int(input("Enter branch code:"))
+        self.bname=input("Enter branch name:")
+        self.baddress=input("Enter branch address:")
+
+    def display_branch_data(self):
+        print("Branch code is:",self.bcode)
+        print("Branch name is:",self.bname)
+        print("Branch addres is:",self.baddress)
+#child
+class Employee(Branch):
+    def get_emp_data(self):
+        self.empid=int(input("Enter emp id is:"))
+        self.ename=input("Enter ename:")
+        self.eaddress=input("Enter eaddress:")
+
+    def display_emp_data(self):
+        print("Emp ID is:",self.empid)
+        print("Emp name is:",self.ename)
+        print("Emp address is:",self.eaddress)
+
+# b= Branch()
+# b.get_branch_data()
+# b.display_branch_data()
+
+
+# e= employee()
+# e.get_emp_data()
+# e.display_emp_data()
+
+e = Employee()
+e.get_branch_data()
+e.get_emp_data()
+e.display_branch_data()
+e.display_emp_data()
+----
+
+
+ex:
+[source,python]
+----
+
+----
+
+
+
+ex:
+[source,python]
+----
+#parent (Multi level inheritence)
+class Branch:
+    def get_branch_data(self):
+        self.bcode=int(input("Enter branch code:"))
+        self.bname=input("Enter branch name:")
+        self.baddress=input("Enter branch address:")
+
+    def display_branch_data(self):
+        print("Branch code is:",self.bcode)
+        print("Branch name is:",self.bname)
+        print("Branch addres is:",self.baddress)
+#child
+class Employee(Branch):
+    def get_emp_data(self):
+        self.empid=int(input("Enter emp id is:"))
+        self.ename=input("Enter ename:")
+        self.eaddress=input("Enter eaddress:")
+
+    def display_emp_data(self):
+        print("Emp ID is:",self.empid)
+        print("Emp name is:",self.ename)
+        print("Emp address is:",self.eaddress)
+#child
+class Empsalary(Employee):
+    def get_sal(self):
+        self.basic=int(input("Enter basic salary:"))
+
+    def calculate(self):
+        self.DA=self.basic*0.03
+        self.HRA=self.basic*0.4
+        self.Gross=self.basic+self.DA+self.HRA
+
+    def displaysal(self):
+        print("Basic is :",self.basic)
+        print("DA is :",self.DA)
+        print("HRA is:",self.HRA)
+        print("Gross salary is:",self.Gross)
+
+
+e = Empsalary()
+e.get_branch_data()
+e.get_emp_data()
+e.get_sal()
+e.calculate()
+e.display_branch_data()
+e.display_emp_data()
+e.displaysal()
+
+----
+
+ex:
+[source,python]
+----
+#Hierarchical
+class Parent:
+    def p1(self):
+        print("Parent class function")
+
+class Child(Parent):
+    def c1(self):
+        print("Child class fucntion")
+
+class Child2(Parent):
+    def c2(self):
+        print("Child2 class parent")
+
+obj1 = Child()
+obj1.p1()
+obj1.c1()
+
+obj2 = Child2()
+obj2.p1()
+obj2.c2()
+----
+
+ex:
+[source,python]
+----
+#Multiple inheritence
+class A:
+    def f1(self):
+        print("F1 function of class A ")
+
+class B:
+    def f2(self):
+        print("F2 function of class B")
+
+class C(A,B):
+    def f3(self):
+        print("F3 function of class C")
+
+c = C()
+c.f1()
+c.f2()
+c.f3()
+
+
+
+#or
+#MRO(Method Resolution Order)
+class A:
+    def f1(self):
+        print("F1 function of class A ")
+
+class B:
+    def f1(self):
+        print("F2 function of class B")
+
+class C(B,A): # here change order like (A,B) it will take based on order
+    def f3(self):
+        print("F3 function of class C")
+
+c = C()
+c.f1()
+c.f3()
+
+#output of (B,A) here if f2 function is not there it will take f1 function
+#F2 function of class B
+#F3 function of class C
+#output of (A,B) here if f1 function is not there it will take f2 function
+#F1 function of class A
+#F3 function of class C
+----
+
+EX:
+[source,python]
+----
+#MRO(Method Resolution Order)
+class A:
+    def f1(self):
+        print("F1 function of class A ")
+
+class B:
+    def f1(self):
+        print("F2 function of class B")
+
+class C(B,A):
+    def f3(self):
+        print("F3 function of class C")
+
+class D(C):
+    def f4(self):
+        A.f1(self)
+        print("F4 function of class D")
+
+
+d = D()
+d.f1()
+d.f3()
+d.f4()
+----
+
+=== Polymorphism
+
+==== Type of Polymorphism
+
+1. Static or Compile time -- overloading (Refinement Technique )
+2. Dynamic or Runtime -- Overriding (Replacement Technique)
+
+
+==== Overloading
+
+1. operator overloading -- yes (Python support)
+2. method Overloading  -- NO  (Python Will not support)
+3. constructor overloading -- NO
+
+==== overriding
+
+1. method overriding  -- YES
+2. constructor overriding -- YES
+
+
+In Python every operator is having magic method
+
+[cols="2,2", options="header"]
+|===
+| Symbol | Operation
+
+| +
+| _ _ add _ _
+
+| -
+| _ _ sub _ _
+
+| *
+| _ _ mul _ _
+
+| /
+| _ _ div _ _
+
+| **
+| _ _ pow _ _
+
+| <
+| _ _ lt _ _
+
+| < =
+| _ _ lte _ _
+|===
+
+
+ex:
+[source,python]
+----
+#oerator overloading need to include  magic methods
+class Book:
+    def __init__(self,pages):
+        self.pages=pages
+
+    def __add__(self, other):
+        return self.pages+other.pages
+
+b1 = Book(10)
+b2 = Book(20)
+
+print(b1+b2)
+----
+
+==== method overriding
+
+Whatever the members are available in the parent class that are by default available to child class to inheritance  +
+
+If child class not satisfy with parent class implementation then child class can redefine the parent class methods this process is called overriding ( Dynamic )
+
+
+ex:
+[source, python]
+----
+#method overrding
+class Parent:
+    def assets(self):
+        print("cash+gold+lands")
+
+    def car(self):
+        print("Alto car")
+
+class Child(Parent):
+    def car(self):
+        super().car()
+        print("Benz car")
+
+c = Child()
+c.assets()
+c.car()
+----
+
+==== constructor overriding
+
+ex:
+[source, python]
+----
+#constructor overrding
+class Parent():
+    def __init__(self):
+        print("Parent class constructor")
+
+class Child(Parent):
+    def __init__(self):
+        super().__init__() #if you want to call both we need to use super method
+        print("Child class constructor")
+
+c = Child()
+----
+
+==== Abstract Methods
+. A method which do not any implementation, which contain only declaration or signature is called abstract method
+. To make a method as Abstract then, we use @abstractmethod decorator
+. Abstract method should be overridden
+. To leave abstract method  empty as we use pass keyword
+----
+@abstractmethod
+def m1(self):
+    pass
+----
+==== Abstract class
+
+. A class which is having one or more abstract method is called abstract class
+. Abstract class aslo contain non-abstract methods
+. Abstract class contain partial implementation
+. Abstract class can't instantiate (object creatain) directly so that we need to create or derive new class from abstract class to provide functionality to it;s abstract function
+. We can't create object for abstract class.
+. To make a class as abstract then that class should inherit from predefined abstract base class i.e ABC
+. Abstract method decorator and ABC are present in abc module
+
+----
+from abc import ABC,abstractmethod
+class Test(ABC):
+{
+@abstractmethod
+def m1(self):
+    pass
+----
+
+
+
+ex:
+[source, python]
+----
+from abc import ABC,abstractmethod
+
+class Vehicle(ABC):
+    @abstractmethod
+    def wheels(self):
+        pass
+
+    def enginetype(self):
+        print("BS-6 Engine")
+
+    @abstractmethod
+    def colour(self):
+        pass
+
+class Car(Vehicle):
+    def wheels(self):
+        print("Car: 4 wheels")
+    def colour(self):
+        print("Bike: clour is red")
+
+
+class Bike(Vehicle):
+    def wheels(self):
+        print("Bike: 2 wheels")
+    def colour(self):
+        print("Car: clour is block")
+
+# v = Vehicle()
+
+c = Car()
+c.wheels()
+c.enginetype()
+c.colour()
+
+b = Bike()
+b.wheels()
+b.enginetype()
+c.colour()
+
+----
+
+== Exception Handling Mechanism:
+
+Exception means an unexpected or unwanted event will disturb tha normal floe of program exception is called exception
+
+Exception is a super class of all sub class Exception
+
+=== Class of Exception
+. name error
+. value error
+. type error
+. zero division error
+. file not found error
+. file exist error.. ect...
+
+
+1. **Syntactical errors** : wrong spelling to the syntax like **()** , **" "**, **:**
+2. **Runtime errors** : Abnoraml termination of program execution
+
+==== What are exception handling methods
+
+1. Logical implementation
+2. try except implementation
+
+
+
+ex:
+[source, python]
+----
+#syntax errors
+a = 10
+print(A)
+#Output
+# NameError: name 'A' is not defined. Did you mean: 'a'?
+
+
+a= int(input("Enter a number:"))
+#Output
+#    a= int(input("Enter a number:"))
+#ValueError: invalid literal for int() with base 10: 'fghfg'
+
+
+print(10+"cloud")
+#Output
+# TypeError: unsupported operand type(s) for +: 'int' and 'str'
+
+print(10/0)
+#Output
+# ZeroDivisionError: division by zero
+
+----
+
+==== Logical implementation
+
+ex:
+[source, python]
+----
+#Logical implementation
+a = int(input("Enter num1:"))
+b = int(input("Enter num2:"))
+if b == 0 :
+    print("Second number can't be Zero(0)")
+else:
+    c = a/b
+    print("Result is:")
+----
+==== try except implementation
+
+==== two type of except block
+1. default block
+Except block without any exception class
+
+2. specific block
+Except block with any exception class.
+----
+try:
+    statements #risky code
+except:
+    statements #handling code
+----
+
+ex:
+[source, python]
+----
+#default except block
+try:
+
+    a = int(input("Enter num1:"))
+    b = int(input("Enter num2:"))
+    c = a/b
+    print("Result is:",c)
+except:
+    print("something went wrong")
+
+----
+
+ex:
+[source, python]
+----
+#specific except block
+try:
+
+    a = int(input("Enter num1:"))
+    b = int(input("Enter num2:"))
+    c = a/b
+    print("Result is:",c)
+except (ZeroDivisionError,ValueError) as message:
+    print(message)
+# except ValueError as msg:
+#     print(msg)
+
+----
+
+ex:
+[source, python]
+----
+#Exception is a super class of all sub class Exception
+try:
+
+    a = int(input("Enter num1:"))
+    b = int(input("Enter num2:"))
+    c = a/b
+    print("Result is:",c)
+except Exception as message:
+    print(message)
+
+----
+
+ex:
+[source, python]
+----
+#specific and defalut except block
+try:
+
+    a = int(input("Enter num1:"))
+    b = int(input("Enter num2:"))
+    c = a/b
+    print("Result is:",c)
+except ZeroDivisionError as message:
+    print(message)
+except: #defalut except block
+    print("something went wrong") # defalut except block must be last
+
+----
+
+----
+try:
+    statement1
+    statement2
+    statement3
+except:
+    statement4
+statement5
+----
+
+
+ex:
+[source, python]
+----
+next video 32
+
+----
