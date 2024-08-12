@@ -4380,6 +4380,273 @@ statement5
 ex:
 [source, python]
 ----
-next video 32
+#how to use finally block and syntax
+try:
+    risky code
+except:
+    handling code
+finally:
+    mandatory messages
 
+----
+
+ex:
+[source, python]
+----
+import os
+
+
+try:
+    print(10/0)
+    print("try block")
+    os._exit(0)# it will shotdown PVM (python virtual machine)
+except:
+    print("except block")
+    os._exit(0)
+finally:
+    print("finally block")
+
+----
+==== nested try except finally
+
+A try block or except block or finally block which is having one more try except finally within it is called nested try exceot finally
+
+ex:
+[source, python]
+----
+try:
+    print(10/0)
+    print("Outer try")
+    try:
+        # print(10/0)
+        print("Inner try")
+    except:
+        print("Inner except")
+    finally:
+        print("Inner finally")
+except:
+    print("Outer except")
+finally:
+    print("Outer finally")
+----
+
+1. Predefined or builtin exception
+2. userdefined or customized exception
+
+To Raise the exception based on requirement in our program then we use raise keyword
+ex:
+[source, python]
+----
+class classname(predefinedExceptionClass):
+    def __init__(self,arg):
+        self.msg=arg
+
+class ToolException(Exception):
+    def __init__(self,arg):
+        self.msg=arg
+----
+
+
+
+ex:
+[source, python]
+----
+#how to create exception
+class ToOldExecption(Exception):
+    def __init__(self,arg):
+        self.msg=arg
+
+class ToYoungException(Exception):
+    def __init__(self,arg):
+        self.msg=arg
+try:
+    age = int(input("Enter your age: "))
+
+    if age>=60:
+        raise ToOldExecption("Age should not be 60 or more")
+    elif age <=16:
+        raise ToYoungException("Age should dont be 16 or below")
+    else:
+        print("You are eligible to take policy")
+except(ToYoungException,ToOldExecption,ValueError) as msg:
+    print(msg)
+----
+
+
+
+ex:
+[source, python]
+----
+#how to handle exception
+class ToOldExecption(Exception):
+    def __init__(self,arg):
+        self.msg=arg
+
+class ToYoungException(Exception):
+    def __init__(self,arg):
+        self.msg=arg
+try:
+    age = int(input("Enter your age: "))
+
+    if age>=60:
+        raise ToOldExecption("Age should not be 60 or more")
+    elif age <=16:
+        raise ToYoungException("Age should dont be 16 or below")
+    else:
+        print("You are eligible to take policy")
+except(ToYoungException,ToOldExecption) as msg:
+# except Exception as msg: # here we can use default Exception also you will get same result
+    print(msg)
+----
+
+=== Storage area in python
+1. Temporary storage area -> python objects(list, tuple, set)
+2. Permanent storage area -> file system or database
+
+. `text files` are used to store charactur data .txt formate
+. `binary files` are used to store binary data images, audio, video, object data
+
+- write -> to store the data into a file
+- reade -> to retrive the data from file
+
+==== Creating a file
+
+----
+fileobject=open("filename.txt","filename")
+
+ex: f = open("sample.txt","w")
+
+fileobject.close()
+
+f.close()
+----
+
+==== file modes
+
+w -> write (Open an existing file for write operation. if the file already contains same data then it will be overridden. if the specified is not already avaiable then this mode will create that file.) +
+r -> read  (Open an existing file for read operation. the file pointer is positioned at the beginning of the file. if the specified file does not exist we will get `FileNotFoundError`. this is default mode) +
+a -> append (Open an existing file for append operation. it won't override existing data. if the specified file is not already avaiable then this mode will create a new file.) +
+w+ -> write and read (To erite and read data. it will override existing data) +
+r+ -> read and write (To read Write data into the file. the previous data in the file will not be deleted. the file pointer is placed at the beginning of the file.) +
+a+ -> append and read (To append and read data from the file. it won't override existing data) +
+x -> exclusive create mode for write operations (To open a file in exclusive creation mode for write operation. If the file already exists then we will get `FileExistsError`) +
+
+NOTE: All the above modes are applicable for tes=xt files. if the above modes suffixed with `b` then this represents for binary files
+
+ex:rb,wb,ab,r+b,w+b,a+b,xb
+
+f = open("abc.txt","w") # we are opening abc.txt file for writing data
+
+=== File Properties and Methods
+
+1. name : name of the open file
+2. mode : The file which mode it's opened
+3. writable() : True/False
+4. readable() : True/False
+5. clased : True/Flase
+
+ex:
+[source, python]
+----
+f = open("sample.txt","w")
+print("File name is: ",f.name)
+print("File mode is: ",f.mode)
+print("Is File readable? :",f.readable())
+print("Is File writable? :",f.writable())
+print("Is File Closed ? :",f.closed)
+f.close()
+print("Is File Closed ? :",f.closed)
+----
+
+==== Write the data into a file
+
+1. write()  : Is used to store string data
+2. writelines() : Is used to store the list of line
+
+ex:
+[source, python]
+----
+#write method with write()
+f = open("abc.txt","w")# here we can use existing file too
+f.write("Hello\n")
+f.write("hai\n")
+f.write("Welcome\n")
+print("Data written to the file")
+f.close()
+----
+
+
+
+ex:
+[source, python]
+----
+#append method write()
+f = open("sample.txt","a")
+f.write("Hello\n")
+f.write("hai\n")
+f.write("Welcome\n")
+print("Data append to the file")
+f.close()
+----
+
+ex:
+[source, python]
+----
+#writelines()
+f = open("xyz.txt","w")
+l = ["chiru\n","sumanth\n","ranga\n","vinay\n"]
+f.writelines(l)
+print("List data written to the file")
+f.close()
+----
+
+==== How to read data form file
+
+1. read() : To read complete data from a file
+2. read(n) : To read n no of characters from a file
+3. readline() : To read first line of the file
+4. readlines() : To read all lines into a list
+
+NOTE: If that file should be already exist to read data from file
+
+ex:
+[source, python]
+----
+try:
+    f = open("chiru.txt","r")
+    data=f.read() #f.read(3) here read charactes
+
+    print(data)
+    f.close()
+except FileNotFoundError as msg:
+    print(msg)
+
+#output
+#[Errno 2] No such file or directory: 'chiru.txt'
+----
+
+
+ex:
+[source, python]
+----
+try:
+    f = open("abc.txt","r")
+    data1=f.read()
+    data2=f.read(5)
+    data3=f.readlines()
+    print(data1)
+    print(data2)
+    print(data3)
+    f.close()
+except FileNotFoundError as msg:
+    print(msg)
+----
+
+
+=== File Handling in python
+
+ex:
+[source, python]
+----
+next video 34
 ----
