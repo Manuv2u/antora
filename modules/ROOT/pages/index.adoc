@@ -47,6 +47,10 @@ This section provides interview questions and answers related to various AWS Dev
 === Terraform
 
 1. xref:Terraform:terraform.adoc[Terraform - QA]
+
+=== Helm
+
+1. xref:Helm:helm.adoc[Helm - QA]
 //
 // == Technical Concepts
 // This section covers essential technical concepts you need to know for interviews. 💡
