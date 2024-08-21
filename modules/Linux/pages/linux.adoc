@@ -53,4 +53,4 @@ yum install man* -y
 
 5. **Pinfo command**: All information about every thing fletching details. path: /usr/share/doc
 
-
+image::linux_networking_cmds.jpg[]
