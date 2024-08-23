@@ -1,0 +1,742 @@
+=== 1.What is Linux and why is it so popular?
+
+Linux is an operating system based on UNIX, and was first introduced by Linus Torvalds commonly used in servers.
+It is based on the Linux Kernel, and can run on different hardware platforms manufactured by Intel, MIPS, HP,
+IBM, SPARC and Motorola. Another popular element in Linux is its mascot, a penguin figure named Tux.
+Popularity of Linux is because of the following reasons
+
+- It is free and open source. We can download Linux for free and customize it as per our needs.
+- It is very robust and adaptable.
+- Immense amount of libraries and utilities
+
+=== 2.What is BASH?
+BASH is short for Bourne Again SHell. It was written by Steve Bourne as a replacement to the original Bourne Shell
+(represented by /bin/sh). It combines all the features from the original version of Bourne Shell, plus additional
+functions to make it easier and more convenient to use. It has since been adapted as the default shell for most
+systems running Linux.
+
+=== 3.What is the core of Linux Operating System?
+The core of the Linux operating system is Kernel. It is broken down into Shell, Command, Script, and Terminal. Shell
+is a command Line Interpreter, Command is user Instruction to Computer, Script is collection of commands stored
+in a file, and Terminal is a command Line Interface.
+
+=== 4.What is the basic difference between UNIX and Linux Operating System?
+
+Linux is free and open-source software (allowing programmers to program with Linux not around it), the kernel of
+which is created by Linus Torvalds and community. UNIX, on the other hand, is UNIX is copyrighted name only big
+companies are allowed to use the UNIX copyright and name, so IBM AIX and Sun Solaris and HP-UX all are
+UNIX operating systems.
+
+=== 5.What is LILO?
+
+LILO is a boot loader for Linux. It is used mainly to load the Linux operating system into main memory so that it can
+begin its operations.
+
+=== 6.What is an INODE?
+
+All files have its description stored in a structure called „inode‟. The inode contains info about the file-size, access
+and modification time, permission and so on. In addition to descriptions about the file, the inode contains pointers
+to the data blocks of the file.
+
+=== 7.What is a swap space?
+
+A swap space is a certain amount of space used by Linux to temporarily hold some programs that are running
+concurrently. This happens when RAM does not have enough memory to hold all programs that are executing.
+
+=== 8.What is the advantage of open source?
+
+Open source allows you to distribute your software, including source codes freely to anyone who is interested.
+People would then be able to add features and even debug and correct errors that are in the source code. They
+can even make it run better, and then redistribute these enhanced source code freely again. This eventually
+benefits everyone in the community.
+
+=== 9.What is the basic difference between BASH and DOS?
+
+The key differences between the BASH and DOS console lies in 3 areas:
+
+- BASH commands are case sensitive while DOS commands are not;
+- under BASH, / character is a directory separator and \ acts as an escape character. Under DOS, / serves as a
+command argument delimiter and \ is the directory separator
+- DOS follows a convention in naming files, which is 8 character file name followed by a dot and 3 character for the
+extension. BASH follows no such convention.
+
+=== 10.What is the difference between TCP and UDP?
+
+The basic difference is that TCP establishes a connection before sending data and this allows it to control the
+dataflow and guarantee that all packets get delivered. UDP simply chucks datagrams onto the wire and if some
+get lost or arrive in bad order there‟s no way to request a resend. However UDP has low network overhead so
+some services such as DNS resolution, SNMP, DHCP, RIP and VOIP use UDP for its speed and any errors are
+usually dealt with on the application layer rather than network layer.
+
+=== 11.What is the importance of the GNU project?
+
+This so-called Free software movement allows several advantages, such as the freedom to run programs for any
+purpose and freedom to study and modify a program to your needs. It also allows you to redistribute copies of a
+software to other people, as well as freedom to improve software and have it released to the public.
+
+=== 12.How does DNS resolution work?
+
+A client application requests an IP address from the name server usually by connecting to UDP port 53. The name
+server will attempt to resolve the FQDN based on its resolver library, which may contain authoritative information
+about the host requested or cached data about that name from an earlier query. If the name server does not
+already have the answer, it will turn to root name servers to determine the authoritative for the FQDN in question.
+Then, with that information, it will query the authoritative name servers for that name to determine the IP address.
+
+=== 13.Describe the root account.
+
+The root account is like a systems administrator account, and allows you full control of the system. Here you can
+create and maintain user accounts, assigning different permissions for each account. It is the default account
+every time you install Linux.
+
+=== 14.What is CLI?
+
+CLI is short for Command Line Interface. This interface allows user to type declarative commands to instruct the
+computer to perform operations. CLI offers an advantage in that there is greater flexibility. However, other users
+who are already accustom with using GUI find it difficult to remember commands including attributes that come
+with it.
+
+=== 15.What is GUI?
+
+GUI, or Graphical User Interface, makes use of images and icons that users click and manipulate as a way of
+communicating with the computer. Instead of having to remember and type commands, the use of graphical
+elements makes it easier to interact with the system, as well as adding more attraction through images, icons and
+colors.
+
+=== 16.How can you find out how much memory Linux is using?
+
+From a command shell, use the “concatenate” command: cat /proc/meminfo for memory usage information. You
+should see a line starting something like: Mem: 64655360, etc. This is the total memory Linux thinks it has
+available to use.
+
+=== 17.What is an MX record?
+
+An MX record numerically ranks the mail servers you would prefer to receive email for a domain. The MX record
+with the lowest number is preferred over the others, but you can set multiple email servers with the same value for
+simple load balancing.
+
+=== 18.Please describe the Linux boot-up sequence.
+
+There are seven steps to the boot-up sequence. 1) BIOS (basic input/output system) – executes the MBR where
+Boot Loader sits, 2) MBR- Master boot reads Kernel into memory, 3) GRUB (Grand Unified Bootloader) Kernel
+starts Init process, 4) Kernel – Kernel executes the /sbin/init program. Init reads inittab, executes rc.sysinit, 5) Init
+– the rc script than starts services to reach the default run level and 6) Run level programs – these programs are
+executed from /etc/rc.d/rc*.dl/
+
+=== 19What is typical size for a swap partition under a Linux system?
+
+The preferred size for a swap partition is twice the amount of physical memory available on the system. If this is not
+possible, then the minimum size should be the same as the amount of memory installed.
+
+=== 20.How do you search for a pattern and then replace it in an entire file?
+
+You use Sed, or in Vi editor, the search uses character „s‟ slash the pattern to be searched, slash the pattern to
+replace it with, slash „g‟ which stands for entire file.
+
+=== 21.Does the Ctrl+Alt+Del key combination work on Linux?
+
+Yes, it does. Just like Windows, you can use this key combination to perform a system restart. One difference is that
+you won‟t be getting any confirmation message and therefore, reboot is immediate.
+
+=== 22.How do you list and flush all Iptables?
+
+First you use the –L switch to view all the currently present rules and then –F to flush them.
+
+=== 23.How do you change permissions under Linux?
+
+Assuming you are the system administrator or the owner of a file or directory, you can grant permission using the
+chmod command. Use + symbol to add permission or – symbol to deny permission, along with any of the
+following letters: u (user), g (group), o (others), a (all), r (read), w (write) and x (execute). For example the
+command chmod go+rw FILE1.TXT grants read and write access to the file FILE1.TXT, which is assigned to
+groups and others.
+
+=== 24.What is a shell? What are their names?
+
+The shell is the part of the system with which the user interacts. A Unix shell interprets commands such as “pwd”,
+“cd” or “traceroute” and sends the proper instructions to the actual operating system itself. The shells currently
+available areAns SH, BASH, CSH, TCSH, NOLOGIN, KSH. Other functions of a shell include scripting capability,
+path memory, multitasking, and file handling.
+
+=== 25.In Linux, what names are assigned to the different serial ports?
+
+Serial ports are identified as /dev/ttyS0 to /dev/ttyS7. These are the equivalent names of COM1 to COM8 in
+Windows.
+
+=== 26.What is a zombie?
+
+Cheeky answers get bonus points for this one. But in the Linux world, a zombie process is the process output of „ps‟
+by the presence of „Z‟ in the STAT column. Zombies are essentially the premature processes whose mature
+parent processes died without reaping its children. Note that zombies can‟t be killed with the usual „kill‟ signal.
+
+=== 27.How do you access partitions under Linux?
+
+Linux assigns numbers at the end of the drive identifier. For example, if the first IDE hard drive had three primary
+partitions, they would be named/numbered, /dev/hda1, /dev/hda2 and /dev/hda3.
+
+=== 28.You need to define a macro, a key binding for the existing command. How would you do it?
+
+There is a command called bind, in bash shell which is capable of defining macro, or binding a key. In order to bind
+a key with an existing command, we need to generate Character Sequence emitted by the key. Press Ctrl+v and
+then key F12, I got ^[[24~
+
+=== 29.Your assistant needs to print directory stack, what would you suggest?
+
+The Linux command 'dirs', will print the directory stack.
+For Example: [root@localhost ~]# dirs
+/usr/share/X11
+
+=== 30.What is the maximum length for a filename under Linux?
+
+Any filename can have a maximum of 255 characters. This limit does not include the path name, so therefore the
+entire pathname and filename could well exceed 255 characters.
+
+=== 31.What does the command 'hash' is used for in bash Shell?
+
+Linux command 'hash' manages internal hash table, fins and remember full path of the specified command, Display
+used command names and number of times the command is used.
+[root@localhost ~]# hash
+hits command
+2 /bin/ls
+2 /bin/su
+
+=== 32.Which built¬in Linux command performs arithmetic operation of Integers in Bash?
+
+The 'let' command that performs, arithmetic operation of integer in bash shell.
+----
+#! /bin/bash
+let c=a+b
+----
+
+=== 33.Explain virtual desktop.
+
+This serves as an alternative to minimizing and maximizing different windows on the current desktop. Using virtual
+desktops, each desktop is a clean slate where you can open one or more programs. Rather than
+minimizing/restoring all those programs as needed, you can simply shuffle between virtual desktops with
+programs intact in each one.
+
+=== 34.Differentiate multiuser from multitask.
+
+Multiuser means that more than one person can use the computer at the same time. Multitask means that even a
+single user can have the computer work on more than one task or program at the same time.
+
+=== 35.You have a large text file, and you need to see one page at a time. What will you do?
+
+You can achieve the above result by pipeling the output of 'cat file_name.txt' with 'more' command.
+[root@localhost ~]# cat file_name.txt | more
+
+=== 36.Who own the data dictionary?
+
+The user 'SYS' owns the data dictionary. Users 'SYS' and 'SYSEM are created by default, automatically.
+
+=== 37.How do you share a program across different virtual desktops under Linux?
+
+To share a program across different virtual desktops, in the upper left-hand corner of a program window look for an
+icon that looks like a pushpin. Pressing this button will “pin” that application in place, making it appear in all virtual
+desktops, in the same position onscreen.
+
+=== 38.What command should you use to check the number of files and disk space used by each user's defined quotas?
+
+The command 'repquota' comes to rescue here. Command repquota summaries quotas for a file system.
+
+=== 39.What are daemons?
+
+Daemons are services that provide several functions that may not be available under the base operating system. Its
+main task is to listen for service request and at the same time to act on these requests. After the service is done, it
+is then disconnected and waits for further requests.
+
+=== 40.You have lots of running jobs, how would you remove all the running processes, without restarting the machine?
+
+The Linux command 'disown -r' will remove all the running Processes.
+
+
+=== 41.A user is new to Linux and he wants to know full list of available commands, what would you suggest him?
+
+==== Commands
+
+[cols="1,1", options="header"]
+|===
+| Command | Description
+
+| `ls`
+| List directory contents
+
+| `which`
+| Locate a command
+
+| `if`
+| Conditional statement
+
+| `then`
+| Executes commands if condition is true
+
+| `else`
+| Executes commands if condition is false
+
+| `elif`
+| Else if condition
+
+| `fi`
+| Ends an `if` conditional statement
+
+| `case`
+| Multi-way branch statement
+
+| `esac`
+| Ends a `case` statement
+
+| `for`
+| Loop through a series of values
+
+| `select`
+| Display a menu for user selection
+
+| `while`
+| Loop while a condition is true
+
+| `until`
+| Loop until a condition is true
+
+| `do`
+| Begin the commands in a loop
+
+| `done`
+| End the commands in a loop
+
+| `l.`
+| (Uncommon or specific command)
+
+| `ll`
+| (Alias for `ls -l`)
+
+|===
+
+
+=== 42.What are the kinds of permissions under Linux?
+
+There are 3 kinds of permissions under Linux:
+
+- Read: users may read the files or list the directory
+- Write: users may write to the file of new files to the directory
+- Execute: users may run the file or lookup a specific file within a directory
+
+=== 43.You need to track events on your system. What will you do?
+
+For tracking the events on the system, we need a daemon called syslogd. The syslogd daemon is useful in tracking
+the information of system and then saving it to specified log files.
+Running „syslogd„ application in terminal generates log file at the location „/var/log/syslog„. The syslogd application is
+very useful in troubleshooting Linux sytems. A sample log file looks similar to below.
+
+=== 44.How will you restrict IP so that the restricted IP‟s may not use the FTP Server?
+
+We can block suspicious IP by integrating tcp_wrapper. We need to enable the parameter “tcp_wrapper=YES” in the
+configuration file at „/etc/vsftpd.conf‟. And then add the suspicious IP in the „host.deny‟ file at location
+„/etc/host.deny‟.
+
+
+=== 45.What are the different modes when using vi editor?
+
+There are 3 modes under vi:
+
+- Command mode – this is the mode where you start in
+- Edit mode – this is the mode that allows you to do text editing
+- Ex mode – this is the mode wherein you interact with vi with instructions to process a file
+
+=== 46.Is it possible to use shortcut for a long pathname?
+
+Yes, there is. A feature known as filename expansion allows you do this using the TAB key. For example, if you have
+a path named /home/iceman/assignments directory, you would type as follows: /ho[tab]/ice[tab]/assi[tab] . This,
+however, assumes that the path is unique, and that the shell you‟re using supports this feature.
+
+=== 47.Tell us the difference between Telnet and SSH?
+
+Telnet and SSH both are communication protocol which are used to manage remote system. SSH is Secured, which
+requires exchanging of key opposite of telnet which transmit data in plain text, which means telnet is less secure
+than SSH.
+
+=== 48.You need to stop your X server. When you tries to kill your X server, You got an error message that you cannot quit X server. What will you do?
+
+When killing a X server, it won‟t work normal way like doing „/etc/init.d/gdm stop‟. We need to execute a special key
+combination „Ctrl+ Alt+ Back Space‟ which will force X server to restart.
+
+=== 49.What is the difference between command „ping‟ and „ping6′?
+
+Both the commands are same and used for the same purpose except that the fact that ping6 is used with ipv6 IP
+address.
+
+=== 50.What is redirection?
+
+Redirection is the process of directing data from one output to another. It can also be used to direct an output as an
+input to another process.
+
+=== 51.You want to search for all the *.tar files in your Home directory and wants to delete all at once. How will you do it?
+
+We need to use find command with rm command to delete all “.tar” files.
+----
+# find /home/ -name '*.tar' | xargs rm -rf
+----
+
+=== 52. What is the difference between locate and slocate command?
+
+The slocate looks for the files that user have access whereas locate will search for the file with updated result.
+
+=== 53.What is the SMTP?
+
+SMTP is the most common protocol for an e-mail server.
+
+=== 54.What Samba service do?
+
+The Samba service provides Microsoft SMB support in Linux so that Linux machines can connect to Microsoft
+network resources.
+
+=== 55.Which service can be used with NFS to provide remote file access for UNIX systems?
+
+NIS is used with NFS to provide remote file access for UNIX systems.
+
+=== 56.What is MTA?
+
+MTA is a service of Sendmail server, which transfer mail from one network or host to another network or host.
+
+=== 57.Name a connection-less protocol for file transfer.
+
+TFTP is a connection-less protocol for file transfer.
+
+=== 58.You company have slow internet connection. Which Linux service you can use to manage internet connection ?
+
+You should use Squid proxy server, which allows to manage the web contents and also cache the web pages to
+decrease the amount of traffic going to Internet.
+
+
+=== 59.Which port should you open in your host firewall to run web server?
+
+By default web server use port 80 and 443 which you need to open in firewall.
+
+=== 60.Which IP addressing should you use for Server?
+
+For server you should always use static IP address.
+
+=== 61.Which ports should you open in host firewall for an email server?
+
+Open port 110 which is used by the POP3 e-mail protocol.
+Open port 25 which is used by the SMTP e-mail protocol.
+Open port 143 which is used by the IMAP e-mail protocol.
+
+=== 62.Which IP address should you use for client desktop?
+
+For client you can use both static and dynamic method. For easy management using DHCP to assign IP address
+would be the best option.
+
+=== 63.What is initrd image and what is its function in the linux booting process ?
+
+The initial RAM disk (initrd) is an initial root file system that is mounted prior to when the real root file system is
+available.The initrd is bound to the kernel and loaded as part of the kernel boot procedure. The kernel then
+mounts this initrd as part of the two-stage boot process to load the modules to make the real file systems
+available and get at the real root file system. Thus initrd image plays a vital role in linux booting process.
+
+=== 64.Explain the terms suid, sgid and sticky bit ?
+
+In addition to the basic file permissions in Linux, there are few special permissions that are available for executable
+files and directories.
+
+- SUID : If setuid bit is set, when the file is executed by a user, the process will have the same rights as the owner of
+the file being executed.
+- SGID : Same as above, but inherits group previleges of the file on execution, not user previleges. Similar way when
+you create a file within directory,it will inherit the group ownership of the directories.
+- Sticky bit : Sticky bit was used on executables in linux so that they would remain in the memory more time after the
+initial execution, hoping they would be needed in the near future. But mainly it is on folders, to imply that a file or
+folder created inside a stickybit enabled folder could only be deleted by the owner. A very good implementation of
+sticky bit is /tmp ,where every user has write permission but only users who own a file can delete them.
+
+
+=== 65.List out few of the differences between Softlink and Hardlink ?
+
+- Hardlink cannot be created for directories. Hard link can only be created for a file.
+
+- Symbolic links or symlinks can link to a directory.
+- Removing the original file that your hard link points to does not remove the hardlink itself; the hardlink still
+provides the content of the underlying file.
+- If you remove the hard link or the symlink itself, the original file will stay intact.
+- Removing the original file does not remove the attached symbolic link or symlink, but without the original file, the
+symlink is useless
+
+=== 66.What is the difference between umask and ulimit ?
+
+umask stands for „User file creation mask‟, which determines the settings of a mask that controls which file
+permissions are set for files and directories when they are created. While ulimit is a linux built in command which
+provides control over the resources available to the shell and/or to processes started by it.
+You can limit user to specific range by editing /etc/security/limits.conf at the same time system wide settings can be
+updated in /etc/sysctl.conf
+
+
+=== 67.What is the functionality of a Puppet Server ?
+
+Puppet is an open-source and enterprise application for configuration management toll in UNIX like operating
+system. Puppet is an IT automation software used to push configuration to its clients (puppet agents) using code.
+Puppet code can do a variety of tasks from installing new software, to check file permissions, or updating user
+accounts and lots of other tasks
+
+=== 68.What is SeLinux?
+
+SELinux is an acronym for Security-enhanced Linux. It is an access control implementation and security feature for
+the Linux kernel. It is designed to protect the server against misconfigurations and/or compromised daemons. It
+put limits and instructs server daemons or programs what files they can access and what actions they can take by
+defining a security policy.
+
+==== 69.Explain briefly the procedure for re-installing Grub in Linux?
+
+1) Download Ubuntu Installation / Live cd +
+2) Boot from Ubuntu Installation / Live cd - usb, burned cd etc. +
+3) During boot select “Try Ubuntu” , Don‟t select install ! +
+4) Mount your Linux root partition
+sudo mount /dev/sda6 /mnt ( Assuming /dev/sda6 is the Linux root partition) +
+5) Install / reinstall grub +
+----
+$ sudo grub-install --root-directory=/mnt/ /dev/sda ( where /dev/sda is your primary disk)
+
+----
+
+Installation finished. No error reported. +
+6) Reboot your system, remove bootable CD and we should have the boot menu ready when the system starts.
+
+
+NOTE: There would be slight difference when using with other distros
+
+=== 70.Explain the different Scenarios involved in TCP 3 way handshake?
+
+The TCP three way handshake is the process for establishing a TCP connection.We can explain 3 way handshake
+with a simple scenario where we assume a client computer is contacting a server to send it some information.
+
+- The client sends a packet with the SYN bit set and a sequence number of N.
+- The server sends a packet with an ACK number of N+1, the SYN bit set and a sequence number of X.
+- The client sends a packet with an ACK number of X+1 and the connection is established.
+- The client sends the data. +
+The first three steps in the above process is called the three way handshake.
+
+
+=== 71.What is rDNS and explain its benefits in the Linux Domain Name Systems?
+
+A typical DNS lookup is used to determine which IP address is associated with a hostname, and this is called
+Forward DNS lookup. A reverse DNS lookup is used for the opposite, to determine which hostname is associated
+with an IP address. Sometimes reverse DNS lookups are required for diagnostic purposes. Today, reverse DNS
+lookups are used mainly for security purposes to trace a hacker or spammer. Many modern mailing systems use
+reverse mapping to provide simple authentication using dual lookup: hostname-to-address and address-to-
+hostname. The rDNS ( reverse DNS ) is implemented using a specialized zone record for reverse lookups called
+PTR record. PTR records always resolve to names, never IP addresses.
+
+=== 72.Why is LVM required?
+
+LVM stands for Logical Volume Manager, to resize filesystem‟s size online we required LVM partition in Linux. Size
+of LVM partition can be extended and reduced using the lvextend & lvreduce commands respectively.
+
+
+=== 73.How to check Memory stats and CPU stats?
+
+Using „free‟ & „vmstat‟ command we can display the physical and virtual memory statistics respectively. With the help
+of „sar‟ command we see the CPU utilization & other stats.
+
+=== 74.How to increase the size of LVM partition?
+
+Below are the Logical Steps:
+
+- Use the lvextend command (lvextend -L +100M /dev/<Name of the LVM Partition>, in this example we are
+extending the size by 100MB.
+- resize2fs /dev/<Name of the LVM Partition>
+- check the size of partition using „df -h‟ command
+
+=== 75.How to create partition from the raw disk?
+
+Using fdisk utility we can create partitions from the raw disk.Below are the steps to create partition from the raw
+dsik:
+
+- fdisk /dev/hd* (IDE) or /dev/sd* (SCSI)
+- Type n to create a new partition
+
+
+=== 76.What is load average in a linux?
+
+Load Average is defined as the average sum of the number of process waiting in the run queue and number of
+process currently executing over the period of 1,5 and 15 minutes. Using the „top‟ and „uptime‟ command we find
+the load average of a linux sever.
+
+=== 77.What is the role of udev daemon?
+
+The udev demon used to create and remove all these device nodes or files in /dev/ directory.
+
+=== 78.What is RAID?
+
+RAID, stands for Redundant Array of Inexpensive Disks. RAID is a method by which same data or information is
+spread across several disks, using techniques such as disk striping (RAID Level 0), disk mirroring (RAID Level 1),
+and disk striping with parity (RAID Level 5) to achieve redundancy, lower latency, increased bandwidth, and
+maximized ability to recover from hard disk crashes.
+
+=== 79.What is CUPS? What is the location of log files for CUPS?
+
+CUPS stands for "Common UNIX Printing System". CUPS is a open source printing system developed by Apple Inc.
+CUPS uses the Internet Printing Protocol (IPP) to allow local printing and print sharing.
+The log files for the CUPS printing system are located in the /var/log/cups/ directory.
+
+
+=== 80.What is YUM?
+
+YUM stands for Yellow dog Updater, Modified because it is based on YUP, the Yellow dog Updater. Where does the
+name Yellow dog come from? Yellow Dog is a version of Linux for the Power Architecture hardware and is RPM-
+based, just like Red Hat Enterprise Linux and Fedora. YUP, and later YUM, were written by the Linux community
+as a way to maintain an RPM-based system.
+
+
+=== 81.Differentiate relative path from absolute path.
+
+Relative path refers to the path relative to the current path. Absolute path, on the other hand, refers to the exact path
+as referenced from the root directory.
+
+=== 82.What is piping?
+
+Piping, represented by the pipe character “|”, is used to combine two or more commands together. The output of the
+first command serves as input the next command, and so on.
+
+=== 83.What is a superuser?
+
+A superuser is a special type user who has open access to all files and commands on a system. Note that the
+superuser‟s login is usually root, and is protected by a so-called root password.
+
+=== 84.What is the use of the tee command?
+
+The tee command does two things: one is to get data from the standard input and send it to standard output; the
+second is that it redirects a copy of that input data into a file that was specified.
+
+=== 85.What is parsing?
+
+Parsing is the process of breaking up of a command line into words. This is made possible by using delimiters and
+spaces. In the event that tabs or multiple spaces are part of the command, these are eventually replaced by a
+single space.
+
+=== 86.What is pid?
+
+Pid is short for Process ID. It is used primarily to identify every process that runs on the UNIX system, whether it
+runs on the foreground or runs at the background. Every pid is considered unique.
+
+=== 87.What is ldd?
+
+List dynamic dependencies – print shared library dependencies
+----
+Eg: – # vim new.c
+# gcc new.c –o new
+# ldd new
+----
+=== 88.What is the command to uninstall processes in Linux?
+
+----
+rpm –e sendmail
+-e – remove
+----
+
+=== 89.What are the Linux boot files?
+
+1./boot/grub/grub.conf: contains boot disk parameters +
+2./etc/fstab: contains File systems which need to mount at boot time +
+3./etc/initab: Contains default run level +
+4./etc/init.d/rc.d/rcN.d: This is a dir it contains +
+
+
+=== 90.Difference between nfs soft and hard mounting points?
+
+Hard mount option: – If the client fails to access the server, then the connection hangs and once the system is up
+then it will again access the server. +
+Soft: – If the client failed to connect the server, it immediately gives the error report and closes the connection.
+
+
+=== 91.What is the status code 403,404 represented in apache server?
+
+403 represent forbidden error, means if a file misses some selinux security context.
+404 represent that there is a cgi script missing or web pages missing.
+
+=== 92.WHAT IS THE MEANING OF AIX
+
+AIX (Advanced Interactive eXecutive) is an open operating system from IBM which is based on a version of UNIX.
+AIX/ESA was designed for IBM‟s System/390 or large server hardware platform. AIX/6000 is an operating system
+that runs on IBM‟s workstation platform, the RISC System/6000.
+
+=== 93.Who invented unix?
+
+Unix was created in 1969 by Ken Thompson and Dennis Ritchie at Bell Laboratories.
+
+=== 94.What is the command to make a process to run in the foreground from background?
+
+When the process is running, press “control+Z”. Now at the command prompt, type “bg”
+
+=== 95.I want to see how many interfaces (Ethernet cards) are working using single command?
+
+----
+Ifconfig
+----
+
+=== 96.A file which is not deleted by normal user and also root (using rm), for that type of file how we delete it?
+
+Using chattr command, we need to change the attributes and then we remove using rm command.
+----
+Eg: – chattr -iIu example
+
+rm -rf example
+----
+
+=== 97.What is wild-card interpretation?
+
+When a command line contains wild-card characters such as „*‟ or „?‟, these are replaced by the shell with a sorted
+list of files whose pattern matches the input command. Wild-card characters are used to setup a list of files for
+processing, instead of having it specified one at a time.
+
+
+=== 98.What does this command do? cat food 1 > kitty
+
+It redirects the output of cat food into the file kitty; the command is the same as:
+cat food > kitty
+
+=== 99.What "neat" command will do?
+
+“Neat” command provides Graphical interface to change network settings for network devices.
+
+
+=== 100. Relationship Between `modprobe.conf` and Network Devices
+
+
+The `modprobe.conf` file plays a role in assigning kernel modules to network devices. This file is used to configure how the kernel modules are loaded and which modules are associated with specific devices.
+
+Example
+
+In the `modprobe.conf` file, you might find entries like the following:
+
+[source,bash]
+----
+[root@localhost ~]# cat /etc/modprobe.conf
+alias eth0 b44
+----
+
+In this example, `b44` is specified as the kernel module for the network device `eth0`.
+
+Verification
+
+To verify if the kernel module is loaded, you can use the `lsmod` command:
+
+[source,bash]
+----
+[root@localhost ~]# lsmod | grep b44
+b44 29005 0
+----
+
+The output confirms that the `b44` module is present and loaded.
+
+The `modprobe.conf` file is crucial for associating specific kernel modules with network devices, ensuring that the correct drivers are loaded for the hardware.
+
+
+
+==== Resources
+
+- https://www.udemy.com/blog/linux-interview-questions/
+- http://www.masteringinlinux.com/linux-questions/top-linux-interview-question-answer.html
+- http://computernetworkingnotes.com/rhce-interview-questions/basic-linux-interview-questions-for-freshers.html
+- http://www.tecmint.com/core-linux-interview-questions-and-answers/
+- http://www.linuxtechi.com/experience-linux-admin-interview-questions/
+- http://www.01world.in/p/linux.html
+- http://linoxide.com/linux-how-to/linux-interview-questions-answers/
+- http://career.guru99.com/top-50-linux-interview-questions/
+- http://www.tecmint.com/useful-random-linux-interview-questions-and-answers/
+- http://certcollection.org/forum/topic/154299-linux-system-administration-interview-questions-and-answers/
+- http://linuxserverworld.com/linux-interview-questions-part-i/

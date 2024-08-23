@@ -1,5 +1,12 @@
 * xref:index.adoc[Welcome To InterviewInsights]
 
+.*Linux*
+
+** Linux
+
+*** xref:Linux:linux.adoc[Linux - QA]
+
+
 .*AWS*
 
 *** xref:Elastic Compute Cloud:Elastic Compute Cloud.adoc[EC2 Related - QA]
