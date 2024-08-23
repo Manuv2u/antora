@@ -44,6 +44,10 @@ This section provides interview questions and answers related to various AWS Dev
 
 2. Coming Soon.. 📅
 
+=== Kubernetes
+
+1. xref:Kubernetes:kubernetes.adoc[Kubernetes - QA]
+
 === Terraform
 
 1. xref:Terraform:terraform.adoc[Terraform - QA]
