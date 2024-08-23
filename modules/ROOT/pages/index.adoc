@@ -55,6 +55,12 @@ This section provides interview questions and answers related to various AWS Dev
 === Helm
 
 1. xref:Helm:helm.adoc[Helm - QA]
+
+== *OAuth 2.0*
+
+=== OAuth 2.0 (Keycloak)
+
+1. xref:Keycloak-Oauth:keycloak.adoc[OAuth 2.0 (Keycloak) - QA]
 //
 // == Technical Concepts
 // This section covers essential technical concepts you need to know for interviews. 💡
