@@ -1,0 +1,16 @@
+= Why choose Istio?
+
+
+Istio pioneered the concept of a sidecar-based service mesh when it launched in 2017. Out of the gate, the project included the features that would come to define a service mesh, including standards-based mutual TLS for zero-trust networking, smart traffic routing, and observability through metrics, logs and tracing.
+
+An Istio service mesh is logically split into a data plane and a control plane.
+
+- The **data plane** is composed of a set of intelligent proxies (Envoy) deployed as sidecars. These proxies mediate and control all network communication between microservices. They also collect and report telemetry on all mesh traffic.
+
+- The **control plane** manages and configures the proxies to route traffic.
+
+The following diagram shows the different components that make up each plane:
+
+image::istio-architecture.png[]
+
+Refer this https://istio.io/latest/docs/[ [ link ]  ] to know more about istio latest documentation
