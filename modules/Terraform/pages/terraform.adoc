@@ -19,6 +19,7 @@ resource "aws_vpc" "example" {
 ----
 
 ==== Authentication
+
 The AWS provider offers a flexible means of providing credentials for authentication.
 
 The following methods aresupported, in this order, and explained below:
@@ -79,3 +80,150 @@ provider "aws" {
 
 The default location for the credentials file is `$HOME/.aws/credentials` on Linux and macOS, or `%USERPROFILE%\.aws\credentials` on Windows. You can specify a different location using the `shared_credentials_file` argument or `AWS_SHARED_CREDENTIALS_FILE` environment variable. This method also supports configuring profiles using the `AWS_PROFILE` environment variable.
 
+=== Terraform Workflow
+The Terraform workflow consists of the following three steps:
+
+`Step 1:` Write
+In this first step in the Terraform workflow, you’ll declare your infrastructure resources as code using the Hashicorp Configuration Language (HCL).
+
+`Step 2:` Review
+Terraform will then display its plan to either add or remove resources predicated upon the comparison of your declared infrastructure and the current state of existing resources.
+
+`Step 3:` Apply
+Finally, you can accept planned changes to add or remove any infrastructure resources. Your infrastructure will then be ready to be fully deployed with the help of Terraform.
+
+
+=== How Terraform works
+
+Terraform uses APIs to automatically create and manage infrastructure resources. All major cloud providers provide accessible APIs that work with Terraform and enable the tool to create declarative configuration files. These providers are listed in the Terraform Registry. The Registry also lists the modules, policy libraries and tasks that teams can use to quickly deploy common infrastructure configurations and automatically manage them via code.
+
+
+=== Project structure and file types explained
+Any Terraform project is created to manage infrastructure in the form of code, i.e., IaC. Managing the Terraform IaC involves the following, at least.
+
+The cloud platform of choice, which translates to the appropriate provider configurations
+- Various resources, i.e., cloud components
+
+- State file management
+- Input and output variables
+- Reuse of modules and associated internal wiring
+- Infrastructure security standards.
+- Developer collaboration and CI/CD workflow
+- To begin writing a Terraform configuration while adhering to the best practices, we create the files below in the project’s root directory.
+
+=== Terraform file types include:
+
+- main.tf – containing the resource blocks that define the resources to be created in the target cloud platform.
+- variables.tf – containing the variable declarations used in the resource blocks.
+- provider.tf – containing the terraform block, s3 backend definition, provider configurations, and aliases.
+- output.tf – containing the output that needs to be generated on successful completion of “apply” operation.
+- *.tfvars – containing the environment-specific default values of variables.
+
+=== Let’s look at each Terraform file type in more detail.
+
+==== main.tf
+The main.tf file is the starting point where you will implement the logic of infrastructure as code. This file will include Terraform resources, but it can also contain datasources and locals.
+
+==== variables.tf
+The variables.tf file includes the definitions of input variables for your configuration, mentioning their types, descriptions, and default values.
+
+==== outputs.tf
+The outputs.tf file is used to define output values that expose information about the resources created by a Terraform configuration.
+
+==== provider.tf
+In the provider.tf file, you declare the providers required by a Terraform configuration, specifying details like authentication credentials, API endpoints, and other provider-specific settings needed to interact with external systems or cloud platforms.
+
+
+==== .tfvars
+The .tfvars files are used to assign values to the input variables declared in other Terraform configuration files.
+
+By default, Terraform will load variable values from files called `terraform.tfvars` or `any_name.auto.tfvars`. If you have both files, `any_name.auto.tfvars` will take precedence over `terraform.tfvars`.
+
+
+
+== Additional file types in Terraform projects
+Throughout the project, we may need to add more files to serve various purposes besides the Terraform configurations. You can find some examples of these files in the list below:
+
+- README.md — As a general best practice, every repository should contain a README.md file that includes an overview of the source code, usage instructions, and any other relevant and important information
+- Automation scripts — When there is a need to include automation scripts (bash, shell, python, golang, etc.) in CI/CD workflow, when certain scripts are required to be executed on the target resource being created, or to build a source code, etc. Bash/shell scripts are very powerful in general; there are many reasons to use them.
+- YAMLs — The most common usage of YAML files in Terraform in this context is when implementing CI/CD automation.
+.gitignore file
+
+Since we are discussing the Terraform project structure, the `.gitignore` file plays a special role. As observed in previous sections, a Terraform project consists of multiple kinds of files and binaries.
+
+For several reasons, not all files and directories should be part of the `git` repository. The following are some of the files included in the `.gitignore` file in a generic Terraform project.
+
+image::terraform.gitignor.png[]
+
+- .terraform.tfstate — Terraform state files should never be pushed to the git repositories. Note that when using the remote backend for Terraform, the state files will not be available on the local system. A couple of reasons are:
+- Security — State files may store sensitive details like keys, tokens, passwords, etc.
+- Collaboration — When working within teams, managing the state file locally by each developer poses a high risk of state files needing to be more consistently overwritten.
+- Binaries — The provider plugins downloaded locally or on a Terraform host (in .terraform directory) should not be part of the Git repository. The binaries thus downloaded are large in memory. Pushing and pulling the binaries from a remote git repo is inefficient for using network bandwidth.
+- Crash.log — Crash log files are not always required, especially when a crash occurs due to the local environment.
+- *.tfplan — We use the terraform plan command to save and use the output during the apply phase. This information is not required to be stored on a remote git repository.
+
+
+=== How to automate the management of Terraform files and directories?
+The previous section focused mainly on the files we deal with when we begin to work on a Terraform project. In this section, we will see the files created automatically by Terraform when the configurations are tested, applied, and destroyed. The concepts discussed in these sections will help us have a firm understanding that will enable us to structure the Terraform code better.
+
+The first step to testing our configuration is initializing the repository. When we run `terraform init`, Terraform identifies the “required_providers” and downloads the appropriate plugin binary from the Registry. These binaries are stored in the “.terraform” directory located at the root of the project.
+
+The init action also creates a `.terraform.lock.hcl` file.
+
+=== Terraform lock files
+The .terraform.lock.hcl is a file generated by Terraform. It maintains the hashes of the downloaded binaries for consistency and tracks the provider versions used in your configuration. We do not interact with these files directly or manually; they are maintained automatically by Terraform. However, you should commit the .terraform.lock.hcl file to your version control system.
+
+The screenshot below shows the directory structure after running the init command.
+
+
+image::terraform-project-structure-after-terraform-init.png[]
+
+
+Once the project is initialized, we apply these configurations to create the cloud resources. A apply or destroy operation creates an additional file – terraform.tfstate. This is the Terraform state file, which is critical and automatically managed by Terraform. This file is either managed locally (default backend) or remotely. When working in teams, the remote backend should be used.
+
+Find more details about Terraform’s state in the blog post – Managing Terraform State – Best Practices & Examples.
+
+Given the importance, Terraform also creates the backup file (.terraform.tfstate.backup) for the state, as shown in the screenshots below
+
+
+image::terraform-project-structure-with-backup-file.png[]
+
+
+
+Terraform implements a locking mechanism that helps avoid race conditions, and prevent state file corruption. The locking mechanism depends on the type of backend used.
+
+For example, when using S3 as a remote backend service, Terraform uses the AWS DynamoDB table to manage the file lock.
+
+In the case of the local backend, this lock is managed using an additional file that exists for the period of operation (plan, apply, destroy) being performed. Once the operation is completed, the file is removed.
+
+In the screenshot below, we can see the file named “.terraform.tfstate.lock.info” being generated.
+
+
+
+
+
+=== What are Modules?
+In my own simple definition: Modules are pieces of code that are set once and is referenced over and over again. In short, “resusable code”.
+
+A Terraform module (usually the root module of a configuration) can call other modules to include their resources into the configuration. A module that has been called by another module is often referred to as a child module.
+
+image::project-root-directory.png[]
+
+Child modules can be called multiple times within the same configuration, and multiple configurations can use the same child module.
+
+
+
+
+=== Terraform FAQs
+
+==== Is Terraform a DevOps tool?
+Yes. Terraform is an extremely useful tool for DevOps teams to provision, manage, and orchestrate single or multi-cloud deployments.
+
+==== What is Terraform in AWS?
+Terraform is Infrastructure-as-Code (IaC) for AWS. It accesses AWS resources via a provider, allowing users to manage AWS via Terraform code.
+
+==== What language does Terraform use?
+Terraform is originally coded in the GO language but works with all operating systems. Hashicorp Configuration Language (HCL) may also be used during setup.
+
+==== Does Terraform work with Kubernetes?
+Yes. Terraform can automate the provisioning of Kubernetes on cloud platforms. Terraform is not an alternative to Kubernetes, and in fact, they work very well together.

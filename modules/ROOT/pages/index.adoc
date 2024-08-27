@@ -49,16 +49,17 @@ Learn about Antora, a static site generator designed for creating documentation 
 == Docker
 This section provides detailed information on Docker, including containerization concepts, Dockerfile best practices, and orchestration with Docker Compose and Swarm.
 
-Coming soon.. 📅
+
+- xref:Docker:docker.adoc[ Docker Architecture ]
+
+- Coming soon.. 📅
 
 == Git
 Explore the fundamentals of Git, version control concepts, branching strategies, and workflows that optimize collaboration and code management.
 
 Coming soon.. 📅
 
-== Docker
 
-- xref:Docker:docker.adoc[ Docker Architecture ]
 
 == Kubernetes
 Learn about Kubernetes architecture, key components, and best practices for deploying, scaling, and managing containerized applications.
@@ -79,7 +80,9 @@ Istio is designed for extensibility and can handle a diverse range of deployment
 == Terraform
 Understand the principles of infrastructure as code with Terraform, covering configuration, state management, and module reuse for scalable and maintainable infrastructure.
 
-Coming soon.. 📅
+- xref:Terraform:terraform.adoc[Terraform Architecture]
+
+- Coming soon.. 📅
 
 == GitLab
 Delve into GitLab, exploring CI/CD pipelines, version control, and collaborative development practices to enhance software delivery.

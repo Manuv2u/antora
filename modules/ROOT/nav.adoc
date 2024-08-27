@@ -35,3 +35,7 @@
 * Istio
 
 ** xref:Istio:istio.adoc[ Istio Architecture ]
+
+* Terraform
+
+** xref:Terraform:terraform.adoc[Terraform Architecture]
