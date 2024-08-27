@@ -1,0 +1,124 @@
+= Architecture of Docker
+
+Docker makes use of a client-server architecture. The Docker client talks with the docker daemon which helps in building, running, and distributing the docker containers. The Docker client runs with the daemon on the same system or we can connect the Docker client with the Docker daemon remotely. With the help of REST API over a  UNIX socket or a network, the docker client and daemon interact with each other.
+
+
+image::Architecture-of-Docker.png[]
+
+
+=== What is Docker Daemon?
+Docker daemon manages all the services by communicating with other daemons. It manages docker objects such as images, containers, networks, and volumes with the help of the API requests of Docker.
+
+=== Docker Client
+With the help of the docker client, the docker users can interact with the docker. The docker command uses the Docker API. The Docker client can communicate with multiple daemons. When a docker client runs any docker command on the docker terminal then the terminal sends instructions to the daemon. The Docker daemon gets those instructions from the docker client withinside the shape of the command and REST API’s request.
+
+The main objective of the docker client is to provide a way to direct the pull of images from the docker registry and run them on the docker host. The common commands which are used by clients are docker build, docker pull, and docker run.
+
+=== Docker Host
+A Docker host is a type of machine that is responsible for running more than one container. It comprises the Docker daemon, Images, Containers, Networks, and Storage.
+
+=== Docker Registry
+All the docker images are stored in the docker registry. There is a public registry which is known as a docker hub that can be used by anyone. We can run our private registry also. With the help of docker run or docker pull commands, we can pull the required images from our configured registry. Images are pushed into configured registry with the help of the docker push command.
+
+=== Docker Objects
+
+Whenever we are using a docker, we are creating and use images, containers, volumes, networks, and other objects. Now, we are going to discuss docker objects:-
+
+- images
+- containers
+- volumes
+- networks
+
+
+===  Docker Images
+An image contains instructions for creating a docker container. It is just a read-only template. It is used to store and ship applications. Images are an important part of the docker experience as they enable collaboration between developers in any way which is not possible earlier.
+
+===  Docker Containers
+Containers are created from docker images as they are ready applications. With the help of Docker API or CLI, we can start, stop, delete, or move a container. A container can access only those resources which are defined in the image unless additional access is defined during the building of an image in the container.
+
+===  Docker Storage
+We can store data within the writable layer of the container but it requires a storage driver. Storage driver controls and manages the images and containers on our docker host.
+
+image::docker storage.jpg[]
+
+Types of Docker Storage
+
+1. Data Volumes: Data Volumes can be mounted directly into the filesystem of the container and are essentially directories or files on the Docker Host filesystem.
+2. Volume Container: In order to maintain the state of the containers (data) produced by the running container, Docker volumes file systems are mounted on Docker containers. independent container life cycle, the volumes are stored on the host. This makes it simple for users to exchange file systems among containers and backup data.
+3. Directory Mounts: A host directory that is mounted as a volume in your container might be specified.
+4. Storage Plugins: Docker volume plugins enable us to integrate the Docker containers with external volumes like Amazon EBS by this we can maintain the state of the container.
+
+Docker Networking
+Docker networking provides complete isolation for docker containers. It means a user can link a docker container to many networks. It requires very less OS instances to run the workload.
+
+Types of Docker Network
+
+1. Bridge: It is the default network driver. We can use this when different containers communicate with the same docker host.
+2. Host: When you don’t need any isolation between the container and host then it is used.
+3. Overlay: For communication with each other, it will enable the swarm services.
+4. None: It disables all networking.
+5. macvlan: This network assigns MAC(Media Access control) address to the containers which look like a physical address.
+
+
+== Docker Basic Command
+
+Following are the some of the docker basic commands
+
+- docker images: Docker images will list all the images which are pulled or build in that docker host.
+- docker pull: Docker pull will the docker images from the dockerhub.
+- docker run: Docker run will run the docker image as an container.
+- docker ps: Docker run will list all the containers which are running in the docker host.
+- docker stop: Docker stop will stop the docker container which are already running.
+- docker rm: Docker rm command will remove the containers which are in the stop condition.
+
+=== Docker Commands List
+Following are the docker commands which listed form build and Docker image to running it an Docker container and attaching the docker volumes to it.
+
+- docker Image Command
+- docker build command: It will build Docker images by using the Dockerfile.
+- docker pull command: Docker pull command will pull the Docker image whcih is avalible in the dockerhub.
+- docker images command: It will list all the images which are pulled and build in the docker host.
+- docker inspect command: It will helps to debug the docker image if any errors occurred while building an image or pulling the image.
+- docker push command: Docker command will push the docker image into the Dockerhub.
+- docker save command: It will save the docker image in the form of dockerfile.
+- docker rmi command: It will remove the docker image.
+- Docker Container Command
+- docker attach command: Connecting to an Existing Container.
+- docker ps command: To list the running containers.
+- docker container inspect infinite Command: To Inspect the Docker containers.
+- docker exec command: To execute the commands in the running containers.
+- docker cp command: To copy the file from docker host to the docker containers,
+
+=== FAQs on Docker Command
+==== 1. What is Docker basics?
+Docker is an open-source platform where you can containeriz your application.
+
+==== 2. Docker Command Not Found
+Docker command not found error will get if the docker cli was not installed in your system.
+
+==== 3. Docker Command To list the All Containers
+To list all the containers in the docker you can use the docker pa -a.
+
+==== 4. Docker Command To Build An Image
+To build the docker image you can use the following command.
+
+----
+docker build -t <image name>:<tag> <path to Dockerfile>
+----
+
+==== 5. Docker Command To Remove An Image
+Docker Command to remove the docker images was
+
+----
+docker rmi <image name>:<tag>
+----
+
+==== 6. Docker Command Cheat Sheet
+To read the docker cheat sheet refer to Docker Cheat Sheet – Most Important Docker Commands.
+
+==== 7. Docker Command to Command to check the Running Containers
+docker ps is the command to check the running containers.
+
+==== 8. What is the Docker file with all commands?
+Dockerfile is set of instruction to build the Docker image
+
