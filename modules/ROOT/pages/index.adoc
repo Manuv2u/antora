@@ -59,6 +59,11 @@ Coming soon.. 📅
 == Kubernetes
 Learn about Kubernetes architecture, key components, and best practices for deploying, scaling, and managing containerized applications.
 
+- xref:Kubernetes:kubernetes.adoc[ Kubernetes Architecture ]
+
+- xref:Kubernetes:k8s_cheetsheet.adoc[ Kubernetes CheetSheet ]
+
+
 Coming soon.. 📅
 
 == Terraform
