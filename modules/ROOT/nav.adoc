@@ -35,6 +35,10 @@
 
 *** xref:Kubernetes:kubernetes.adoc[Kubernetes - QA]
 
+** Istio
+
+*** xref:istio:istio.adoc[Istio - QA]
+
 
 ** Terraform
 

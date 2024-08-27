@@ -1,0 +1,190 @@
+= istio
+
+== interview questions and answers
+
+=== 1) What is Istio and how it works?
+
+An Istio service mesh is logically split into a data plane and a control plane. The data plane is composed of a set of intelligent proxies (Envoy ) deployed as sidecars. These proxies mediate and control all network communication between microservices. They also collect and report telemetry on all mesh traffic.
+
+=== 2) What is Istio used for in Kubernetes?
+Istio makes traffic management transparent to the application, moving this functionality out of the application and into the platform layer as a cloud native infrastructure. Istio complements Kubernetes, by enhancing its traffic management, observability and security for cloud native applications.
+
+=== 3) What problems does Istio solve?
+And Kubernetes/Istio is a technical solution to deal with the issues created by moving to microservices. As a deliverable for microservices, containers solve the problem of environmental consistency and allow for more granularity in limiting application resources. They are widely used as a vehicle for microservices.
+
+=== 4) What are the Istio components?
+Istio has two components: the data plane and the control plane. The data plane is the communication between services. Without a service mesh, the network doesn’t understand the traffic being sent over, and can’t make any decisions based on what type of traffic it is, or who it is from or to.
+
+=== 5) Who developed Istio?
+The Istio project was started by teams from Google and IBM in partnership with the Envoy team from Lyft. It’s been developed fully in the open on GitHub.
+
+=== 6) What is galley in Istio?
+Galley is Istio’s configuration validation, ingestion, processing and distribution component. It is responsible for insulating the rest of the Istio components from the details of obtaining user configuration from the underlying platform (e.g. Kubernetes).
+
+=== 7) Is Istio hard?
+Solo sponsored this post. For a very long time, Istio has been criticized as notoriously complex and hard to use. As someone who worked on the project for over four years, I agreed with this statement in the first two years of Istio.
+
+=== 8) What is a helm chart?
+Helm uses a packaging format called charts. A chart is a collection of files that describe a related set of Kubernetes resources. A single chart might be used to deploy something simple, like a memcached pod, or something complex, like a full web app stack with HTTP servers, databases, caches, and so on.
+
+=== 9) What are the main features of Citadel in Istio?
+Citadel for key and certificate management. Sidecar and perimeter proxies to implement secure communication between clients and servers. Pilot to distribute authentication policies and secure naming information to the proxies. Mixer to manage authorization and auditing.
+
+=== 10) What is the job of an Istio agent?
+A separate component, the istio-agent, helps each sidecar connect to the mesh by securely passing configuration and secrets to the Envoy proxies. While the agent, strictly speaking, is still part of the control plane, it runs on a per-pod basis.
+
+=== 11) Is Istio safe?
+The Istio security features provide strong identity, powerful policy, transparent TLS encryption, and authentication, authorization and audit (AAA) tools to protect your services and data. The goals of Istio security are: Security by default: no changes needed to application code and infrastructure.
+
+=== 12) What is the default sidecar proxy in Istio?
+By default, Istio will program all sidecar proxies in the mesh with the necessary configuration required to reach every workload instance in the mesh, as well as accept traffic on all the ports associated with the workload.
+
+=== 13) How do I stop Istio?
+- Uninstalling Istio from a cluster
+- Ensure your default mTLS mode is set to Permissive mTLS.
+- Shift traffic away from the Istio ingress gateway.
+- Turn off sidecar auto-injection, if enabled. …
+- Restart application pods (for example using rolling restart) to remove the Envoy sidecars.
+
+===  14) How do I remove Istio injection namespace?
+Disable automatic proxy sidecar injection
+
+Remove the istio-injection=enabled label from the default namespace by using the kubectl label as shown. The kubectl get namespace command confirms that the label is removed from the default namespace. Finally, delete the NGINX deployment.
+
+===  15) How do you inject namespace in Istio?
+Deploying an app
+
+[source,bash]
+----
+kubectl get pod
+kubectl label namespace default istio-injection=enabled –overwrite
+kubectl get namespace -L istio-injection.
+kubectl delete pod -l app=sleep
+kubectl get pod -l app=sleep.
+kubectl describe pod -l app=sleep.
+----
+
+===  16) What is Istio sidecar injection?
+In simple terms, sidecar injection is adding the configuration of additional containers to the pod template. The added containers needed for the Istio service mesh are: istio-init This init container is used to setup the iptables rules so that inbound/outbound traffic will go through the sidecar proxy.
+
+===  17) What is sidecar in Kubernetes?
+A sidecar is just a container that runs on the same Pod as the application container, because it shares the same volume and network as the main container, it can “help” or enhance how the application operates. Common examples of sidecar containers are log shippers, log watchers, monitoring agents among others.
+
+===  18) What is Istio ingress gateway?
+Configuring ingress using an Istio gateway
+
+An ingress Gateway describes a load balancer operating at the edge of the mesh that receives incoming HTTP/TCP connections. It configures exposed ports, protocols, etc. but, unlike Kubernetes Ingress Resources , does not include any traffic routing configuration.
+
+===  19) Is Istio a proxy?
+The Istio Proxy is a microservice proxy that can be used on the client and server side, and forms a microservice mesh. … The Proxy manages connections to services, handling health checking, retry, failover, and flow control. Monitoring & Logging. The Proxy can report client-side metrics and logs.
+
+===  20) What is Istio written?
+Both Istio (the control plane) and Linkerd 2. x are written in Go. The proxy used for Istio’s data plane, Envoy, is written in C++ while the proxy implementing the Linkerd 2. x data plane is written in Rust.
+
+===  21) How do you implement Istio?
+Getting Started +
+Download Istio. +
+Install Istio. +
+Deploy the sample application. +
+Open the application to outside traffic. Determining the ingress IP and ports. Verify external access. +
+View the dashboard. +
+Next steps. +
+Join the Istio community. +
+Uninstall. +
+
+===  22) Which source projects were the basis for Istio?
+The Origin of Istio
+Istio is an open source implementation of a service mesh first created by Google, IBM, and Lyft. …
+Using Envoy as the data-plane component, Istio helps you to configure your applications to have an instance of the service proxy deployed alongside it.
+
+===  23) What is calico k8s?
+Calico is an open source networking and network security solution for containers, virtual machines, and native host-based workloads. Calico supports a broad range of platforms including Kubernetes, OpenShift, Mirantis Kubernetes Engine (MKE), OpenStack, and bare metal services.
+
+===  24) What is the difference between Istio and Kubernetes?
+Istio’s control plane provides an abstraction layer over the underlying cluster management platform, such as Kubernetes, Mesos, etc. On the other hand, Kubernetes is detailed as “Manage a cluster of Linux containers as a single system to accelerate Dev and simplify Ops”.
+
+===  25) How is Istio deployed?
+Istio supports using clusters as a unit of tenancy. In this case, you can give each team a dedicated cluster or set of clusters to deploy their workloads.
+
+===  26) Does Google use Istio?
+Adopting a service mesh allows you to decouple your application from the network, and in turn, allows your operations and development teams to work independently. Alongside IBM, Lyft, and others, Google launched Istio in 2016 as an open-source service mesh solution.
+
+===  27) Is Istio from Google?
+There’s a cloud hanging over Istio, the popular Kubernetes-related open source project that originated at Google, according to some open source developers. Google has created an organization to protect trademark’s of open source technologies, including the Istio trademark, which is a first for open source.
+
+===  28) What is Istio operator?
+Istio operator consists of an application deployed to the Kubernetes cluster and a custom resource called IstioOperator that describes the desired state of your Istio installation. The operator uses the IstioOperator resource to manage and maintain your Istio service mesh installation.
+
+===  29) How does Istio pilot work?
+Istio works as a service mesh by providing two basic pieces of architecture for your cluster, a data plane and a control plane. The data plane handles network traffic between the services in the mesh. All of this traffic is intercepted and redirected by a network proxying system.
+
+===  30) How do I access Istio dashboard?
+Open the Istio Dashboard via the Grafana UI. Visit http://localhost:3000/d/G8wLrJIZk/istio-mesh-dashboard in your web browser. Send traffic to the mesh.
+
+===  31) Do you really need Istio?
+Istio lets you connect, secure, control, and observe services. At a high level, Istio helps reduce the complexity of these deployments, and eases the strain on your development teams. It is a completely open source service mesh that layers transparently onto existing distributed applications.
+
+===  32) What is Istio mutual TLS?
+Mutual TLS (mTLS) authentication is a way to encrypt services traffic using certificates. … Starting in Istio 1.5, Istio uses automatic mutual TLS. This means that while services accept both plain-text and TLS traffic, by default, services will send TLS requests within the cluster.
+
+===  33) What is Istio service mesh?
+Istio is a service mesh—a modernized service networking layer that provides a transparent and language-independent way to flexibly and easily automate application network functions. It is a popular solution for managing the different microservices that make up a cloud-native application.
+
+===  34) What language is Istio written?
+One immediate difference between the two is the proxying technology used in the data plane. While Istio uses Envoy as its proxy, Linkerd uses a built-for-purpose proxy called linkerd-proxy. Istio’s Envoy proxy is written in C++ and the linkerd-proxy is built in the Rust programming language.
+
+===  35) Is Istio part of Cncf?
+When the Istio service mesh was first proposed to be included in the Cloud Native Computing Foundation (CNCF) in November 2017, it was still v.
+
+===  36) Is Istio a Cncf project?
+Cloud Native Computing Foundation (CNCF) incubating project Emissary-ingress, an open source ingress controller and API gateway for Kubernetes, announces official support by major service mesh communities Linkerd (a graduated CNCF project) and Istio.
+
+===  37) Is Istio a CNI?
+The Istio CNI plugin operates as a chained CNI plugin. This means its configuration is added to the existing CNI plugins configuration as a new configuration list element.
+
+===  38) How do you inject a sidecar?
+Automatic sidecar injection adds the sidecar proxy into user-created pods. It uses a MutatingWebhook to append the sidecar’s containers and volumes to each pod’s template spec during creation time. Injection can be scoped to particular sets of namespaces using the webhooks namespaceSelector mechanism.
+
+===  39) How does Istio sidecar work?
+An Istio service mesh is logically split into a data plane and a control plane. The data plane is composed of a set of intelligent proxies (Envoy ) deployed as sidecars. These proxies mediate and control all network communication between microservices. They also collect and report telemetry on all mesh traffic.
+
+===  40) Which property of destination rule helps in circuit breaking?
+Circuit breaking in Istio. Istio’s circuit breaking can be configured in the TrafficPolicy field within the Destination Rule Istio Custom Resource. There are two fields under TrafficPolicy which are relevant to circuit breaking: ConnectionPoolSettings and OutlierDetection.
+
+===  41) What is the name of the helm templating engine that runs in a pod in a Kubernetes cluster?
+Templates are Kubernetes manifest files that describe the resources you want to have on the cluster. Helm uses the Go templating engine by default. Most charts include a file called values. yaml , which provides default configuration data for the templates in a structured format.
+
+===  42) How does Istio intercept traffic?
+The Init container is used to set iptables (the default traffic interception method in Istio, and can also use BPF, IPVS, etc.) to Intercept traffic entering the pod to Envoy sidecar Proxy.
+
+===  43) Does Istio require Kubernetes?
+Istio is currently the most popular service mesh implementation, relying on Kubernetes but also scalable to virtual machine loads.
+
+===  44) How do I test my Istio Gateway?
+To see this, you can kubectl port-forward istio-ingressgateway-xxxx-yyyy 15000 and check out the configuration by browsing to http://localhost:15000/config_dump. Note that the gateway specified as well as the host must match the information in the Gateway . If it doesn’t the entry will not show up in the configuration.
+
+===  45) How do Istio gateways work?
+Istio has a concept of an ingress Gateway which plays the role of the network-ingress point and it’s responsible for guarding and controlling access to the cluster from traffic that originates outside of the cluster. Additionally, Istio’s Gateway also plays the role of load balancing and virtual-host routing.
+
+===  46) Who developed Istio?
+The Istio project was started by teams from Google and IBM in partnership with the Envoy team from Lyft. It’s been developed fully in the open on GitHub.
+
+===  47) What is Istio cluster?
+Cluster. A cluster is set of compute nodes that run containerized applications. Typically, the compute nodes comprising a cluster can reach each other directly. Clusters limit external access through rules or policies.
+
+===  48) Is Istio a sidecar?
+An Istio service mesh is logically split into a data plane and a control plane. The data plane is composed of a set of intelligent proxies (Envoy) deployed as sidecars. These proxies mediate and control all network communication between microservices along with Mixer, a general-purpose policy and telemetry hub.
+
+===  49) What is Istio galley?
+Galley is responsible for interpreting the YAML files in Kubernetes and transforming them into a format that Istio understands. Galley makes it possible for Istio to work with other environments than Kubernetes since it translates different configuration data into the common format that Istio understands.
+
+===  50) Is Istio complicated?
+For a very long time, Istio has been criticized as notoriously complex and hard to use. As someone who worked on the project for over four years, I agreed with this statement in the first two years of Istio.
+
+===  51) Is Istio safe?
+The Istio security features provide strong identity, powerful policy, transparent TLS encryption, and authentication, authorization and audit (AAA) tools to protect your services and data. The goals of Istio security are: Security by default: no changes needed to application code and infrastructure.
+
+===  52) What is Istio ingress gateway?
+Configuring ingress using an Istio gateway
+
+An ingress Gateway describes a load balancer operating at the edge of the mesh that receives incoming HTTP/TCP connections. It configures exposed ports, protocols, etc. but, unlike Kubernetes Ingress Resources , does not include any traffic routing configuration.
