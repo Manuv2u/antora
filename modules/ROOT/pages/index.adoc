@@ -66,6 +66,12 @@ Learn about Kubernetes architecture, key components, and best practices for depl
 
 Coming soon.. 📅
 
+
+== Istio
+Istio is designed for extensibility and can handle a diverse range of deployment needs. Istio’s control plane runs on Kubernetes, and you can add applications deployed in that cluster to your mesh
+
+- xref:Istio:istio.adoc[ Istio Architecture ]
+
 == Terraform
 Understand the principles of infrastructure as code with Terraform, covering configuration, state management, and module reuse for scalable and maintainable infrastructure.
 
