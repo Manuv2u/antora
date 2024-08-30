@@ -2,3 +2,7 @@
 
 .*Antora*
 * xref:antora_project:host-static-website-using-s3-bucket.adoc[Host Website Using Antora]
+
+.*EKS*
+
+* xref:EKS:eks_secretmanager.adoc[Integrating AWS Secrets Manager with Amazon EKS]

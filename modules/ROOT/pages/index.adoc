@@ -22,9 +22,13 @@ Learn how to set up an S3 bucket to host a static website using AWS services.
 
 1. xref:antora_project:host-static-website-using-s3-bucket.adoc[Host Website Using Antora]
 
-== Project A
+==  EKS Related Projects
 
-Project A is a web application built with React and Node.js, featuring real-time data visualization and analytics.
+1. Cluster Creating comming soon...
+
+2. xref:EKS:eks_secretmanager.adoc[Integrating AWS Secrets Manager with Amazon EKS]
+
+
 
 == Project B
 
