@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb92ae05-ded5-405f-b9f6-03af4d608666" name="Changes" comment="updated k8s  - QA">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_19_06_2024_23_41__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_19_06_2024_23_41__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/Elastic Compute Cloud/pages/Elastic Compute Cloud.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/modules/Elastic Compute Cloud/pages/Elastic Compute Cloud.adoc" afterDir="false" />
-    </list>
+    <list default="true" id="aa77cce4-476e-4c64-b13c-96afe3edd92f" name="Changes" comment="updated python  - QA" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,7 +44,6 @@
     "DefaultPlantUmlFileTemplate": "Empty",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "InterviewInsights",
     "last_opened_file_path": "C:/Users/manuv/IdeaProjects/antora/modules",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",

@@ -2,9 +2,12 @@
 
 .*Linux*
 
-** Linux
-
 *** xref:Linux:linux.adoc[Linux - QA]
+
+.*Python*
+
+
+*** xref:Python:python.adoc[Python - QA]
 
 
 .*AWS*

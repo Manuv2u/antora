@@ -13,9 +13,15 @@ Welcome to InterviewInsights, your go-to resource for efficient interview prepar
 // 6. <<ShortcutsAndTips, Shortcuts and Tips>> 🚀
 // 7. <<PracticeProblems, Practice Problems>> 📝
 
-=== Linux
+==  Linux
 
 1. xref:Linux:linux.adoc[Linux - QA]
+
+
+== Python
+
+
+1. xref:Python:python.adoc[Python - QA]
 
 == AWS(Amazon Web Service) - Tools
 This section provides interview questions and answers related to various AWS DevOps tools. 📦
