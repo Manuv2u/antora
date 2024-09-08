@@ -26,29 +26,29 @@
 // == Q6. Are callbacks possible with Terraform on Azure?
 // By using the Azure Event Hubs, callbacks are possible on Azure. Terraform’s Azure provider offers effortless functionality to users. Microsoft Azure Cloud Shell provides an already-installed Terraform instance.
 //
-// == Q7. What is Terraform init?
-// `terraform init` is a command to initialize an operational directory that contains Terraform configuration files. This command can be run multiple times. It is the first command that should be executed after writing new Terraform configurations.
-//
-// == Q8. What is Terraform D?
-// `Terraform D` is a plugin used on most in-service systems and Windows. `terraform init` by default searches the following directories for plugins.
-//
+==  What is Terraform init?
+`terraform init` is a command to initialize an operational directory that contains Terraform configuration files. This command can be run multiple times. It is the first command that should be executed after writing new Terraform configurations.
+
+==  What is Terraform D?
+`Terraform D` is a plugin used on most in-service systems and Windows. `terraform init` by default searches the following directories for plugins.
+
 // == Q9. Is history the same as it is on the web while using TFS API to provide resources?
 // Yes, the history is similar to what is available on the web because the UI relies on the API as the base. The information displayed in the UI is available through other methods and the API.
 //
 // == Q10. Why is Terraform used for DevOps?
 // Terraform uses a JSON-like configuration language called HashiCorp Configuration Language (HCL). HCL has a very simple syntax that makes it easy for DevOps teams to define and enforce infrastructure configurations across multiple clouds and on-premises data centers.
 //
-// == Q11. Define null resource in Terraform.
-// `null_resource` implements the standard resource library, but no further action is taken. The `triggers` argument allows an arbitrary set of values that will cause the replacement of resources when changed.
-//
+==  Define null resource in Terraform.
+`null_resource` implements the standard resource library, but no further action is taken. The `triggers` argument allows an arbitrary set of values that will cause the replacement of resources when changed.
+
 // == Q12. What do you mean by Terraform Cloud?
 // Terraform Cloud is a platform that enables teams to use Terraform together, either on-demand or in response to various events. It is deeply integrated with Terraform's workflows and data, unlike a general-purpose continuous integration system. It includes easy access to shared state and secret data, detailed policy controls for updating infrastructure and governing the contents of Terraform, a private registry for sharing Terraform modules, and much more.
 //
-// == Q13. What do you understand by the terraform backend?
-// Each Terraform configuration can specify a backend, which defines two main things:
-// - Where operations are performed
-// - Where the state is stored (Terraform keeps track of all the resources created in a state file)
-//
+==  What do you understand by the terraform backend?
+Each Terraform configuration can specify a backend, which defines two main things:
+- Where operations are performed
+- Where the state is stored (Terraform keeps track of all the resources created in a state file)
+
 //
 // == Q13. What are the version controls supported by Terraform besides GitHub?
 // The version controls supported by Terraform include:
