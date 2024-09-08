@@ -32,21 +32,21 @@
 
 ** xref:Kubernetes:kubernetes.adoc[ Kubernetes Architecture ]
 
-** xref:Kubernetes:k8s_cheetsheet.adoc[ Kubernetes CheetSheet ]
+- xref:Kubernetes:k8s_cheetsheet.adoc[ Kubernetes CheetSheet ]
 
-** xref:Kubernetes:k8s_componets.adoc[ Kubernetes deploymenet types  ]
+- xref:Kubernetes:k8s_componets.adoc[ Kubernetes deploymenet types  ]
 
-** xref:Kubernetes:services.adoc[ Services  ]
+- xref:Kubernetes:services.adoc[ Services  ]
 
-** xref:Kubernetes:Config map and secrets.adoc[ Config map and secrets ]
+- xref:Kubernetes:config_map_and_secrets.adoc[ Config map and Secrets ]
 
-** xref:Kubernetes:Taints and Tolerations.adoc[ Taints and Tolerations  ]
+- xref:Kubernetes:Taints_and_Tolerations.adoc[ Taints and Tolerations  ]
 
-** xref:Kubernetes:labels_and_selectors.adoc[  Labels & Selectors  ]
+- xref:Kubernetes:labels_and_selectors.adoc[  Labels & Selectors  ]
 
-** xref:Kubernetes:nodeAffinitye_podAffinitye.adoc[  Node Affinitye & Pod Affinitye  ]
+- xref:Kubernetes:nodeAffinitye_podAffinitye.adoc[  Node Affinitye & Pod Affinitye  ]
 
-** xref:Kubernetes:role_rolebinding.adoc[ Roles, RoleBindings, ClusterRoles, and ClusterBindings  ]
+- xref:Kubernetes:role_rolebinding.adoc[ Roles, RoleBindings, ClusterRoles, and ClusterBindings  ]
 
 
 
