@@ -1,0 +1,16 @@
+= Traffic Management
+
+Istio’s traffic routing rules let you easily control the flow of traffic and API calls between services. Istio simplifies configuration of service-level properties like circuit breakers, timeouts, and retries, and makes it easy to set up important tasks like A/B testing, canary rollouts, and staged rollouts with percentage-based traffic splits. It also provides out-of-box reliability features that help make your application more resilient against failures of dependent services or the network.
+
+Istio’s traffic management model relies on the Envoy proxies that are deployed along with your services. All traffic that your mesh services send and receive (data plane traffic) is proxied through Envoy, making it easy to direct and control traffic around your mesh without making any changes to your services.
+
+
+The rest of this guide examines each of the traffic management API resources and what you can do with them. These resources are:
+
+- Virtual services
+- Destination rules
+- Gateways
+- Service entries
+- Sidecars
+
+To know more https://istio.io/latest/docs/concepts/traffic-management[ click here ] for offical website

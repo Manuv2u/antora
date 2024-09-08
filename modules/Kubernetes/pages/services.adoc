@@ -1,0 +1,46 @@
+= Types of Services present in Kubernetes:
+
+== What is a Kubernetes Service?
+
+The definition of Kubernetes services refers to a” Service which is a method for exposing a network application that is running as one or more Pods in your cluster.” Service is a static IP address or a permanent IP address that can be attached to the Pod. We need Service because the life cycles of Service and the Pod are not connected, so even if the Pod dies, the Service and its IP address will stay so we don’t have to change that endpoint every time the Pod dies.
+
+=== ClusterIp:
+
+image::clusterip.PNG[]
+
+The main aim is to restrict the service within the cluster. It does so by exposing the service at intervals.
+
+
+
+=== NodePort:
+
+image::nodeip.PNG[]
+
+This will expose the service on a static port present at the deployed node. A ClusterIP service to that NodePort service can route is automatically created.
+
+
+
+
+=== Load Balancer:
+
+image:https://media.geeksforgeeks.org/wp-content/uploads/20240419190604/Kubernetes---Cluster-IP-vs-Node-Port.webp[]
+
+The NodePort and clusterIP services are automatically Provisioned by which the ELB will rout the traffic forward towards the application.
+
+
+=== ClusterIP vs NodePort vs LoadBalancer
+[options="header"]
+|=========================
+| Feature         | ClusterIP                                | NodePort                                    | LoadBalancer
+
+| Accessibility   | Accessible only within the cluster       | Accessible externally via node’s IP         | Accessible externally via cloud load balancer
+
+| Use Cases       | Internal communication between services   | External access for development/testing     | External access for production applications
+
+| Load Balancing  | Load-balanced IP within the cluster       | Each node forwards traffic on a specific port| External load balancer distributes traffic
+
+| IP Addresses    | Single virtual IP address                 | Each node’s IP address                      | Typically uses a public IP provided by cloud
+
+| Scaling         | Scales horizontally with additional pods  | Scales horizontally with additional nodes   | Scales horizontally with additional nodes
+|=========================
+

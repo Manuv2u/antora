@@ -1,0 +1,63 @@
+= Taints and Tolerations – Concepts
+
+Taints and tolerations are a mechanism that allows you to ensure that pods are not placed on inappropriate nodes. Taints are added to nodes, while tolerations are defined in the pod specification. When you taint a node, it will repel all the pods except those that have a toleration for that taint. A node can have one or many taints associated with it.
+
+For example, most Kubernetes distributions will automatically taint the master nodes so that one of the pods that manages the control plane is scheduled onto them and not any other data plane pods deployed by users. This ensures that the master nodes are dedicated to run control plane pods.
+
+A taint can produce three possible effects:
+
+ - `NoSchedule`:  The Kubernetes scheduler will only allow scheduling pods that have tolerations for the tainted nodes.
+ - `PreferNoSchedule`: The Kubernetes scheduler will try to avoid scheduling pods that don’t have tolerations for the tainted nodes.
+ - `NoExecute`: Kubernetes will evict the running pods from the nodes if the pods don’t have tolerations for the tainted nodes.
+
+
+image:configmap_secrets.png[]
+
+== Use Cases for Taints and Tolerations
+
+=== `Dedicated Nodes`
+
+If you need to dedicate a group of worker nodes for a set of users, you can add a taint to those nodes, such as by using this command:
+----
+kubectl taint nodes nodename dedicated=groupName:NoSchedule
+----
+Then add tolerations of the taint in that user group’s pods so they can run on those nodes. To further ensure that pods only get scheduled on that set of tainted nodes, you can also add a label to those nodes, e.g., dedicated=groupName. Then use NodeSelector in the deployment/pod spec, which will make sure that pods from the user group are bound to the node group and don’t run anywhere else.
+
+=== Nodes with Special Hardware
+
+
+If there are worker nodes with special hardware, you need to make sure that normal pods that don’t need the special hardware don’t run on those worker nodes. Do this by adding a taint to those nodes as follows:
+----
+kubectl taint nodes nodename special=true:NoSchedule
+----
+Later on, the pods requiring special hardware can be run on those worker nodes by adding tolerations for the above taint.
+Taint-Based Evictions
+
+A taint with the NoExecute effect will evict the running pod from the node if the pod has no tolerance for the taint. The Kubernetes node controller will automatically add this kind of taint to a node in some scenarios so that pods can be evicted immediately and the node is “drained” (have all of its pods evicted). For example, suppose a network outage causes a node to be unreachable from the controller. In this scenario, it would be best to move all of the pods off the node so that they can get rescheduled to other nodes. The node controller takes this action automatically to avoid the need for manual intervention.
+
+The following are built-in taints:
+
+- node.kubernetes.io/not-ready
+- Node is not ready. This corresponds to the NodeCondition Ready attribute being “False”.
+- node.kubernetes.io/unreachable
+- Node is unreachable from the node controller. This corresponds to NodeCondition Ready being “Unknown”.
+- node.kubernetes.io/memory-pressure
+- Node has memory pressure.
+- node.kubernetes.io/disk-pressure
+- Node has disk pressure. In case of High disk utilization on nodes, it can cause slowness for application so its better to relocate pods.
+- node.kubernetes.io/pid-pressure
+- Node has PID pressure. Process ID is a limited resource and its saturation can cause down time for applications, so better to relocate pods to somewhere else.
+- node.kubernetes.io/network-unavailable
+- Node’s network is unavailable. As explained above.
+- node.kubernetes.io/unschedulable
+- Node is unschedulable. Any other reason that will make the node inappropriate for hosting pods, for example if the cluster is being scaled down and the node is being removed.
+
+=== Best practices for using taints and tolerationsPermalink
+
+  -  `Keep it simple`: Do not overcomplicate taint keys and values. Always try to keep them short and simple, which will help maintain them in the long term.
+
+  -  `Check for matching taints and tolerations before using NoExecute`: Ensure the required pods within the specified node have matching taints and tolerations before implementing the NoExecute effect.
+
+  -  `Monitor cluster costs`: Overuse of taints and tolerations can interfere with the scheduler, impacting the efficiency of the cluster and resulting in higher costs. Kubecost allows administrators to monitor and manage costs within the cluster and optimize the scheduling properly.
+
+   - `Use node affinity to schedule pods on specific nodes`: Taints and tolerations should not be used as a mechanism to schedule pods in specific nodes. This application may be viable in smaller clusters where repelled pods will get scheduled in any other available node. Yet, it should be implemented using node affinity combined with taints and tolerations.

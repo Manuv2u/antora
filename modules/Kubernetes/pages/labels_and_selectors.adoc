@@ -1,0 +1,132 @@
+= Label and Selectors
+
+In Kubernetes, Labels and Selectors are mentioned on the configuration file of the deployments and services. They are used to connect kubernetes services with a kubernetes pod.
+
+Labels are any key-value pairs that are used to identify that pod. The pod gets its label through the deployment which is like a blueprint for the pod before the pod is created. The Selector matches the label. Labels and selectors are required, to make connections between deployment, pods, and services.
+
+The deployment is given labels in the format below:
+
+----
+"metadata":
+{
+"labels":
+{
+"key1" : "value1",
+"key2" : "value2"
+}
+}
+
+----
+
+The service identifies the pods and deployments using selectors in the format below:
+
+----
+"selector":
+{
+"key" : "value"
+}
+----
+
+
+
+To View the labels we can use the command. To know more about kubernetes kubectl commanfs
+
+----
+$ kubectl get pods
+--show-labels
+----
+
+
+----
+kubectl get pods
+----
+
+
+We can attach a label during the pod creation, get the labels, attach the labels or add the labels even after creating a pod.
+
+To add a label in the  deployment,  we can use the command
+----
+$ kubectl label pod <pod_name>
+label:label_name
+----
+image::lables_sectores.png[]
+
+== Syntax And Character Set
+
+In kubernetes labels and selectors plays a major role to organize the object of the cluster they co dependent on one other. If you want identify the pods or interlink with any service in the kubernetes then you need to use labels and selectors.
+
+There are certain rules and syntax to follow while creating labels and selectors dependent on the type you are using.
+
+=== Label Syntax
+
+Labels are key:value pairs it consists of key and one value which are typically strings as shown below.
+----
+    labels:
+
+    Key: Value
+
+    app: nginx
+----
+Keys and values are case-sensitive the maximum length was 63 characters long.
+
+=== Selector Syntax
+
+Selectors are mainly divided into two types.
+
+ -   Equality-Based Selectors.
+ -   Set-Based Selectors.
+ -   Combining Selectors(Optional).
+
+==== Equality-Based Selectors
+
+The name itself says that based on equality where the operators used was =,== and also inequality !=.
+
+Example:
+----
+    “app = myapp” where app key set to myapp value
+----
+==== Set-Based Selectors.
+
+Based on the operators like ‘in’,’notin’,’exists’ and ‘does not exists’ it will key with the values with the given group of keys like
+
+Example:
+----
+“app in (web,api)” it will know match with the objects whose key was app and whose value was either “web or api”
+----
+==== Combining Selectors(Optional)
+
+You are going use the AND or OR to combine multiple selectors.
+
+Example:
+----
+“app = newapp” AND “app = firstapp” here it is going to have one key and two values to represent the key value pairs.
+----
+
+=== Using Labels Effectively
+
+Labels plays major role in kubernetes cluster for interlinking the container, pods and services. following are the some of the best practices you need to follow while creating an labels.
+
+  -  Choose Meaningful Labels: The labels should consists of meaingful names while assign them to any object they should represent the purpose of the object which you are creagting and also you should not use key or reserved word in kubernets for the labels. examples of labels you can use myapp: prod-environment like it represents this pod belongs to production environment.
+  -  Maintain Consistent: The labels which you are creating in the kubernets cluster make sure they are consistent across the cluster. This will helps you to manage the resources easily.
+  -  Unique label: The labels my be very unique from one another other wise it will creates the conflicts between the services and pods and nodes.
+  -  Use Labels For Scaling: Group the certain group of pods under the same service and by using the labels you scale all the pods at a time instead of managing them separately.
+  -  Use Labels To Organize: Labels can be used for grouping the pods with the same functionality.
+
+==== Updating Labels
+
+At first you created certain group of pod with certain labels and after some time because of business requirement you wanted to change the labels of the pod then instead modifying in the YAML file directly you can do by using the CLI command which is best practice than the editing the source file. To update the labels of the pod use the following command.
+----
+    kubectl label pods -l Existing-Key: Existing-value New-Key: New-value
+----
+== FAQs On Kubernetes Labels & Selectors
+=== What Is The Difference Between Labels And Annotations In Kubernetes?
+
+abels And Annotations In Kubernetes are both key value pairs. Labels will used to schedule, identify the pods and annotations are used to store the additional metadata of the pods.
+
+=== How Do I List Labels In Kubernetes?
+
+By using the following command you can use list the all the pods labels.
+
+----
+    kubectl get pods –show-labels
+----

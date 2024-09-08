@@ -1,0 +1,59 @@
+== What is Node Affinity?
+
+Node affinity is one of the mechanisms Kubernetes provides to define where Kubernetes should schedule a pod. It lets you define nuanced conditions that influence which Kubernetes nodes are preferred to run a specific pod.
+
+The Kubernetes scheduler can deploy pods automatically to Kubernetes nodes, without further instructions. However, in many cases you might want to define that pods should run only on specific nodes in a cluster, or avoid running on specific nodes. For example:
+
+ -   A pod might need specialized hardware such as an SSD drive or a GPU
+   - Pods that communicate frequently might need to be collocated with each other
+  -  Pods that have high computational requirements might need to be confined to specific nodes
+
+Node affinity, inter-pod affinity, and node anti-affinity, can help you support these and other use cases, defining flexible rules that govern which pods will schedule to which nodes.
+
+== Kubernetes Node Selector vs. Node Affinity
+
+In Kubernetes, you can create flexible definitions to control which pods should be scheduled to which nodes. Two such mechanisms are node selectors and node affinity. Both of them are defined in the pod template.
+
+Both node selectors and node affinity can use Kubernetes labels—metadata assigned to a node. Labels allow you to specify that a pod should schedule to one of a set of nodes, which is more flexible than manually attaching a pod to a specific node.
+
+The difference between node selector and node affinity can be summarized as follows:
+
+  -  A node selector is defined via the nodeSelector field in the pod template. It contains a set of key-value pairs that specify labels. The Kubernetes scheduler checks if a node has these labels to determine if it is suitable for running the pod.
+  -  Node affinity is an expressive language that uses soft and hard scheduling rules, together with logical operators, to enable more granular control over pod placement.
+
+Node Affinity, Inter-Pod Affinity and Anti-affinity
+
+== Kubernetes Node Affinity
+
+Node affinity defines under which circumstances a pod should schedule to a node. There are two types of node affinity:
+
+  -  `Hard affinity`:also known as required node affinity. Defined in the pod template
+underspec `affinity:nodeAffinity:requiredDuringSchedulingIgnoredDuringExecution`. This specifies conditions that a node must meet for a pod to schedule to it.
+  -  `Soft affinity`: also known as preferred known affinity. Defined in the pod template under `spec:affinity:nodeAffinity:preferredDuringSchedulingIgnoredDuringExecution`. This specifies conditions that a node should preferably meet, but if they are not present, it is still okay to schedule the pod (as long as hard affinity criteria are met).
+
+Both types of node affinity use logical operators including `In`, `NotIn`, `Exists`, and `DoesNotExist`.
+
+It is a good idea to define both hard and soft affinity rules for the same pod. This makes scheduling more flexible and easier to control across a range of operational situations.
+
+== Kubernetes Inter-Pod Affinity
+
+Inter-pod affinity lets you specify that certain pods should only schedule to a node together with other pods. This enables various use cases where collocation of pods is important, for performance, networking, resource utilization, or other reasons.
+
+Pod affinity works similarly to node affinity:
+
+ -   Supports hard and soft affinity via the `spec:affinity:podAffinity` field of the pod template.
+ -   Uses the same logical operators.
+   - The Kubernetes scheduler evaluates pods currently running on a node, and if they meet the conditions, it schedules the new pod on the node.
+
+== Kubernetes Anti-Affinity
+
+Anti-affinity is a way to define under which conditions a pod should `not` be scheduled to a node. Common use cases include:
+
+  -  `Avoiding single point of failure`:when distributing a service across multiple pods, it is important to ensure each pod runs on a separate node. Anti-affinity can be used to achieve this.
+  -  `Preventing competition for resources`:certain pods might require ample system resources. Anti-affinity can be used to place them away from other resource-hungry pods.
+
+Kubernetes provides the `spec:affinity:podAntiAffinity` field in the pod template, which allows you to prevent pods from scheduling with each other. You can use the same operators to define criteria for pods that the current pod should not be scheduled with.
+
+Note that there is no corresponding “node anti affinity” field. In order to define which nodes a pod should not schedule to, use the Kubernetes taints and tolerations feature (learn more in our guide to Kubernetes nodes).
+
+to know more https://komodor.com/learn/node-affinity/[Refer this page ]

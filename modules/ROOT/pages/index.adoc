@@ -52,6 +52,8 @@ This section provides detailed information on Docker, including containerization
 
 - xref:Docker:docker.adoc[ Docker Architecture ]
 
+- xref:Docker:docker_file.adoc[ Docker File ]
+
 - Coming soon.. 📅
 
 == Git
@@ -68,14 +70,33 @@ Learn about Kubernetes architecture, key components, and best practices for depl
 
 - xref:Kubernetes:k8s_cheetsheet.adoc[ Kubernetes CheetSheet ]
 
+- xref:Kubernetes:k8s_componets.adoc[ Kubernetes deploymenet types  ]
 
-Coming soon.. 📅
+- xref:Kubernetes:services.adoc[ Services  ]
+
+- xref:Kubernetes:config_map_and_secrets.adoc[ Config map and Secrets ]
+
+- xref:Kubernetes:Taints_and_Tolerations.adoc[ Taints and Tolerations  ]
+
+- xref:Kubernetes:labels_and_selectors.adoc[  Labels & Selectors  ]
+
+- xref:Kubernetes:nodeAffinitye_podAffinitye.adoc[  Node Affinitye & Pod Affinitye  ]
+
+- xref:Kubernetes:role_rolebinding.adoc[  Roles, RoleBindings, ClusterRoles, and ClusterBindings  ]
+
+
+
+
+
+- Coming soon.. 📅
 
 
 == Istio
 Istio is designed for extensibility and can handle a diverse range of deployment needs. Istio’s control plane runs on Kubernetes, and you can add applications deployed in that cluster to your mesh
 
 - xref:Istio:istio.adoc[ Istio Architecture ]
+
+- xref:Istio:istio_traffic.adoc[ Istio Traffic]
 
 == Terraform
 Understand the principles of infrastructure as code with Terraform, covering configuration, state management, and module reuse for scalable and maintainable infrastructure.

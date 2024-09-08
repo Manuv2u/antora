@@ -1,0 +1,264 @@
+=== What is Docker?
+
+Docker is an open-source platform where developers can containerize the application. Containers are accessible before Docker but have gained popularity as a result of Docker. The most crucial aspects of Docker are the Docker Engine and Docker Hub. The first one works on your local system to run your program, and the second one is similar to a cloud service where we can share our docker images with everyone.
+
+=== What is Dockerfile?
+
+The Dockerfile uses DSL (Domain Specific Language) and contains instructions for generating a Docker image. Dockerfile will define the processes to quickly produce an image. While creating your application, you should create a Dockerfile in order since the Docker daemon runs all of the instructions from top to bottom.
+
+  -   Dockerfile is the source code of the image
+
+=== What is Docker Image?
+
+Dockerfiles are text files that list instructions for the Docker daemon to follow when building a container image. When you execute the docker build command, the lines in your Dockerfile are processed sequentially to assemble your image.
+
+=== Dockerfile commands/Instructions
+1.**FROM**
+
+  -  Represents the base image(OS), which is the command that is executed first before any other commands.
+    - FROM is usually the first line in your Dockerfile. It refers to an existing image which becomes the base for your build. All subsequent instructions apply on top of the referenced image’s filesystem.
+
+Syntax
+----
+    FROM <ImageName>
+----
+
+Example: The base image will be ubuntu:19.04 Operating System.
+
+----
+FROM ubuntu:19.04
+----
+
+2.**COPY**
+
+ -   The copy command is used to copy the file/folders to the image while building the image.
+- COPY adds files and folders to your image’s filesystem. It copies between your Docker host and the work-in-progress image. Containers using the image will include all the files you’ve copied in.
+
+- The instruction’s first argument references the source path on your host. The second argument sets the destination path inside the image. It’s possible to directly copy from another Docker image using the --from flag:
+
+Syntax:
+----
+    COPY <Source> <Destination>
+----
+
+Example: Copying the .war file to the Tomcat webapps directory
+----
+COPY target/java-web-app.war  /usr/local/tomcat/webapps/java-web-app.war
+----
+
+Example: Copies the path /usr/bin/composer from the composer:2 image
+----
+COPY --from=composer:2 /usr/bin/composer composer
+----
+
+3.**ADD**
+
+ -   While creating the image, we can download files from distant HTTP/HTTPS destinations using the ADD command.
+ - ADD works similarly to COPY but additionally supports remote file URLs and automatic archive extraction. Archives will be extracted into the destination path in your container. Decompression of gzip, bzip2, and xz formats is supported.
+
+Although ADD can simplify some image authorship tasks, its use is discouraged because its behavior masks important details. Accidentally using ADD instead of COPY can be confusing because archive files will be extracted into your container instead of being copied as-is.
+
+Syntax
+----
+    ADD <URL>
+----
+Example: Try to download Jenkins using ADD command
+----
+ADD https://get.jenkins.io/war/2.397/jenkins.war
+----
+4.**RUN**
+
+  -  Scripts and commands are run with the RUN instruction. The execution of RUN commands or instructions will take place while you create an image on top of the prior layers (Image).
+ - RUN runs a command inside the image you’re building. It creates a new image layer on top of the previous one; this layer will contain the filesystem changes that the command applies. RUN instructions are most commonly used to install and configure packages that your image requires.
+
+Syntax
+----
+    RUN < Command + ARGS>
+----
+Example
+----
+RUN touch file
+----
+5.**CMD**
+
+  -  The main purpose of the CMD command is to start the process inside the container and it can be overridden.
+
+Syntax
+----
+    CMD [command + args]
+----
+Example: Starting Jenkins
+----
+CMD ["java","-jar", "Jenkins.war"]
+----
+6.**ENTRYPOINT**
+
+ -   A container that will function as an executable is configured by ENTRYPOINT. When you start the Docker container, a command or script called ENTRYPOINT is executed.
+  -  It can’t be overridden.The only difference between CMD and ENTRYPOINT is CMD can be overridden and ENTRYPOINT can’t.
+
+Syntax
+----
+    ENTRYPOINT [command + args]
+----
+Example: Executing the echo command.
+----
+ENTRYPOINT ["echo","Welcome to GFG"]
+----
+7.**MAINTAINER**
+
+  -  By using the MAINTAINER command we can identify the author/owner of the Dockerfile and we can set our own author/owner for the image.
+
+Syntax:
+----
+    MAINTAINER <NAME>
+----
+Example: Setting the author for the image as a GFG author.
+----
+MAINTAINER  GFG author
+----
+
+
+=== Stages of Creating Docker Image from Dockerfile
+
+The following are the stages of creating docker image form Dockerfile:
+
+  -  Create a file named Dockerfile.
+  -  Add instructions in Dockerfile.
+  -  Build Dockerfile to create an image.
+  -  Run the image to create a container.
+
+=== Example 1: Steps To Create Dockerfile With Example (Jenkins)
+
+In this example, we will write the Dockerfile for Jenkins and build an image by using Dockerfile which has been written for Jenkins and we will run it as a container.
+
+==== Step 1: Open Docker and create a file with the name Dockerfile.
+
+==== Step 2: Open the Dockerfile by using the vi editor and start writing the command that is required to build the Jenkins image.
+Specifying Docker Version
+Dockerfile for Jenkins image
+
+We used JDK as a base image because Jenkins’s pre-requisite is JDK after that we added a command called MAINTAINER which indicates the author or owner of the docker file and we added the ENV variable where we set the path for the Jenkins and by using RUN command we are creating the path and by using ADD we are downloading the Jenkins and starting the .war file with the help of CMD command.
+----
+FROM openjdk:11-jdk
+MAINTAINER GFG author
+LABEL env=production
+ENV apparea /data/app
+RUN mkdir -p $apparea
+ADD https://get.jenkins.io/war/2.397/jenkins.war $apparea
+WORKDIR $apparea
+EXPOSE 8080
+CMD ["java","-jar","jenkins.war"]
+----
+
+=== Dockerfile Best Practices
+
+Writing a Dockerfile for your application is usually a relatively simple task, but there are some common gotchas to watch out for. Here are 10 best practices you should follow to maximize usability, performance and security.
+
+**1. Don’t use latest for your base images**
+
+Using an image such as node:latest in your FROM instructions is risky because it can expose you to unexpected breaking changes. Most image authors immediately switch latest to new major versions as soon as they’re released. Rebuilding your image could silently select a different version, causing a broken build or malfunctioning container software.
+
+Selecting a specific tag such as node:16 is safer because it’s more predictable. Only use latest when there’s no alternative available.
+
+**2. Only use trusted base images**
+
+Similarly, it’s important to choose trusted base images to protect yourself from backdoors and security issues. The content of the image referenced by your FROM instruction is included in your image; compromised base images could contain malware that runs inside your containers. Where possible, try to use Docker Hub images that are marked as official or submitted by a verified publisher.
+
+**3. Use HEALTHCHECK to enable container health checks**
+
+Health checks tell Docker and administrators when your containers enter a failed state. Orchestrators such as Docker Swarm and Kubernetes can use this information to automatically restart problematic containers.
+
+Enable health checks for your containers by adding a HEALTHCHECK instruction to your Dockerfile. It sets a command Docker will run inside the container to check whether it’s still healthy:
+----
+HEALTHCHECK --timeout=3s CMD curl -f http://localhost || exit 1
+----
+The healthiness of your containers is displayed when you run the docker ps command to list them:
+----
+$ docker ps
+
+CONTAINER ID   IMAGE                	COMMAND              CREATED    	STATUS
+
+335889ed4698   demo-image:latest      "httpd-foreground"   2 hours ago	Up 2 hours (healthy)
+----
+**4. Set your ENTRYPOINT and CMD correctly**
+
+ENTRYPOINT and CMD are closely related instructions. ENTRYPOINT sets the process to run when a container starts, while CMD provides default arguments for that process. You can easily override CMD by setting a custom argument when you start containers with docker run.
+
+In the example Dockerfile created above, ENTRYPOINT ["node"] and CMD ["main.js"] result in node main.js executing when the container is started with docker run demo-image:latest.
+
+If you ran docker run demo-image:latest app.js, then Docker would call node app.js instead.
+
+Read more about the differences between Docker ENTRYPOINT and CMD.
+
+**5. Don’t hardcode secrets into images**
+
+Dockerfiles shouldn’t contain any hardcoded secrets such as passwords and API keys. Values set in your Dockerfile apply to all containers using the image. Anyone with access to the image can inspect your secrets.
+
+Set environment variables when individual containers start instead of providing defaults in your Dockerfile. This prevents accidental security breaches.
+
+**6. Label your images for better organization**
+
+Teams with many different images often struggle to organize them all. You can set arbitrary metadata on your images using the Dockerfile LABEL instruction. This provides a convenient way to attach relevant information that’s specific to your project or application. By convention, labels are commonly set using reverse DNS syntax:
+----
+LABEL com.example.project=api
+
+LABEL com.example.team=backend
+----
+Container management tools usually display image labels and let you filter to different values.
+
+**7. Set a non-root user for your images**
+
+Docker defaults to running container processes as root. This is problematic because root in the container is the same as root on your host. A malicious process which escapes the container’s isolation could run arbitrary commands on your Docker host.
+
+You can mitigate this risk by including the USER instruction in your Dockerfile. This sets the user and group which your container will run as. It’s good practice to assign a non-root user in all of your Dockerfiles:
+----
+# set the user
+
+USER demo-app
+
+
+
+# set the user with a UID
+
+USER 1000
+
+
+
+# set the user and group
+
+USER demo-app:demo-group
+----
+
+**8. Use .dockerignore to prevent long build times**
+
+The build context is the set of paths that the docker build command has access to. Images are often built using your working directory as the build context via docker build ., but this can cause redundant files and directories to be included.
+
+Paths which aren’t used by your Dockerfile, or which will be recreated inside the container by other instructions, should be removed from the build context to improve performance. This will save time when Docker copies the build context at the start of the build process.
+
+Add a .dockerignore file to your working directory to exclude specific files and directories. The syntax is similar to .gitignore:
+----
+.env
+
+.local-settings
+
+node_modules/
+----
+**9. Keep your images small**
+
+Docker images can become excessively large. This slows down build times and increases transfer costs when you move your images between registries.
+
+Try to reduce the sizes of your images by only installing the minimum set of packages required for your software to function. It also helps to use compact base images when possible, such as Alpine Linux (5 MB), instead of larger distributions like Ubuntu (28 MB).
+
+**10. Lint your Dockerfile and scan images for vulnerabilities**
+
+Dockerfiles can contain errors that break your build, cause unexpected behavior, or violate best practices. Use a linter such as Hadolint to check your Dockerfile for problems before you build.
+
+Hadolint is easily run using its own Docker image:
+----
+$ docker run --rm -i hadolint/hadolint < Dockerfile
+----
+The results will be displayed in your terminal.
+
+You should also scan built images for vulnerabilities. Container scanners such as Trivy can detect outdated packages and known CVEs inside your image’s filesystem. Running a scan before you deploy helps prevent exploitable containers from reaching production environments.
+
+FOR MORE IMFROMATION https://docs.docker.com/build/concepts/dockerfile/[Docker file docs.]
