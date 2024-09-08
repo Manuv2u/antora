@@ -106,7 +106,7 @@ Stop instance → Select the instance → Action → Instance settings → Edit 
 Yes, we can create Amazon Machine Images (AMIs) from either running or stopped instances.
 Select the instance → Action → Images and templates → Create AMI
 
-# If the image is created on a running instance, the file system integrity on the created image cannot be guaranteed. If you're confident that your instance is in a consistent state appropriate for image creation, you can tell Amazon EC2 not to power down and reboot the instance. To do this, for No reboot, select the Enable checkbox.
+- If the image is created on a running instance, the file system integrity on the created image cannot be guaranteed. If you're confident that your instance is in a consistent state appropriate for image creation, you can tell Amazon EC2 not to power down and reboot the instance. To do this, for No reboot, select the Enable checkbox.
 
 == How do you get the System Log from an instance?
 
@@ -491,12 +491,14 @@ Average Application Load Balancer request count per target.
 == Adding Notifications in Auto Scaling Groups
 
 AWS Auto Scaling is a way to manage a dynamic fleet of EC2 instances. The Auto Scaling Group will keep the number of running instances in sync with the desired value while the desired value stays in a boundary defined by min and max instances. AWS Auto Scaling Notifications are triggered on:
-. Successful instance launch
-. Failed instance launch
-. Successful instance termination
-. Failed instance termination
+
+- Successful instance launch
+- Failed instance launch
+- Successful instance termination
+- Failed instance termination
 
 Steps to add notifications:
+
 1. Click on the Auto Scaling Groups link on the left.
 2. Select the Auto Scaling Group you want to monitor.
 3. Select the Notifications tab.
