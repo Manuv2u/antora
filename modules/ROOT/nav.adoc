@@ -1,5 +1,15 @@
 * xref:index.adoc[Architecture Insights]
 
+* Git
+
+**  xref:git:scm.adoc[ SCM & VCS ]
+
+**  xref:git:git_basics.adoc[ Git ( Basic to Advance ) ]
+
+* HTTP response status codes
+** xref:Error_status_code:error_status_code.adoc[HTTP response status codes]
+
+
 * PYTHON
 ** xref:PYTHON:python.adoc[Python]
 

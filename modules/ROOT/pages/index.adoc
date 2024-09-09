@@ -17,6 +17,20 @@ Welcome to Architecture Insights, your comprehensive resource for understanding 
 // 10. <<AWS, AWS>> ☁️
 // 11. <<Antora, Antora>> 📘
 
+== Git
+Explore the fundamentals of Git, version control concepts, branching strategies, and workflows that optimize collaboration and code management.
+
+-  xref:git:scm.adoc[ SCM & VCS ]
+
+-  xref:git:git_basics.adoc[ Git ( Basic to Advance ) ]
+
+- Coming soon.. 📅
+
+
+== HTTP response status codes
+
+- xref:Error_status_code:error_status_code.adoc[HTTP response status codes]
+
 == Python
 
 - xref:PYTHON:python.adoc[Basics of Python ]
@@ -56,10 +70,6 @@ This section provides detailed information on Docker, including containerization
 
 - Coming soon.. 📅
 
-== Git
-Explore the fundamentals of Git, version control concepts, branching strategies, and workflows that optimize collaboration and code management.
-
-Coming soon.. 📅
 
 
 
