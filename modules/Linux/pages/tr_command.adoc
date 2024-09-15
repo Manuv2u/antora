@@ -1,0 +1,181 @@
+
+== tr command in Unix/Linux with examples
+
+
+The tr command is a UNIX command-line utility for translating or deleting characters. It supports a range of transformations including uppercase to lowercase, squeezing repeating characters, deleting specific characters, and basic find and replace. It can be used with UNIX pipes to support more complex translation. tr stands for translate.
+
+Syntax :
+----
+tr [OPTION] SET1 [SET2]
+----
+*Options -c :* complements the set of characters in string.i.e., operations apply to characters not in the given set -d : delete characters in the first set from the output. -s : replaces repeated characters listed in the set1 with single occurrence -t : truncates set1.
+
+Sample Commands
+
+=== 1. How to convert lower case characters to upper case. To convert characters from lower case to upper case, you can either specify a range of characters or use the predefined character classes.
+----
+$ cat greekfile
+----
+Output:
+----
+WELCOME TO
+cloudcatalyst
+----
+----
+$ cat greekfile | tr [a-z] [A-Z]
+----
+Output:
+----
+WELCOME TO
+cloudcatalyst
+----
+or
+----
+$ cat greekfile | tr [:lower:] [:upper:]
+----
+Output:
+----
+WELCOME TO
+cloudcatalyst
+----
+Alternatively, you can provide input for the tr command using redirection:
+----
+tr [:lower:] [:upper:] <greekfile
+----
+Output:
+----
+WELCOME TO
+cloudcatalyst
+----
+=== 2. How to translate white-space characters to tabs. The following command translates all the white-space characters to tabs
+----
+$ echo "Welcome To cloudcatalyst" | tr [:space:] "\t"
+----
+Output:
+----
+Welcome    To    cloudcatalyst
+----
+In the previous example we can also use redirection to provide intput for tr. Although this time we will use a here string for that:
+----
+tr [:space:] "\t" <<< "Welcome To cloudcatalyst"
+----
+Output:
+----
+Welcome    To    cloudcatalyst
+----
+=== 3. How to translate braces into parenthesis. You can also translate from and to a file. In this example we will translate braces in a file with parenthesis.
+----
+$ cat greekfile
+----
+Output:
+----
+{WELCOME TO}
+cloudcatalyst
+----
+----
+$ tr "{}" "()" <greekfile >newfile.txt
+----
+Output:
+----
+(WELCOME TO)
+cloudcatalyst
+----
+The above command will read each character from “geekfile.txt”, translate if it is a brace, and write the output to “newfile.txt”.
+
+=== 4. How to squeeze a sequence of repetitive characters using -s option. To squeeze repetitive occurrences of characters specified in a set use the -s option. This removes repeated instances of characters of the last SET specified. OR we can say that, you can convert multiple continuous spaces with a single space
+----
+$ echo "Welcome    To    cloudcatalyst" | tr -s " "
+----
+Output:
+----
+Welcome To cloudcatalyst
+----
+And again, accomplish the same task but using a string here:
+----
+tr -s " " <<< "Welcome    To    cloudcatalyst"
+----
+Output:
+----
+Welcome To cloudcatalyst
+----
+=== 5. How to delete specified characters using -d option. To delete specific characters use the -d option. This option deletes characters in the first set specified.
+----
+$ echo "Welcome To cloudcatalyst" | tr -d W
+----
+Output:
+----
+elcome To cloudcatalyst
+----
+Or equivalently use:
+----
+tr -d W <<< "Welcome to cloudcatalyst"
+----
+Output:
+----
+elcome To cloudcatalyst
+----
+=== 6. To remove all the digits from the string, you can use
+----
+$ echo "my ID is 73535" | tr -d [:digit:]
+----
+or
+----
+$ tr -d [:digit:] <<< "my ID is 73535"
+----
+Output:
+----
+my ID is
+----
+=== 7. How to complement the sets using -c option You can complement the SET1 using -c option. For example, to remove all characters except digits, you can use the following.
+----
+$ echo "my ID is 73535" | tr -cd [:digit:]
+----
+or
+----
+$ tr -cd [:digit:] <<< "my ID is 73535"
+----
+Output:
+----
+73535
+----
+
+== tr command in Unix/Linux with examples – FAQs
+=== What is the tr command in Unix?
+
+The tr command in Unix is used for translating or deleting characters from standard input and writing the result to standard output. It is commonly used for text processing tasks such as converting case, deleting characters, and squeezing repeated characters.
+
+=== What is tr for Linux?
+
+ In Linux, the tr command is a utility for translating or deleting characters. It is used to replace, remove, or compress sequences of characters in a stream.
+
+=== How to use tr to delete characters?
+
+To delete characters using tr, use the -d option followed by the characters you want to delete. For example, to delete all digits from the input:
+----
+echo "hello123" | tr -d '0-9'
+----
+Output:
+----
+hello
+----
+=== How does tr remove white space in Linux?
+
+To remove white space characters using tr, use the -d option and specify the space character:
+----
+echo "hello world" | tr -d ' '
+----
+This will remove all spaces from the input. For all white spaces (spaces, tabs, etc.):
+----
+echo "hello  world" | tr -d '[:space:]'
+----
+=== How to remove newline in tr command?
+
+To remove newline characters using tr, use the -d option and specify the newline character:
+----
+echo -e "hello\nworld" | tr -d '\n'
+----
+Output:
+----
+helloworld
+
+----

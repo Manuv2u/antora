@@ -1,0 +1,79 @@
+== Export command in Linux with Examples
+
+
+The ‘export’ command is one of the essential built-in commands in the Bash shell, allowing users to manage environment variables effectively. It is defined in POSIX standards, which state that the shell will assign the export attribute to specified variables, causing them to be included in the environment of subsequently executed commands. Simply put, the export command makes environment variables available to child processes, enabling changes to be reflected immediately in the current shell session without needing to start a new session.
+
+=== What is the ‘export’ Command?
+
+In Bash, environment variables are set when you start a new shell session, and changes to these variables are not automatically picked up by the shell. The export command allows you to update and propagate the values of environment variables to the current session and any spawned child processes, ensuring that changes are immediately effective. This feature is crucial for tasks such as setting up paths, configuring environment-specific variables, or defining settings that multiple programs need to access.
+
+*Syntax:*
+----
+export [-f] [-n] [name[=value] ...] or export -p
+----
+=== Options of ‘export’ command
+*1. Without any argument:*
+
+To view all the exported variables.
+
+Example:
+
+image:export_1.png[]
+
+*2. -p Option:*
+
+To view all exported variables on current shell.
+
+Syntax:
+----
+$ export -p
+----
+Example:
+
+image::export_2.png[]
+
+*3. -f Option:*
+
+It must be used if the names refer to functions. If -f is not used, the export will assume the names are variables.
+
+Syntax:
+----
+$ export -f function_name
+----
+Example:
+
+To export shell function:
+
+image::export_3.png[]
+
+NOTE: Bash command is used for showing that in the child shell, the shell function got exported.
+
+*4. name[=value]:*
+
+You can assign value before exporting using the following syntax.
+
+Syntax:
+----
+$ export name[=value]
+----
+Example:
+
+To set vim as a text editor
+
+image::export_setting_var.png[]
+
+NOTE: No output will be seen on screen, to see exported variable grep from exported ones is used.
+
+*5. -n Option:*
+
+Named variables (or functions, with -f) will no longer be exported.
+
+Syntax:
+----
+$ export -n variable_name
+----
+Example:
+
+image::export_removing_var.png[]
+
+NOTE: No output will be seen on screen, to see exported variable grep from exported ones is used.

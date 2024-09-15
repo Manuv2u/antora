@@ -1,0 +1,248 @@
+
+= How to Securely Copy Files in Linux | scp Command
+
+
+scp (secure copy) command in Linux system is used to copy file(s) between servers in a secure way. The SCP command or secure copy allows the secure transferring of files between the local host and the remote host or between two remote hosts. It uses the same authentication and security as it is used in the Secure Shell (SSH) protocol. SCP is known for its simplicity, security, and pre-installed availability.
+
+== Syntax of scp Command in Linux
+
+*The Basc Syntax of scp command in Linux is as follows:*
+----
+scp [options] [[user@]host1:]source_file_or_directory ... [[user@]host2:]destination
+----
+In this syntax:
+
+  -  `options`: These are various options that modify the behavior of the SCP command, such as -i for specifying an identity file, -l for limiting bandwidth, -o for specifying SSH options, -P for specifying a custom SSH port, and -S for specifying a program to use for the encrypted connection.
+  -  `[[user@]host1:]source_file_or_directory`: This represents the source file or directory. It can be local or on a remote machine specified by user@host1:.
+  -  `. . . :` This indicates that you can specify multiple source files or directories.
+  -  `[[user@]host2:]destination`: This is the destination where the files or directories will be copied. It can be local or on a remote machine specified by user@host2:.
+
+Options in scp command in Linux
+
+Most commonly used Options in scp Command in Linux.
+[cols="1,2", options="header"]
+|===
+| Options | Description
+
+| -P
+| Specifies the port to connect on the remote host.
+
+| -p
+| Preserves modification times, access times, and modes from the original file.
+
+| -q
+| Disables the progress meter.
+
+| -r
+| Recursively copy entire directories.
+
+| -s
+| Name of program to use for the encrypted connection. The program must understand ssh(1) options.
+|===
+
+
+
+Practical Example to Securly Copy a File in Linux
+
+
+=== How to Securely copy a file from a local machine to a remote machine in Linux
+
+Syntax:
+---
+scp [file_name]  remoteuser@remotehost:/remote/directory
+---
+Here
+
+  -  *file_name* = The name of the file that needs to be copied.
+  -  *remoteuser* =The username of the remote host.
+  -  **remotehost **= The IP address or hostname of the remote host.
+  -  */remote/directory* = The directory where the file should be copied on the remote machine.
+
+*For example:* If we want to copy a file name “test.txt” from local system to a
+
+-    “remoteuser” = “Jayesh”
+ -   “remotehost” = “10.143.90.2”
+ -   “/remote/directory” = “/home/jayesh”
+
+Syntax:
+----
+scp test.txt jayesh@10.143.90.2:/home/jayesh
+----
+
+
+To Verify: Use `ls` command in the location we copied file.
+
+=== How to Securely copy a file from remote machine to our local machine
+
+syntax:
+----
+scp user@remotehost:/home/user/file_name
+----
+here
+
+ -   “user” = username of remote system.
+ -   “remotehost” = IP address (or hostname) of remote system.
+ -   “/home/user/file_name” = path of file that has to be copied.
+ -   “.” = this means that we are copying that file in current location in local system.
+
+For Example: If we have
+
+ -   “user” = jayesh
+ -   “remotehost” = 10.143.90.2
+  -  “home/user/file_name” = home/jayesh/test1.txt
+
+syntax:
+----
+scp jayesh@10.143.90.2:/home/jayesh/test1.txt
+----
+
+*To verify:* use dir (in windows cmd)
+
+==== -P Option in scp Command
+
+It is used to Securely Copy File to a Remote Machine on a Non-Standard SSH Port and specify the port to connect on the remote host. It is useful when our SSH server is listening on a non-standard port.
+
+Syntax:
+----
+scp -P port source_file user@hostname:destination_file
+----
+For Example: If we want to copy a file “test2.txt” from local machine to a remote machine with IP address “10.143.90.2” on port 2222 , user = “jayesh” and location = “/home/jayesh/”.
+By default, the scp uses ssh over port 22 for transferring the files. Changing the port might be necessary if the designated port 22 is not open on the remote host.
+
+syntax:
+----
+scp -P 2222 test2.txt jayesh@10.143.90.2:/home/jayesh/
+----
+
+
+*To Verify:* Use `ls` command in remote system in the location we have copied the file.
+
+==== -p Option in scp Command
+
+This option is used when we want the original metadata of the file that has been transferred. Basically, it preserves modification time, access time, and modes from the original file.
+
+Syntax:
+----
+scp -p source_file user@hostname:destination_file
+----
+*For Example:* If we want to copy a file “test3.txt” from local machine to a remote machine with IP address “10.143.90.2”, user = “jayesh” and location = “/home/jayesh/”
+
+Syntax:
+----
+scp -p test3.txt jayesh@10.143.90.2:/home/jayesh/
+----
+
+===  -q Option in scp Command
+
+It Securely Copy File with Quiet Mode – Disabling Progress Meter .This option hides the progress of the file transfer on the terminal.
+
+Syntax:
+----
+scp -q source_file user@hostname:destination_file
+----
+For Example: If we want to copy a file “test4.txt” from local machine to a remote machine with IP address “10.143.90.2”, user = “jayesh” and location = “/home/jayesh/”
+
+Syntax:
+----
+scp -q test4.txt jayesh@10.143.90.2:/home/jayesh/
+----
+
+
+*To Verify:* Use `ls` command in remote system in the location we have copied the file.
+
+=== -r Option in scp Command
+
+This option is used when we want to copy an entire directory and its contents. Which basically means copying entire directory recursively.
+
+Syntax:
+----
+scp -r Directory_name user@hostname:destination_file
+----
+*For Example:* If we want to copy a Directory content name “new” from local machine to a remote machine with IP address “10.143.90.2”, user = “jayesh” and location = “/home/jayesh/new1/”
+
+Syntax:
+----
+scp -r new jayesh@10.143.90.2:/home/jayesh/new1/
+----
+
+
+*To Verify:* Use `ls` command in remote system in the location we have copied the file.
+
+== How to Securely Copy Files in Linux | scp command in Linux – FAQs
+=== What is the scp -r command in Linux?
+
+The scp -r command in Linux is used to copy an entire directory and its contents. This option enables recursive copying of files within the specified directory. Here’s an example:
+----
+scp -r username@source_machine:/path/to/source/directory
+username@destination_machine:/path/to/destination/
+----
+This command recursively copies all files and subdirectories from the source directory to the specified destination.
+
+=== What is scp command in Linux.?
+
+The scp command in Linux is used to copy files or directories between hosts over a network, and it utilizes the SSH (Secure Shell) protocol for secure file transfer. Here’s an example of copying a file from a local machine to a remote server:
+----
+scp /path/to/local/file  username@remote_machine:/path/to/destination/
+----
+This command securely transfers the specified file to the remote machine.
+
+===  What is the reverse scp command in Linux?
+
+There is no reverse scp command in Linux. The scp command is inherently designed for copying files from a source (local or remote) to a destination (local or remote). There is no specific command for copying files in the reverse direction. If you want to copy a file from a remote location to your local system, you still use the regular scp command.
+
+For example:
+----
+scp username@remote_machine:/path/to/source/file /path/to/local/destination/
+----
+This command copies the specified file from the remote machine to the local destination.
+
+=== How do I use the scp command to copy files between two Linux machines securely?
+
+To copy files securely between Linux machines, use the following syntax:
+----
+scp [options]  [destination]
+----
+For example:
+----
+scp username@source_machine:/path/to/source/file  username@destination_machine:/path/to/destination/
+----
+=== What are the common options used with scp for secure file transfer?
+
+Some common options used with scp include:
+
+- *-r*: Recursively copy entire directories.
+- ** -P port**: Specify the port to connect to on the remote host.
+- *-i identity_file*: Specify the private key file for authentication.
+- *-v*: Enable verbose mode for detailed output during the transfer.
+
+=== How can I copy files from a local machine to a remote server using scp?
+
+To copy files from a local machine to a remote server, use the following syntax:
+----
+scp /path/to/local/file username@remote_machine:/path/to/destination/
+----
+=== How do I improve the security of scp file transfers?
+
+To enhance security during scp transfers, consider:
+
+- Using SSH key authentication for passwordless logins.
+- Specifying a non-default port for added security (-P port option).
+- Restricting access by setting appropriate file permissions on the source and destination directories.
+
+=== How to specify the SSH port in Linux for scp?
+
+To specify the SSH port in Linux for scp, you use the -P option followed by the port number. The -P flag allows you to define a custom port for the SSH connection, which is useful when the SSH server on the remote machine operates on a non-default port.
+
+Here is an example:
+----
+scp -P <port_number> your_file.txt user@remote_server:/path/to/destination/
+----
+In this command:
+
+- Replace `<port_number>` with the actual port number you want to use for the SSH connection.
+- `your_file.txt` is the file you want to copy.
+- `user` is the username on the remote server.
+- `remote_server` is the address or hostname of the remote server.
+- `/path/to/destination/` is the destination directory on the remote server where you want to copy the file.
+
+By using the `-P` option followed by the desired port number, you ensure that `scp` connects to the remote server using the specified port for the secure copy operation.

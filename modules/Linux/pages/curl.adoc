@@ -1,0 +1,191 @@
+
+= curl Command in Linux with Examples
+
+
+In the realm of Linux, mastering the command line is essential for efficient and powerful usage of the operating system. Among the number of command line tools available, `curl` stands out as one of the most versatile and powerful utilities. Originally developed by Daniel Stenberg, `curl` is a command-line tool and library for transferring data with URLs. It supports a wide range of protocols, making it an invaluable tool for fetching, uploading, and managing data over the Internet. In this comprehensive guide, we delve into the intricacies of the `curl` command in Linux, exploring its features, options, and various use cases.
+
+== Understanding the Basics
+
+At its core, `curl` is designed to transfer data using various protocols such as HTTP, HTTPS, FTP, SCP, SFTP, and more. Its syntax is straightforward:
+----
+curl [options] [URL]
+----
+Here,
+
+- [options] can be various command-line flags that modify the behavior of curl
+
+- [URL] specifies the location from which to fetch or send data.
+
+=== Fetching Data Using curl Command
+
+One of the most common use cases of `curl` is fetching data from a URL. This could be a simple HTML page, a file, or any resource accessible via a URL. To fetch a web page using `curl`, you simply provide the URL as an argument:
+----
+curl https://example.com
+----
+This command will retrieve the HTML content of the specified URL and display it in the terminal.
+----
+curl https://www.geeksforgeeks.org
+----
+This should display the content of the URL on the terminal. The URL syntax is protocol dependent and multiple URLs can be written as sets like:
+----
+curl http://site.{one, two, three}.com
+----
+URLs with numeric sequence series can be written as:
+----
+curl ftp://ftp.example.com/file[1-20].jpeg
+----
+*Progress Meter:* curl displays a progress meter during use to indicate the transfer rate, amount of data transferred, time left, etc.
+----
+curl -# -O ftp://ftp.example.com/file.zip
+curl --silent ftp://ftp.example.com/file.zip
+----
+If you like a progress bar instead of a meter, you can use the -# option as in the example above, or –silent if you want to disable it completely.
+
+
+
+=== Handling HTTP Requests Using curl Command
+
+The `curl` allows you to send custom HTTP requests with various methods such as GET, POST, PUT, DELETE, etc. For instance, to send a GET request:
+----
+curl -X GET https://api.example.com/resource
+----
+Similarly, to send a POST request with data:
+----
+curl -X POST -d "key1=value1&key2=value2" https://api.example.com/resource
+----
+In this example, the `-d` flag is used to specify data to be sent with the request.
+
+=== Downloading Files Using curl Command
+
+curl is also widely used for downloading files from the internet. To download a file, you simply provide the URL of the file as an argument:
+
+-o: saves the downloaded file on the local machine with the name provided in the parameters.
+*Syntax:*
+----
+curl -o [file_name] [URL...]
+----
+Example:
+----
+curl -o hello.zip ftp://speedtest.tele2.net/1MB.zip
+----
+
+
+The above example downloads the file from the FTP server and saves it with the name hello.zip.
+
+*-O:* This option downloads the file and saves it with the same name as in the URL.
+Syntax:
+----
+curl -O [URL...]
+----
+Example:
+----
+curl -O ftp://speedtest.tele2.net/1MB.zip
+----
+
+
+=== Uploading Files
+
+In addition to downloading, `curl` can also upload files to a server using various protocols. For example, to upload a file via FTP:
+----
+curl -T uploadfile.txt ftp://example.com/upload/
+----
+In this example, `-T uploadfile.txt` specifies the file to be uploaded (`uploadfile.txt`). The `-T` flag is used to upload a file with FTP. `curl` then sends the specified file to the FTP server located at `ftp://example.com/upload/`. This is useful for automating file uploads or transferring files via FTP from the command line.
+
+=== Handling Authentication
+
+curl supports various authentication methods including Basic, Digest, and OAuth. You can specify authentication credentials using the `-u` flag:
+----
+curl -u username:password https://example.com/api
+----
+The `-u` flag is used to specify authentication credentials (`username:password`). In this example, `curl` will include these credentials in the request header when accessing `https://example.com/api`. This is commonly used when accessing protected resources or APIs that require authentication.
+
+*Examples of Curl Command*
+=== -C – Option:
+
+This option resumes download which has been stopped due to some reason. This is useful when downloading large files and was interrupted.
+Syntax:
+----
+curl -C - [URL...]
+----
+Example:
+----
+curl -C - -O ftp://speedtest.tele2.net/1MB.zip
+----
+
+
+=== –limit-rate Option:
+
+This option limits the upper bound of the rate of data transfer and keeps it around the given value in bytes.
+Syntax:
+----
+curl --limit-rate [value] [URL]
+----
+Example:
+----
+curl --limit-rate 1000K -O ftp://speedtest.tele2.net/1MB.zip
+----
+
+
+The command limits the download to 1000K bytes.
+=== -u Option:
+
+curl also provides options to download files from user authenticated FTP servers.
+
+Syntax:
+----
+curl -u {username}:{password} [FTP_URL]
+----
+Example:
+----
+curl -u demo:password -O ftp://test.rebex.net/readme.txt
+----
+
+
+=== -T Option:
+
+This option helps to upload a file to the FTP server.
+
+Syntax:
+----
+curl -u {username}:{password} -T {filename} {FTP_Location}
+----
+If you want to append an already existing FTP file you can use the -a or –append option.
+
+=== –libcurl Option:
+
+This option is very useful from a developer’s perspective. If this option is appended to any cURL command, it outputs the C source code that uses libcurl for the specified option. It is a code similar to the command line implementation.
+
+Syntax:
+----
+curl [URL...] --libcurl [filename]
+----
+Example:
+----
+curl https://www.geeksforgeeks.org > log.html --libcurl code.c
+----
+
+
+The above example downloads the HTML and saves it into log.html and the code in code.c file. The next command shows the first 30 lines of the code.
+Sending mail:
+
+As curl can transfer data over different protocols, including SMTP, we can use curl to send mails.
+
+Syntax:
+----
+curl –url [SMTP URL] –mail-from [sender_mail] –mail-rcpt [receiver_mail] -n –ssl-reqd -u {email}:{password} -T [Mail text file]
+----
+=== DICT protocol:
+
+The Libcurl defines the DICT protocol which can be used to easily get the definition or meaning of any word directly from the command line.
+
+Syntax:
+----
+curl [protocol:[dictionary_URL]:[word]
+----
+Example:
+----
+curl dict://dict.org/d:overclock
+----
+
+
+NOTE: There are a number of other options provided by cURL which can be checked on the main page. The libcurl library has been ported into various programming languages. It’s advisable to visit the individual project site for documentation.

@@ -1,0 +1,508 @@
+== What is Git?
+Git is a version control system used for tracking changes in computer files. It is generally used for source code management in software development.
+
+- Git is used to tracking changes in the source code
+- The distributed version control tool is used for source code management
+- It allows multiple developers to work together
+- It supports non-linear development through its thousands of parallel branches
+
+== Features of Git
+- Tracks history
+- Free and open source
+- Supports non-linear development
+- Creates backups
+- Scalable
+- Supports collaboration
+- Branching is easier
+- Distributed development
+
+== Git flow
+
+image::Git_workflow.png[]
+
+== Basic understanding of Registry, Repository, Artifact and  Package Manager
+
+image:registry-elements.png[]
+
+=== Registry
+A registry is a centralized database that is used to manage and store the metadata about software artifacts like version numbers, configurations, and dependencies. To track available packages and their details in package management systems, and registries.
+
+=== Repository
+A repository is a storage location that is used to store actual software artifacts like libraries, modules, and packages. These repositories are accessed to download the necessary components to build and run the applications, repositories can be both public or private.
+
+=== Artifact
+During the software development process, a file or set of files are generated which are known as artifacts. The files include compiled code, libraries, and documentation.
+
+=== Package Manager
+To automate the process of installing, updating, configuring, and removing software packages from a computer system a package manager is used. Some of the package manager examples include npm (Node.js), pip (python), and Maven (Java).
+
+
+== Git CheatSheet
+
+To Download cheatsheet https://education.github.com/git-cheat-sheet-education.pdf[Click here.]
+
+image::gitcheetsheet.png[]
+
+
+== Git Commands with one line explanation
+
+=== Official documentation by  https://git-scm.com/docs/[ Git doc] for all commands
+
+
+=== git init
+
+
+----
+git init [repository name]
+----
+We have to navigate to our project directory and type the command git init to initialize a Git repository for our local project folder. Git will create a hidden .git directory and use it to keep its files organized in other subdirectories.
+
+
+=== git add
+
+- Usage (i):
+----
+ git add [file(s) name]
+----
+This will add the specified file(s) into the Git repository, the staging area, where they are already being tracked by Git and now ready to be committed
+
+- Usage (ii):
+----
+git add .
+or
+git add *
+----
+
+This will take all our files into the Git repository, i.e., into the staging area.
+
+We can use this command as `git add -A` as well.
+
+NOTE: We will have to commit our files after we add them to the staging area
+
+=== Undo Git Add
+You have full control over what gets staged in your index file. This means you can also remove things after they are added to the index for staging, effectively undoing the Git add. There are a couple of paths to removing files from the index: removing individual files one at a time or removing everything from the index all at once.
+
+To remove a single staged file from index, use the command:
+----
+git rm --cached <filename>
+----
+Replace <filename> with the name of the file you want to remove from staging.
+
+To remove all the files staged in the index at the same time, use the command:
+----
+git reset HEAD -- <directory-name>
+----
+Replace <directory-name> with the name of the directory for your repository.
+
+If you want to remove all files from staging in the directory you’re working in, you can use the shortcut . to refer to the current directory.
+----
+git reset HEAD – .
+----
+
+=== git commit
+
+- Usage:
+----
+git commit -m “message”
+----
+This command records or snapshots files permanently in the version history. All the files, which are there in the directory right now, are being saved in the Git file system
+
+=== Undoing the Single Commit
+
+- Usage:
+----
+git reset --soft HEAD~1
+----
+Reset will rewind your current HEAD branch to the specified revision. In our example above, we'd like to return to the one before the current revision - effectively making our last commit undone.
+
+NOTE: the `--soft` flag: this makes sure that the changes in undone revisions are preserved. After running the command, you'll find the changes as uncommitted local modifications in your working copy.
+
+If you don't want to keep these changes, simply use the `--hard` flag. Be sure to only do this when you're sure you don't need these changes anymore.
+
+----
+
+git reset --hard HEAD~1
+----
+=== Undoing Multiple Commits
+
+Always keep in mind, however, that using the reset command undoes all commits that came after the one you returned to:
+
+image::reset-concept.png[]
+
+----
+git reset --hard <0ad5a7a6(commit_msg)>
+----
+
+
+==== git status
+
+- Usage:
+----
+git status
+----
+
+This command will show the modified status of an existing file and the file addition status of a new file, if any, that has to be committed
+
+=== git remote
+
+- Usage:
+----
+git remote add origin “[URL]”
+----
+Once everything is ready on our local system, we can start pushing our code to the remote (central) repository of the project. For that, follow the below steps:
+
+Step 1:
+
+1. Login to the GitHub account if the account already exists (If not, sign up on github.com)
+2. Click on New
+
+Step 2:
+
+Now, we have to create a new repository. Provide a name to our repository, select the privacy of the repository as Public, and then click on Create repository
+
+Step 3:
+
+Click on the Copy icon on the right side of the URL box of the Github repository to copy the link and paste it as shown below:
+----
+git remote add origin “URL”
+----
+Now, we are ready to operate the remote commands in our repository that we have just created.
+
+=== git push
+
+- Usage:
+----
+git push origin [branch name]
+----
+Suppose, we have made some changes in the file and want to push the changes to our remote repository on a particular branch. By using the command ‘git push,’ the local repository’s files can be synced with the remote repository on Github.
+
+
+==== Push to a Branch
+- If your local branch does not exist on the remote, run either of these commands:
+----
+git push -u origin my-branch-name
+----
+----
+git push -u origin HEAD
+----
+NOTE: HEAD is a reference to the top of the current branch, so it's an easy way to push to a branch of the same name on the remote. This saves you from having to type out the exact name of the branch!
+
+If your local branch already exists on the remote, run this command:
+----
+git push
+----
+
+=== git clone
+
+- Usage:
+----
+git clone [URL]
+----
+Suppose, we want to work on a file that is on a remote Github repository as another developer. How can we do that? We can work on this file by clicking on Clone or Download and copying the link and pasting it on the terminal with the git clone command. This will import the files of a project from the remote repository to our local system.
+
+To create a local folder, we have to use the following command:
+----
+mkdir [directory- name]
+cd [directory- name]
+git clone [URL]
+----
+Now, paste the copied link along with the git clone command as shown below:
+
+NOTE: Here, we don’t have to use the git remote add origin command because we have already cloned the remote repository in the local directory. Now, if we push any new file, it knows where it has to go
+
+
+=== git branch
+- Usage (i):
+----
+git branch [name-of-the-branch]
+----
+When multiple developers are collaborating on a project or repository, branches become essential for managing different workspaces. Using this command, we can create a new branch (for example, ‘branch1’).
+
+This allows developers to work independently on their respective branches, making changes and commits without affecting the main branch or other branches.
+
+- Usage (ii):
+----
+git branch -D [name-of-the-branch]
+----
+Likewise, to delete a branch, we utilize the “git branch -D” command. This enables us to remove a specific branch (e.g., ‘name-of-the-branch’) that is no longer needed, cleaning up the repository and reducing clutter.
+
+
+NOTE: The current local branch will be marked with an asterisk (*).
+
+- To see local branches, run this command:
+----
+git branch
+----
+- To see remote branches, run this command:
+----
+git branch -r
+----
+- To see all local and remote branches, run this command:
+----
+git branch -a
+----
+Create a New Branch
+
+- Run this command (replacing my-branch-name with whatever name you want):
+----
+git checkout -b my-branch-name
+----
+You're now ready to commit to this branch
+
+==== Delete Branches
+- To delete a remote branch, run this command:
+----
+git push origin --delete my-branch-name
+----
+- To delete a local branch, run either of these commands:
+----
+git branch -d my-branch-name
+----
+----
+git branch -D my-branch-name
+----
+
+NOTE: The -d option only deletes the branch if it has already been merged. The -D option is a shortcut for --delete --force, which deletes the branch irrespective of its merged status.
+
+
+=== git checkout
+- Usage (i): git checkout [name-of-the-new-branch]
+
+This command allows us to switch to an existing branch within our repository. It facilitates navigating to the desired branch, enabling us to add new files, make changes, and commit those files within that specific branch.
+
+- Usage (ii): git checkout -b [name-of-the-new-branch]
+
+This command serves a dual function. Firstly, it creates a new branch with the given name (for example, ‘branch2’). Secondly, it immediately switches our working environment to that newly created branch. This allows us to seamlessly begin working within the newly created branch, making it convenient to add files, make modifications, and commit changes exclusively within that branch.
+
+
+==== Switch to a Branch In Your Local Repo
+Run this command:
+----
+git checkout my-branch-name
+----
+==== Switch to a Branch That Came From a Remote Repo
+- To get a list of all branches from the remote, run this command:
+----
+git pull
+----
+- Run this command to switch to the branch:
+----
+git checkout --track origin/my-branch-name
+----
+
+==== git log
+- Usage (i):
+----
+git log
+----
+
+The “git log” command is handy when we want to examine the detailed log of every commit in our repository. By executing this command, we can view the log specific to the branch we are currently in. Additionally, we can use “git log -3” to display the last three logs.
+
+- Usage (ii):
+----
+git log –graph
+----
+
+For a visual representation of the commit history, we can utilize “git log –graph”. This option presents the commit-graph, showcasing the branching and merging of commits
+
+- Usage (iii):
+----
+git log –graph –pretty=oneline
+----
+
+To further customize the output, we can use “git log –graph –pretty=oneline”. This format displays the commit graph along with a concise one-line description for each commit
+
+====  git stash
+
+image::git-stash.png[]
+
+- Usage (i):
+----
+git stash
+----
+
+This command can be used when we want to save our work without staging or committing the code to our Git repository and want to switch between branches.
+
+- Usage (ii):
+----
+git stash -u
+----
+
+This command is used when we want to stash the untracked files.
+
+- Usage (iii):
+----
+git stash pop
+----
+
+This command is used when we are back on our branch and want to retrieve the code.
+
+==== git revert
+
+image::revert.png[]
+
+- Usage:
+----
+git revert [commit id]
+----
+
+The git revert command can be considered as an ‘undo’ command. However, it does not work as the traditional ‘undo’ operation. It figures out how to invert the changes introduced by the commit and appends a new commit with the resulting inverse content.
+
+==== git diff
+- Usage:
+----
+git diff [commit-id-of-version-x] [commit-id-of-version-y]
+
+----
+Diffing is a function that takes two input datasets and outputs the changes between them. The git diff command is a multi-use Git command which, when executed, runs a diff function on Git data sources. These data sources can be commits, branches, files, and more. The git diff command is often used along with the git status and git log commands to analyze the current state of our Git repository. We use git log to get the details of commit IDs
+
+==== git merge
+
+image::git-three-way-merging.png[]
+
+- Usage:
+----
+git merge [another-file-name]
+----
+This command will combine multiple sequences of commits into one unified history. In the most frequent use cases, git merge is used to combine two branches. The git merge command takes two commit pointers, usually the branch tips, and finds a common base commit between them. Once it finds a common base commit, it will create a commit sequence.
+
+==== git rebase
+
+image::rebase.png[]
+- Usage:
+----
+git rebase [base]
+----
+Rebase is the process of moving and combining a sequence of commits to a new base commit. Rebasing is changing the base of our branch from one commit to another, making it appear as if we’ve created our branch from a different commit. Internally, Git accomplishes this by creating new commits and applying them to the specified base. It’s very important to understand that even though the branch looks the same, it is composed of entirely new commits.
+
+The git rebase command performs an automatic git checkout <branch> before doing anything else. Otherwise, it remains on the current branch.
+
+Consider a situation where we have branched off from the master and have created a feature branch, but the master branch is still having more commits. We want to get the updated version of the master branch in our feature branch, keeping our branch’s history clean, so that it appears as if we are working on the latest version of the master branch.
+
+NOTE: We don’t rebase public history. We should never rebase commits once they are pushed to a public repository. Why because the rebase would replace the old commits with the new ones, and it would appear that a part of our project history got abruptly vanished.
+
+
+==== git fetch
+- Usage:
+----
+git fetch
+----
+When we use the command git fetch, Git gathers any commit from the target branch that does not exist in our current branch and stores it in our local repository. However, it does not merge it with our current branch.
+
+In situations where we want to keep our repository up to date but are concerned that updating our files might lead to issues, a specific technique comes to the rescue. To integrate the commits into our master branch, we use the merge feature. This feature actively retrieves all the branches from the repository and then proceeds to download all the required commits and files from another repository. It ensures that our repository remains current while mitigating the risk of potentially breaking our ongoing work.
+
+==== git reset
+
+image::gitreset.png[]
+- Usage:
+----
+git reset –hard [SOME-COMMIT]
+----
+We use this command to return the entire working tree to the last committed state.
+
+This will discard commits in a private branch or throw away the uncommitted changes!
+
+Here, we have executed a ‘hard reset’ using the –hard option. Git displays the output indicating that the HEAD is pointing to the latest commit. Now, when we check the state of the repo with git status, Git will indicate that there are no pending changes (if any prior addition of a new file or modification of an existing file is done before using the ‘git reset –hard’ command). Our modifications to an existing file, if not committed, and the addition of a new file, if not staged, will be destroyed. It is critical to take note that this data loss cannot be undone.
+
+If we do git reset –hard [SOME-COMMIT], then Git will:
+
+- Make our current branch (typically master) back to point <SOME-COMMIT>
+- Make the files in our working tree and the index (“staging area”) the same as the versions committed at <SOME-COMMIT>
+
+To Know more abot https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified[git reset doc]
+
+
+==== git pull
+
+image:pull&fetch.png[]
+
+- Usage:
+----
+git pull origin master
+----
+The git pull command first runs ‘git fetch’ which downloads the content from the specified remote repository and then immediately updates the local repo to match the content.
+
+=== git tags
+
+A tag is like a branch that doesn’t change. Unlike branches, tags, after being created, have no further history of commits. For more info on branches visit the git branch page.
+
+==== Creating a tag
+
+----
+git tag <tagname>
+----
+
+====  Tagging old commits
+
+----
+git log --pretty=oneline
+    15027957951b64cf874c3557a0f3547bd83b3ff6 Merge branch 'feature'
+    a6b4c97498bd301d84096da251c98a07c7723e65 add update method for thing
+    0d52aaab4479697da7686c15f77a3d64d9165190 one more thing
+    6d52a271eda8725415634dd79daabbc4d9b6008e Merge branch 'experiment'
+----
+
+----
+git tag -a v1.2 15027957951b64cf874c3557a0f3547bd83b3ff6
+----
+==== ReTagging/Replacing old tags
+
+If you try to create a tag with the same identifier as an existing tag, Git will throw an error like:
+----
+fatal: tag 'v0.4' already exists
+
+----
+Additionally if you try to tag an older commit with an existing tag identifier Git will throw the same error.
+
+In the event that you must update an existing tag, the -f FORCE option must be used.
+----
+git tag -a -f v1.4 15027957951b64cf874c3557a0f3547bd83b3ff6
+----
+Executing the above command will map the `15027957951b64cf874c3557a0f3547bd83b3ff6` commit to the `v1.4` tag identifier. It will override any existing content for the `v1.4` tag.
+
+
+==== Deleting tags
+
+Deleting tags is a straightforward operation. Passing the -d option and a tag identifier to git tag will delete the identified tag.
+
+----
+git tag
+    v1
+    v2
+    v3
+    $ git tag -d v1
+    $ git tag
+    v2
+    v3
+----
+
+In this example git tag is executed to display a list of tags showing v1, v2, v3, Then git tag -d v1 is executed which deletes the v1 tag.
+
+==== Git ignore
+
+Git sees every file in your working copy as one of three things:
+
+1. tracked - a file which has been previously staged or committed;
+
+2. untracked - a file which has not been staged or committed; or
+
+3. ignored - a file which Git has been explicitly told to ignore.
+
+Ignored files are usually build artifacts and machine generated files that can be derived from your repository source or should otherwise not be committed. Some common examples are:
+
+- dependency caches, such as the contents of /node_modules or /packages
+- compiled code, such as .o, .pyc, and .class files
+- build output directories, such as /bin, /out, or /target
+- files generated at runtime, such as .log, .lock, or .tmp
+- hidden system files, such as .DS_Store or Thumbs.db
+- personal IDE config files, such as .idea/workspace.xml
+- Ignored files are tracked in a special file named .gitignore that is checked in at the root of your repository. There is no explicit git ignore command: instead the .gitignore file must be edited and committed by hand when you have new files that you wish to ignore. .gitignore files contain patterns that are matched against file names in your repository to determine whether or not they should be ignored.
+
+
+=== Git cherry-pick
+
+
+image::AfterCherryPick.jpg[]
+
+
+git cherry-pick is a powerful command that enables arbitrary Git commits to be picked by reference and appended to the current working HEAD. Cherry picking is the act of picking a commit from a branch and applying it to another. git cherry-pick can be useful for undoing changes. For example, say a commit is accidently made to the wrong branch. You can switch to the correct branch and cherry-pick the commit to where it should belong.

@@ -4,7 +4,7 @@
 
 image::os.png[Operting System]
 
-An operating system is the program taht after being initially into tha computer by boot programing , managers all of the other application program in a computer
+An operating system is the program that after being initially into tha computer by boot programing , managers all of the other application program in a computer
 
 **Functions**
 . Interface between a computer user and computer hardware
@@ -24,7 +24,7 @@ A Linux is a open source operating system (os), An operating system is the softw
 
 1. **What is command**: it's show one line discriptions of the command.
 
-NOTE: If it's not working run -> updatedb
+NOTE: If it's not working run -> updated
 
 2. **command --help**: we get list & information about current directory all possible option, it's show's along with discription and dificult to read and understand.
 
@@ -38,19 +38,109 @@ yum install man* -y
 
 - we get name of command & synopsis and description of command.
 - Easy to read and understand.
-- To get more details -> man man
+- To get more details -> `man man`
 - 8 Manual sections
  1. user commands
  2. system calls
- 3. C library funcations
+ 3. C library functions
  4. Devices and special files
- 5. Files Formate and convention
+ 5. Files Format and convention
  6. Games et. al.
  7. Miscellanea
  8. System Administration tools and Demons
 
 4. ** info command**: it's shows full information, it's give more depth information
 
-5. **Pinfo command**: All information about every thing fletching details. path: /usr/share/doc
+5. **Pinfo command**: All information about every thing fetching details. path: /usr/share/doc
 
 image::linux_networking_cmds.jpg[]
+
+=== /bin
+Contains essential commands line executables programs that are required by the system and all users.
+
+=== /sbin
+Same as bin but that are typically used by system administrators.
+
+=== /boot
+This directory contains the files necessary for booting the system, including the kernel initial RAM disk, and bootloader files.
+
+=== /dev
+It contains device files that represent hardware device attached to the system, suchh as hard drives, usb devices & serial parts
+
+=== /etc
+This directly contains system configuration files that define, How the system and its components behave, Examples include /etc/password.which contains user account information
+
+
+=== /home
+
+personal directly for each user as the system
+
+=== /lib
+This directly contains shared library files that are required by programs in `/bin` & `/sbin`.
+
+
+=== /mnt
+Used for temporarily mounting file system
+
+=== /opt
+Used for installing optional software packages that are not part of the core system
+
+=== /tmp
+Temporary files that are created by running programs.
+
+== USER & GROUP (Administer)
+
+=== Users in Linux System Administration
+
+Users are accounts that can be used to login into a system. Each user is identified by a unique identification number or UID by the system. All the information of users in a system are stored in /etc/passwd file. The hashed passwords for users are stored in /etc/shadow file.
+
+Users can be divided into two categories on the basis of the level of access:
+
+  -  Superuser/root/administrator : Access to all the files on the system.
+  -  Normal users : Limited access.
+
+When a new user is created, by default system takes following actions:
+
+ -   Assigns UID to the user.
+ -   Creates a home directory /home/.
+  -  Sets the default shell of the user to be /bin/sh.
+  -  Creates a private user group, named after the username itself.
+   - Contents of /etc/skel are copied to the home directory of the new user.
+   - .bashrc, .bash_profile and .bash_logout are copied to the home directory of new user.These files provide environment variables for this user’s session.
+
+==== Description of contents of /etc/passwd File
+
+This file is readable by any user but only root as read and write permissions for it. This file consists of the following colon separated information about users in a system:
+
+  -  Username field
+  -  Password field
+   -     An `x` in this field denotes that the encrypted password is stored in the /etc/shadow file.
+   - The user ID number (UID)
+   - User’s group ID number (GID)
+  -  Additional information field such as the full name of the user or comment (GECOS)
+  -  Absolute path of user’s home directory
+  =  Login shell of the user
+
+Syntax:
+----
+[username]:[password]:[UID]:[GID]:[GECOS]:[home_dir]:[shell_path]
+----
+=== Groups in Linux System Administration
+Each group in a Linux system is uniquely identified by a group identification number or GID. All the information listing groups in a system are stored in /etc/group file. The hashed passwords for groups are stored in /etc/gshadow file.
+
+Every user has a primary user group and zero or more supplementary groups. On login, the group membership is set to the primary group of user. This can be changed to any other supplementary group using newgrp or chgrp commands.
+
+==== Description of contents of /etc/group File
+
+This file is readable by any user but only root as read and write permissions for it. This file consists of the following colon separated information about groups in a system:
+
+ -   Group name field
+  -  Password field
+  -      If this field is empty, no password is needed.
+ -   Group Identification number or GID
+ -   Comma separated list of usernames of users that belong to the group.
+
+Syntax:
+----
+[group_name]:[group_password]:[GID]:[users]
+----

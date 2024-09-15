@@ -1,0 +1,85 @@
+== What is source code management?
+Source code management (SCM) is the process of tracking modifications and managing changes to source code. SCM allows developers and other stakeholders to see a complete history of all changes made to a shared codebase. This ensures developers are working with up-to-date code and that there are no conflicting code changes
+
+== What is Version control (or source control or revision control)?
+A version control system (VCS) allow you to track the history of a collection of files and it management of changes to documents , computer programs, websites and other...
+
+== Types of version control system
+The two most popular types of version or revision control systems are centralized and distributed. Centralized version control systems store all the files in a central repository, while distributed version control systems store files across multiple repositories. Other less common types include lock-based and optimistic.
+
+== Distributed
+
+image:dvcs.png[]
+
+
+A distributed version control system (DVCS) allows users to access a repository from multiple locations. DVCSs are often used by developers who need to work on projects from multiple computers or who need to collaborate with other developers remotely.
+
+**Distributed VCS workflow:**
+
+- Every developer has a local clone of the entire repository, including all branches and changes history. Work starts by updating this local copy with the latest changes from the central repository.
+- Developers work locally, creating work branches, making commits, and merging local branches with the master/main branch. These operations are possible even offline.
+- After committing and merging local branches, developers push changes to the remote master repository, making all their changes available to others.
+
+**Pros:**
+
+- Excellent branching and merging capabilities
+- Management of offline changes
+- Redundancy and backup features
+- High flexibility supporting diverse workflows
+- Better performance in distributed mode
+
+**Cons:**
+
+- Steep learning curve requiring advanced technical skills
+- Higher disk space consumption as each clone contains full project history
+- Complex conflict management in heavily branched project
+
+== Centralized
+// image:cvcs.jpg[]
+
+image:cvcs2.png[]
+
+A centralized version control system (CVCS) is a type of VCS where all users are working with the same central repository. This central repository can be located on a server or on a developer's local machine. Centralized version control systems are typically used in software development projects where a team of developers needs to share code and track changes.
+
+
+**Centralized VCS workflow:**
+
+- Users connect to the central repository where all project files are stored and download the latest version to their local machines, also updating their local copies to minimize conflicts.
+- Users make changes to the files on their computers.
+- Once all local changes are finalized, users commit them to the central repository, making their changes accessible to all other users
+
+
+**Pros:**
+
+- High performance for binary files
+- Complete visibility of code for all team members
+- The lower learning curve for system setup and workflow implementation
+
+**Cons:**
+
+- Single point of failure: If the centralized server goes down, work halts.
+- Slower speed due to constant communication with the remote server
+- Less flexibility in customizing workflows
+
+==== Lock-based
+A lock-based version control system uses file locking to manage concurrent access to files and resources. File locking prevents two or more users from making conflicting changes to the same file or resource.
+
+==== Optimistic
+In an optimistic version control system, every user has their own private workspace. When they want to share their changes with the rest of the team, they submit a request to the server. The server then looks at all the changes and determines which ones can be safely merged together.
+
+==== Best Source Code Management Tool
+
+- Github. GitHub is a web-based platform for version control and collaboration that helps developers work together on software projects. ...
+- Bitbucket.
+- Azure Team Foundation Server.
+- Git.
+- GitLab.
+- Apache Subversion.
+- Mercurial.
+- IBM Rational Case.
+
+
+
+==== To know more about security perspective
+1. https://securitypatterns.io/docs/01-code-mgmt-security-pattern/[Security Pattern – Source Code Management]
+2. https://dzone.com/articles/source-code-management-tools[scm tools list &  pros and cons]

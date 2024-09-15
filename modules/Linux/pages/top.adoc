@@ -1,0 +1,200 @@
+
+= How to Monitor System Activity in Linux | top Command
+
+
+`top` command is used to show the Linux processes. It provides a dynamic real-time view of the running system. Usually, this command shows the summary information of the system and the list of processes or threads which are currently managed by the Linux Kernel. As soon as you will run this command it will open an interactive command mode where the top half portion will contain the statistics of processes and resource usage. And Lower half contains a list of the currently running processes. Pressing q will simply exit the command mode.
+
+*Check your Version of top*
+
+The `top -v` command is used to display the version information of the top command itself. It shows details such as the version number and possibly other relevant information about the top command’s build or configuration. This can be useful for checking the version to ensure compatibility or to verify if specific features or bug fixes are included in the version being used.
+----
+top -v
+----
+
+== How to Monitor System Activity in Linux Using `top` Command
+
+One of the strengths of the top command is its ability to dynamically update the displayed information at regular intervals. This real-time monitoring capability enables users to observe changes in system activity, identify spikes in resource usage, and quickly respond to performance issues.
+
+To launch the top command, open a terminal window and simply type:
+----
+top
+----
+
+image::top_scrnshot.jpg[]
+This will display a continuously updating screen showing various system metrics. By default, processes are sorted by CPU usage in descending order, with the most resource-intensive processes listed at the top.
+
+Here,
+
+  -  PID: Shows task’s unique process id.
+ -   PR: The process’s priority. The lower the number, the higher the priority.
+- VIRT: Total virtual memory used by the task.
+ -   USER: User name of owner of task.
+ -   %CPU: Represents the CPU usage.
+ -   TIME+: CPU Time, the same as ‘TIME’, but reflecting more granularity through hundredths of a second.
+ -   SHR: Represents the Shared Memory size (kb) used by a task.
+  -  NI: Represents a Nice Value of task. A Negative nice value implies higher priority, and positive Nice value means lower priority.
+  -  %MEM: Shows the Memory usage of task.
+  -  RES: How much physical RAM the process is using, measured in kilobytes.
+  -  COMMAND: The name of the command that started the process.
+
+=== Uptime
+
+When you first open the top command, the initial line, often referred to as the header or summary line, displays information similar to what you see when you use the uptime command. It shows:
+
+  -  System Time: The current time on the system.
+ -   Uptime: How long the system has been running since the last boot.
+  -  Users: The number of users currently logged into the system.
+  -  Load Average: This is shown in three numbers separated by commas. These numbers represent the average number of processes waiting for CPU time over the last 1 minute, 5 minutes, and 15 minutes, respectively. A value of 1.0 means the system’s CPU is fully utilized; higher values indicate potential overloading.
+
+=== Tasks
+
+  -  Tasks: This section provides an overview of the total number of processes currently managed by the system.
+  -  total: Indicates the total count of processes currently being tracked by the system.
+  -  running: Represents the number of processes currently actively using CPU time.
+  -  sleeping: Refers to processes that are currently idle and waiting for a signal to wake up.
+   - stopped: Denotes processes that have been manually stopped, typically through a signal.
+  -  zombie: Indicates processes that have completed execution but still have an entry in the process table.
+
+=== %Cpu(s)
+
+The %Cpu(s) line in the top command provides information about CPU usage and statistics on a Linux system. It typically includes:
+
+  -  us: Percentage of CPU time spent running user processes.
+ -   sy: Percentage of CPU time spent running kernel (system) processes.
+  -  ni: Percentage of CPU time spent running processes with a nice value (priority adjusted).
+  -  id: Percentage of CPU time spent idle (no work being done).
+ -   wa: Percentage of CPU time spent waiting for I/O operations to complete.
+  -  hi: Percentage of CPU time spent servicing hardware interrupts.
+ -   si: Percentage of CPU time spent servicing software interrupts.
+ -   st: Percentage of CPU time stolen from this virtual machine by the hypervisor (if virtualized).
+
+=== MiB Memory
+
+The “MiB Memory” line in the top command provides information about memory usage and statistics on a Linux system. It typically includes:
+
+ -   total: Total amount of physical memory (RAM) available in MiB.
+  -  used: Amount of RAM currently in use by processes and the kernel.
+ -   free: Amount of RAM not being used at all.
+ -   buff/cache: Amount of memory used for buffering data and caching filesystems.
+ -   available: Estimate of how much memory is available for starting new applications without swapping.
+
+=== MiB Swap
+
+The “MiB Swap” line in the top command provides information about swap usage and statistics on a Linux system. It typically includes:
+
+  -  total: Total amount of swap space available in MiB.
+  -  used: Amount of swap space currently in use.
+  -  free: Amount of swap space that is not being used.
+  -  cached: Amount of swap space used for caching swap pages.
+
+=== Color and Highlighting
+
+In the top command, using the z key toggles color and highlighting of the process list. This feature enhances visibility by color-coding different aspects of the processes, such as CPU usage, memory consumption, and process states (running, sleeping, etc.). It helps users quickly identify resource-intensive processes or anomalies in system behavior.
+
+
+=== Only See Active Tasks
+
+In the top command, pressing i (lowercase “i”) toggles the display to show only active tasks. This means top will hide all idle processes (those with zero CPU usage) from the process list, focusing the display only on processes currently consuming CPU resources. This feature is particularly useful for monitoring system activity and identifying processes that are actively using CPU time.
+
+=== Kill a Process with top
+
+In the top command, you can kill a process using the k key followed by entering the PID (Process ID) of the process you want to terminate. Here’s how you can do it:
+
+  -  Start top by typing top in your terminal.
+  -  Locate the process you want to kill using the arrow keys to navigate through the process list.
+  -  Note down the PID (Process ID) of the process.
+  -  Press k on your keyboard.
+  -  Enter the PID of the process you want to kill and press Enter.
+  -  Confirm the action if prompted.
+
+
+=== Alternative Display Mode
+
+In the top command, pressing the A key toggles the alternative display mode. This mode rearranges the display to show multiple windows, each focusing on different aspects of system performance, such as CPU usage, memory, and processes. It provides a more comprehensive and detailed view of system activity, making it easier to monitor various metrics simultaneously.
+
+
+=== Examples on How to monitor system activity in Linux Using `top` Command
+
+==== 1) Exit Top Command After Specific repetition:
+
+Top output keep refreshing until you press ‘q‘. With below command top command will automatically exit after 10 number of repetition.
+----
+top -n 10
+----
+==== 2) Display Specific User Process
+----
+top -u paras
+----
+==== 3) Highlight Running Process in Top:
+Press ‘z‘ option in running top command will display running process in color which may help you to identified running process easily
+
+==== 4) Shows Absolute Path of Processes:
+Press ‘c‘ option in running top command, it will display absolute path of running pro
+
+==== 5) Kill running process:
+You can kill a process after finding PID of process by pressing ‘k‘ option in running top command without exiting from top window as shown below.
+
+==== 6) Sort by CPU Utilisation:
+Press (Shift+P) to sort processes as per CPU utilization.
+
+==== 7) Shows top command syntax:
+----
+top -h
+----
+
+
+==== 8) Batch Mode: Send output from top to file or any other programs.
+
+top -b
+
+==== 9) Secure Mode: Use top in Secure mode.
+----
+top -s
+----
+==== 10) Command Line: The below command starts top with last closed state.
+----
+Top -c
+----
+==== 11) Delay time: It tells delay time between screen updates.
+----
+Top -d seconds.tenths
+----
+==== Comprehensive System Monitoring with Glances on Linux
+
+Glances in Linux is a system monitoring tool that provides:
+
+ -   Overview Dashboard: Displays real-time statistics on CPU, memory, disk, network, and processes.
+ -   Process Table: Lists detailed information about running processes, including CPU and memory usage.
+ -   Alerts and Notifications: Alerts users about critical system metrics exceeding predefined thresholds.
+ -   Plugins and Extensions: Supports various plugins for additional monitoring capabilities, such as Docker and SNMP.
+  -  Interactive UI: Offers an interactive command-line interface or a web-based interface for monitoring multiple systems remotely.
+
+==== Are There Alternatives to Top?
+
+  -  `htop`: An interactive and visually appealing process viewer with color-coding, easy navigation, and process management features.
+  -  `Glances`: A cross-platform monitoring tool that provides a comprehensive view of system performance, including CPU, memory, disk I/O, and network usage.
+  -  `nmon`: A performance monitoring tool designed for AIX and Linux systems, offering detailed statistics and a user-friendly interface.
+  -  `atop`: An advanced system and process monitor that provides detailed resource consumption for both current and historical data, including CPU, memory, disk, and network usage.
+  -  `dstat`: A versatile resource statistics tool that combines the functionality of vmstat, iostat, netstat, and ifstat into a single command, offering real-time performance monitoring.
+  -  `sar`: Part of the sysstat package, it collects and reports on various system activity statistics, including CPU, memory, and I/O usage, with the ability to save data for historical analysis.
+
+=== How to Monitor System Activity in Linux | top Command – FAQs
+==== What is the top command in Linux, and how does it help monitor system activity?
+
+  -  The `top` command is a built-in utility in Linux that provides a real-time, dynamic view of the system’s performance. It displays information about CPU usage, memory usage, running processes, and more, allowing users to monitor and analyze system activity effectively.
+
+==== How do I interpret the information displayed by the top command?
+
+ -   The information displayed by the `top` command includes columns such as PID, %CPU, %MEM, VIRT, RES, and COMMAND. PID is the process ID, %CPU represents CPU usage, %MEM shows memory usage, VIRT is virtual memory, RES is physical RAM usage, and COMMAND displays the name of the process.
+
+==== Can I customize the display of the top command to focus on specific processes or users?
+
+-    Yes, the `top` command is highly customizable. Users can press keys to toggle between different views, sort processes based on various criteria, and filter the display to show processes for a specific user. For example, pressing ‘u’ allows filtering by username.
+
+==== How can I use the top command to identify and terminate resource-hungry processes?
+
+ -   The `top` command allows users to interactively manage processes. Pressing ‘k’ enables the user to kill a specific process by entering its PID. Sorting processes by CPU or memory usage (with ‘P’ or ‘M’) helps identify resource-intensive tasks that may need attention.
+
+==== Are there additional advanced features of the top command beyond real-time monitoring?
+
+  -  Yes, the `top` command offers advanced features. Users can run `top` with specific options, such as ‘-n’ to exit after a specific number of repetitions, ‘-u’ to display processes for a specific user, ‘-b’ for batch mode (useful for scripting), and ‘-d’ to set the delay time between screen updates. Understanding these options enhances the utility of the `top` command in diverse scenarios.

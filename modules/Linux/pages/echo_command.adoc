@@ -1,0 +1,121 @@
+
+== echo command in Linux with Examples
+
+
+The echo command in Linux is a built-in command that allows users to display lines of text or strings that are passed as arguments. It is commonly used in shell scripts and batch files to output status text to the screen or a file.
+
+=== Syntax of `echo` command in Linux
+----
+echo [option] [string]
+----
+Here,
+
+- [options] = The various options available for modifying the behavior of the `echo` command
+
+- [string] = It is the string that we want to display.
+
+*Basic Usage: Displaying Text/String:*
+
+The most straightforward usage of the echo command is to display a text or string on the terminal. To do this, you simply provide the desired text or string as an argument to the echo command.
+
+Syntax:
+----
+echo [string]
+----
+Example:
+
+If we want to display “Geeks for Geeks”. We use the following command.
+----
+echo "Geeks for Geeks"
+----
+
+=== Options Available in `echo` command in Linux
+
+NOTE: -e here enables the interpretation of backslash escapes
+
+*1. \b : it removes all the spaces in between the text*
+
+Example:
+----
+echo -e "Geeks \bfor \bGeeks"
+----
+
+
+*2. \c : suppress trailing new line with backspace interpreter ‘-e‘ to continue without emitting new line.*
+
+Example:
+----
+echo -e "Geeks \cfor Geeks"
+----
+
+In the above example, text after \c is not printed and omitted trailing new line.
+
+*3. \n : this option creates a new line from where it is used.*
+
+Example:
+----
+ echo -e "Geeks \nfor \nGeeks"
+----
+
+*4. \t : this option is used to create horizontal tab spaces.*
+
+Example:
+----
+echo -e "Geeks \tfor \tGeeks"
+----
+
+
+*5. \r : carriage return with backspace interpreter ‘-e‘ to have specified carriage return in output.*
+
+Example:
+----
+echo -e "Geeks \rfor Geeks"
+----
+
+In the above example, text before \r is not printed.
+
+*6. \v : this option is used to create vertical tab spaces.*
+
+Example:
+----
+echo -e "Geeks \vfor \vGeeks
+----
+
+
+*7. \a : alert return with backspace interpreter ‘-e‘ to have sound alert.*
+
+Example:
+----
+echo -e "\aGeeks for Geeks"
+----
+
+
+ This command when executed, it will produce an alert sound or Bell.
+
+*8. echo *: this command will print all files/folders, similar to ls command.*
+
+Example:
+----
+echo *
+----
+
+
+*9. -n: this option is used to omit echoing trailing newline.*
+
+Example:
+----
+echo -n "Geeks for Geeks"
+----
+
+
+*10. Redirecting `echo` Output*
+
+The output of the `echo` can be redirected to a file instead of displaying it on the terminal. We can achive this by using the `>` or `>>` operators for output redirection.
+
+Example:
+----
+echo "Welcome GFG" > output.txt
+----
+This will write the output of the echo command to the file name `output.txt`. File will be overwritten if it already exists.
+
+If we want to append the output in an existing file, we use `>>` instead of `>`.

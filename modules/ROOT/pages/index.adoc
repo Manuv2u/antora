@@ -38,7 +38,35 @@ Explore the fundamentals of Git, version control concepts, branching strategies,
 
 == Linux
 
-- xref:Linux:linux.adoc[Linux Basic to Advance level]
+** Basics & Folder Use Case
+
+*** xref:Linux:linux.adoc[Linux Basic to Advance]
+** Linux User & Groups
+
+*** xref:Linux:user.adoc[Users in Linux System Administration]
+*** xref:Linux:groups.adoc[Groups in Linux System Administration]
+
+** Linux Commands
+
+*** xref:Linux:curl.adoc[Linux | `curl` Command]
+*** xref:Linux:wget.adoc[Linux | `wget` Command]
+*** xref:Linux:crontab.adoc[Linux | `crontab`  Command]
+*** xref:Linux:head_command.adoc[Linux | `head` Command]
+*** xref:Linux:tail_command.adoc[Linux | `tail` Command]
+*** xref:Linux:tr_command.adoc[Linux | `tr` Command]
+*** xref:Linux:AWK_command.adoc[ Linux |  `AWK` command]
+*** xref:Linux:diff_command.adoc[Linux | `diff` Command]
+*** xref:Linux:echo_command.adoc[Linux | `echo` Command]
+*** xref:Linux:export_command.adoc[Linux | `export` Command]
+*** xref:Linux:top.adoc[Linux | `top` Command]
+*** xref:Linux:kill.adoc[Linux | `kill` Command]
+*** xref:Linux:ping.adoc[Linux | `ping` Command]
+*** xref:Linux:SecurelyCopy.adoc[Linux | `Securely Copy` Command]
+*** xref:Linux:Sed_command.adoc[Linux | `sed` Command]
+*** xref:Linux:ssh-connection.adoc[Linux | `ssh-connection` Command]
+*** xref:Linux:ssh-key.adoc[Linux | `ssh-key` Command]
+*** xref:Linux:su_vs_su-.adoc[Linux | `su vs su -` Command]
+*** xref:Linux:ifconfig.adoc[Linux | `ifconfig` Command]
 
 
 == AWS
@@ -46,7 +74,12 @@ This section provides comprehensive information about AWS (Amazon Web Services),
 
 
 - xref:VPC:ipaddress.adoc[IP Addressing and Subnetting]
+- xref:alb:alb.adoc[AWS - ALB  ]
+- xref:autoscaling:autoscaling.adoc[AWS - AutoSclaing  ]
 - xref:VPC:vpc.adoc[ VPC Architecture ]
+- xref:s3:s3.adoc[AWS - S3  ]
+
+
 
 // xref:version@component:module:file-coordinate-of-target-page.adoc[optional link text]
 

@@ -1,0 +1,141 @@
+
+= Difference Between su and su – Command in Linux
+
+
+As a new Linux user, you may always face confusion regarding the difference between `su` command and `su -` command. In Linux, the `su` command is used to switch to another user account. However, there are two variations of the `su` command: `su` and `su -` (su hyphen).
+
+
+
+== What is Linux User Environment?
+
+Linux User Environment – Linux’s systems comes with multi-user environments. Whenever the Linux operating system creates a new shell session (after a new terminal is started on Linux) it starts preparing an environment for itself. This environment basically holds the Environment variable (Environmental depends on shell type, Bash is generally used by most of the Linux distributions).
+Example
+
+ -   For example, pwd is a command in linux, here it is running one of the linux environment:
+
+== What is su Command?
+
+The su stands for (substitute user), it is a command in Linux that is used to switch from one user to another user account within the current shell session. When it is used without additional options, then it retains the current environment, including the present working directory and user-specific environment variables. It is useful for quick switching between the users without changing the existing environment setup.
+
+== What is su – command?
+
+The `su -` is a command in Linux, it is also known as su with a login shell. It helps in switching from one user to another user account and starts a new login shell session. This command will fully loads the target user’s environment including their login scripts, home directory, and environment variables. It is effective for simulating a full login. It is often used for administrative tasks that requires the target user’s complete environment.
+Key Difference between `su` and `su -` Commands in Linux
+
+== The following are the some of the difference between su and su – in Linux:
+[options="header"]
+|===
+| Difference | su | su –
+
+| Environment Variables | Retains the current user’s environment variables | Resets the environment variables to those of the target user
+
+| Working Directory | Keeps the current working directory | Changes the working directory to the target user’s home directory
+
+| Shell Settings | Retains the current user’s shell settings | Resets the shell settings to those of the target user
+
+| Path Variable | The target user’s PATH variable is not updated | The target user’s PATH variable is updated to include the user-specific directories
+|===
+
+== The major difference between `su` & `su -` commands in Linux
+
+The su command is an abbreviation for “substitute user” because it is used for switching to another user during a normal login session, but it is often mistaken as an abbreviation for “super user” as mainly su command is used for getting “super user” privileges as when su command is run without a username, we automatically become the superuser after giving the correct root password and after that, we will enter root’s default environment, by only typing the following command:
+----
+su
+----
+
+
+//  -   Now logged in as root user/super user, the following screenshot illustrates it clearly:
+//
+
+== Directory Differences between `su` & `su -` command in Linux
+
+  -  When we switch from one user to another user using the normal `su` command the current directory remains the same as of the previous user like this
+
+
+
+ -   When we switch from one user to another user using su — command the current directory changes to the home directory of the target user like this:
+
+
+
+
+
+== Path Differences between `su` & `su -` commands in Linux
+
+`su` command does not create a new User Environment (in the simple term they pretend to be the target user) but `su -` creates a totally new User Environment (in the simple term they are actually the target user) that we can check with environment variables like:
+----
+echo $PATH
+----
+
+ -   For `su` command, the following screenshot illustrates it clearly:
+
+suecho $PATH
+
+=== For su – command
+----
+su -echo $PATH
+----
+  -  For more info check the `su` manual by using the following command:
+----
+man su
+----
+
+== Examples of su Command and Usage
+
+The following are the some of the examples of su command with its usage:
+
+=== Example 1: Switching to Another User
+
+ -   This command helps in switching from the current user to specific prefered `username` without loading the user’s environment. The command looks as follows:
+----
+su username
+----
+
+=== Example 2: Running Command as Another User
+
+   - This command helps in executing the specific command as another user with a login shell ensuring the user’s environment is fully uploaded.
+----
+su -c 'command' username
+----
+
+== Examples of su – Command and Usage
+
+The following are the some of the examples of su – command with its usage:
+
+=== Example 1: Switching to Root User
+
+  -  It can used for starting a new login as the root user with loading the root’s environment including the logging s cripts. The following command helps in switching to the root user:
+----
+su -
+----
+=== Example 2: Running a Shell Script with Specific Environment
+
+  -  It used to execute the shell script such as script.sh with prefered username with a login shell ensuring the script runs with the user’s full environment loaded. The following the reference command of it:
+----
+su -c '/path/to/script.sh' username
+----
+== Best practices of using su and su – command
+
+The following are the some of the best practices of using su and su – command:
+
+ -   Use su - for Full Environment: It can be used while performing administrative tasks to switch from the root user or another user to ensure you load their full environment with including its profile settings and environment variables.
+ -   Limit Use of su: When you want to reserve shell interface even after switches where retaining the current environment is necessary we can su command.
+ -   Security Considerations: It always ensure you know the password for the target user account and be cautious when sharing these passwords. Use sudo for a more secure and auditable alternative if available.
+ -   Exit Sessions Properly: After completing tasks with su or su -, always exit the session properly using the exit command to prevent unauthorized access and ensure system security.
+
+== Linux su and su – Commands – FAQs
+
+=== How do I switch to root user in Linux?
+
+ -   On using the su - followed by the root password, you can switch to the root user’s environment.
+
+=== Should I use sudo su?
+
+  -   It’s generally not recommended. Instead, you can use the sudo directly to execute commands with elevated privileges.
+
+=== What is the purpose of sudo su?
+
+ -    sudo su combines sudo for command execution and su for switching users, useful for maintaining a root session when needed.
+
+=== How do I get out of sudo su?
+
+  -  It simplify the type exit to return to the previous user’s session after using sudo su.

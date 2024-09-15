@@ -1,0 +1,279 @@
+= Groups in Linux System Administration
+Each group in a Linux system is uniquely identified by a group identification number or GID. All the information listing groups in a system are stored in /etc/group file. The hashed passwords for groups are stored in /etc/gshadow file.
+
+Every user has a primary user group and zero or more supplementary groups. On login, the group membership is set to the primary group of user. This can be changed to any other supplementary group using newgrp or chgrp commands.
+
+== Description of contents of /etc/group File
+
+This file is readable by any user but only root as read and write permissions for it. This file consists of the following colon separated information about groups in a system:
+
+-  Group name field
+-  Password field
+-  If this field is empty, no password is needed.
+-  Group Identification number or GID
+-  Comma separated list of usernames of users that belong to the group.
+
+Syntax:
+----
+[group_name]:[group_password]:[GID]:[users]
+----
+
+=== Syntax of the `groupadd` Command
+
+The `groupadd` command follows a simple syntax:
+----
+groupadd [options] group_name
+----
+Here, `group_name` represents the name of the group you want to create. The command also allows you to specify various options to customize the group creation process.
+
+=== How to create a new group in Linux
+==== 1. Open a terminal
+
+Launch a terminal on your Linux system. This can usually be done by pressing `Ctrl + Alt + T` or searching for “Terminal” in the application menu.
+
+==== 2. Use the `groupadd` command:
+
+To create a new group, type the following command in the terminal:
+
+Example:
+
+If we want to create a group named “developers”, we can use the following command.
+----
+sudo groupadd developers
+----
+Replace “mygroup” with the desired name for your new group. The sudo command is used to execute the groupadd command with administrative privileges.
+
+==== 3. Verify the creation of the new group:
+
+Every new group created is registered in the file `/etc/group`. To verify that the group has been created, enter the command.
+----
+sudo tail /etc/group
+----
+
+The file shows group information in the following format:
+----
+    group_name : password : group-id : list-of-members
+----
+
+
+
+== Options Available in `groupadd` command
+
+
+[options="header"]
+|===
+| Options | Description
+
+| -f, –force
+| This option forces the command to silently abort if the group with the given name already exists. If used with the -g or –gid option and the specified group id already exists, the command forcefully ignores the given group id and assigns a new and unique group id.
+
+| -g GID, –gid GID
+| This option assigns a specific numeric group id to the newly created group. The group id (GID) should be non-negative and unique, unless explicitly created to be non-unique using the -o or –non-unique option. If not specified, the command assigns a default group id greater than any existing group id.
+
+| -h, –help
+| Displays a help message, providing information about the groupadd command and its available options. Useful for quickly accessing command documentation.
+
+| -K KEY=VALUE, –key KEY=VALUE
+| Overrides the default values set in the /etc/login.defs file. Multiple -K options can be specified. Parameters like GID_MIN and GID_MAX, defined in /etc/login.defs, can be modified using this option.
+
+| -o, –non-unique
+| Permits adding a group with a non-unique group id (GID). Useful when you want to create groups with duplicate GIDs.
+
+| -p PASSWORD, –password PASSWORD
+| Sets an encrypted password for the group. The password, returned by crypt(3), is visible to users and is stored in the /etc/gshadow file. By default, the password is disabled, and it is crucial to ensure it adheres to the system’s password policy.
+
+| -r, –system
+| Creates a system group. System groups have numeric identifiers chosen within the SYS_GID_MIN-SYS_GID_MAX range, as defined in the /etc/login.defs file, instead of GID_MIN and GID_MAX.
+
+| -R CHROOT_DIR, –root CHROOT_DIR
+| Applies changes in the specified CHROOT_DIR directory and uses the configuration files from that directory. Useful when managing groups within a chroot environment.
+|===
+
+
+=== Pratical Examples to Create New Group in Linux Using Options Available
+
+==== 1. Using`-f, –force` option to Create New User.
+
+Syntax:
+----
+groupadd -f developers
+----
+
+==== 2. Specifying a Group ID to Create New User
+
+If we want to assign a specific group id to the newly created group, use the -g option.
+
+Syntax:
+----
+sudo groupadd -g 1001 developers
+----
+This command will create a new group named “developer” with a GID of 1001. Specifying group ID is useful in case where we need to maintain consistency across systems.
+
+==== 3. Setting a Group Password
+
+We can set an encrypted password for a group using the -p option.
+
+Syntax:
+----
+sudo groupadd -p somepassword finance
+----
+This command creates a new group named “finance” and sets the password for the group as “somepassword”
+
+==== 4. Overriding Default Values
+
+Suppose we want to modify the GID_MIN and GID_MAX values for a group creation. We can achieve this using the -K option
+
+Syntax:
+----
+ groupadd -K GID_MIN=500 -K GID_MAX=700 tester
+----
+
+This command will create a new group named “tester” and set the minimum GID to 500 and the maximum GID to 700. This allows us to have finer control over the range of valid group IDs for the created group.
+
+====  5. To Create a new user into the group, the group is mentioned using -g option in the command useradd.
+
+Syntax:
+----
+sudo useradd -g developers new_user
+----
+==== 6. To add an existing user to a group, use the usermod command
+
+Syntax:
+----
+usermod -g developers existing_user
+
+----
+
+=== How to Create a new group in Linux | groupadd command – FAQs
+==== How can I check if a group has been successfully created?
+
+You can verify the successful creation of a group by checking the “/etc/group” file or by using the `getent` command.
+
+  -  For example: running `getent group group_name` should display information about the newly created group, including its name and Group ID (GID).
+
+==== What is the difference between a regular group and a system group created with the groupadd command using the -r option?
+
+ -   The `-r` option in the `groupadd` command is used to create a system group. System groups typically have lower Group IDs (GID) and are reserved for system processes and services. Creating a system group is often recommended for enhanced system security and to prevent accidental modification or removal by regular users.
+
+==== What happens if I try to create a group with a name that already exists?
+
+  -  If you attempt to create a group with a name that already exists, the groupadd command will typically return an error, stating that the group already exists. To avoid this, you may use the `-f` option to force the creation of the group, though caution should be exercised to prevent unintentional overwriting of existing groups.
+
+==== How can I specify a Group ID (GID) when creating a new group with the groupadd command?
+
+ -   Yes, the `groupadd` command allows you to specify a Group ID using the `-g` option. This can be useful for maintaining consistency in user and group management, especially in environments with specific GID requirements.
+
+==== What is the purpose of creating a new group in Linux using the groupadd command?
+
+ -   The primary purpose of creating a new group in Linux is to organize and manage users with similar permissions. Groups enable administrators to assign common access levels to multiple users, facilitating efficient resource management and enhancing system security.
+
+
+== groupmod command in Linux with examples
+
+groupmod command in Linux is used to modify or change the existing group on Linux system. It can be handled by superuser or root user. Basically, it modifies a group definition on the system by modifying the right entry in the database of the group.
+
+Syntax:
+----
+groupmod [option] GROUP
+----
+Files: The groupmod command has the following files.
+
+ -   `/etc/group`: Group Account Information.
+  -  `/etc/gshadow`: Secured group account information.
+  -  `/etc/login.def`: Shadow passwd suite configuration.
+  -  `/etc/passwd`: User account information.
+
+Exit Values:
+
+  -  0: Success.
+  -  2: Invalid command Syntax.
+ -   3: Invalid argument to option.
+  -  4: specified group doesn’t exist.
+  -  6: specified group doesn’t exist.
+  -  9: group name already in use.
+  -  10: can’t update group file.
+
+**Options:** There are following option available in groupmod command.
+
+ -   -g, `–gid GID`: The group ID of the given GROUP will be changed to GID.
+  -  -n, `–new-name` `NEW_GROUP`: The name of group will change into newname.
+  -  -h, `–help`: This option display help message and exist.
+  -  -o, `–non-unique`: This option used with the -g option that allow to change the group GID to a non-unique value.
+  -  -p, `–password PASSWORD`: This gives the encrypted password.
+ -   -R, `–root CHROOT_DIR`: Apply changes in the CHROOT_DIR directory and use the configuration files from the CHROOT_DIR directory.
+
+Example: Below command will change the group group_old to group_new using -n option.
+----
+groupmod -n group_new group_old
+----
+Unlock the power of Linux with our Online Linux Course with Certification! Whether a beginner or an experienced professional, this course is designed to help you master Linux, the backbone of modern computing. Dive into comprehensive modules covering everything from basic commands to advanced system administration. With hands-on projects and real-world examples, you'll gain the skills to manage Linux environments efficiently and confidently. Plus, earn a certification that showcases your expertise to potential employers.
+
+
+=== Understanding the ‘groupdel’ Command
+
+The ‘groupdel’ command is a powerful tool in Linux that allows system administrators to delete existing groups. It is a part of the ‘passwd’ package and provides a straightforward way to manage group accounts on a Linux system.
+
+In simple words groupdel command is used to delete a existing group. It will delete all entry that refers to the group, modifies the system account files, and it is handled by superuser or root user.
+
+Syntax of `groupdel` Command
+
+The basic syntax for the ‘groupdel’ command is as follows:
+----
+groupdel [options] group_name
+----
+Files:
+
+  -  `/etc/group`: It contains the account information of the Group.
+  -  `/etc/gshadow` : It contains the secure group account information.
+
+Exit values: This command exists with the following values.
+
+ -   0: Success
+  -  2: Invalid Command Syntax.
+  -  6: Specified group doesn’t exist.
+  -  8: Can’t remove users primary group.
+  -  10: Can’t update group file.
+
+Options Available in `groupdel` Command
+
+[options="header"]
+|===
+| Options | Description
+
+| -h, –help
+| Displays the help message and exits.
+
+| -f, –force
+| This option forces the deletion of the group, even if it is still in use.
+
+| -R, –root
+| Apply the changes in the CHROOT_DIR directory. Also, it uses the configuration files from the CHROOT_DIR directory.
+
+| -r, –remove
+| Removes the group along with its associated files.
+|===
+
+
+==== How to Delete a Group in Linux?
+
+To delete a group named ‘example_group,’ simply use the following command
+----
+sudo groupdel example_group
+----
+This command removes the group ‘example_group’ from the system. However, keep in mind that if any users are still associated with the group, the command will fail unless the ‘-f’ option is used.
+
+==== How to Forcefully Delete a Group in Linux?
+
+If you want to forcefully delete a group, including removing all users associated with it, use the ‘-f’ option:
+----
+sudo groupdel -f example_group
+----
+This command will forcibly delete the ‘example_group,’ even if users are still members of the group.
+
+==== How to Remove Group and Associated Files in Linux?
+
+The ‘-r’ option allows you to remove the group and its associated files. For example:
+----
+sudo groupdel -r example_group
+----
+This command not only removes the group but also deletes the associated files, including the group’s home directory.

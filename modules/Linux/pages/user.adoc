@@ -1,0 +1,425 @@
+
+== USER & GROUP (Administer)
+
+=== Users in Linux System Administration
+
+Users are accounts that can be used to login into a system. Each user is identified by a unique identification number or UID by the system. All the information of users in a system are stored in /etc/passwd file. The hashed passwords for users are stored in /etc/shadow file.
+
+Users can be divided into two categories on the basis of the level of access:
+
+-  Superuser/root/administrator : Access to all the files on the system.
+-  Normal users : Limited access.
+
+When a new user is created, by default system takes following actions:
+
+-   Assigns UID to the user.
+-   Creates a home directory /home/.
+-  Sets the default shell of the user to be /bin/sh.
+-  Creates a private user group, named after the username itself.
+- Contents of /etc/skel are copied to the home directory of the new user.
+- .bashrc, .bash_profile and .bash_logout are copied to the home directory of new user.These files provide environment variables for this user’s session.
+
+==== Description of contents of /etc/passwd File
+
+This file is readable by any user but only root as read and write permissions for it. This file consists of the following colon separated information about users in a system:
+
+-  Username field
+-  Password field
+-     An `x` in this field denotes that the encrypted password is stored in the /etc/shadow file.
+- The user ID number (UID)
+- User’s group ID number (GID)
+-  Additional information field such as the full name of the user or comment (GECOS)
+-  Absolute path of user’s home directory
+=  Login shell of the user
+
+Syntax:
+----
+[username]:[password]:[UID]:[GID]:[GECOS]:[home_dir]:[shell_path]
+----
+
+
+== Syntax of `useradd` command in Linux
+
+The basic syntac for the `useradd` command is as follows.
+
+useradd [options] [User_name]
+
+
+=== 1. How to Add a User in Linux
+
+This command will add the user named “test_user”.
+----
+sudo useradd test_user
+----
+
+=== 2. How to Add User by Specifying a home directory path for the new user
+
+To give a home directory path for new users, we use the following command in Linux.
+----
+----
+This will set the home directory of the us”/home/test_user”.
+
+=== 3. How to Create a User with a Specific User ID (UID)
+
+To create a new user with a custom UID, we use the following command.
+----
+sudo useradd -u 1234 test_user
+----
+
+This will create a new user with the user-id “1234” and the name “test_user”.
+
+=== 4. How to Create a User with a Specific Group ID (GID)
+
+To create a new user and assign a specific group ID, use the following command
+----
+sudo useradd -g 1000 test_user
+----
+This will create a new user with the group id “1000” and the name “test_user”.
+
+=== 5. How to Create a User Without a Home Directory
+
+To create a user without a home directory, we use the following command.
+----
+sudo useradd -M test_user
+----
+This will create the user with the name “test_user” and that too without a home directory.
+
+=== 6. How to Create User with an Expiry Date
+
+To set an expiry date for a user account, we use the following command.
+----
+sudo useradd -e 2020-05-30 test_user
+----
+This will create the user named “test_user” with the expiry date of 30th May 2020.
+
+=== 7. How to Create User with a Comment
+
+To add a comment or description for a user, we use the following command.
+----
+sudo useradd -c "This is a test user" test_user
+----
+This will create a user with a short comment or description of the user.
+
+=== 8. How to Create a User with Changed Login Shell
+
+To create a user with a different login shell, we use the following command.
+----
+sudo useradd -s /bin/sh test_user
+----
+This will create a user named “test_user” with the default shell /bin/sh.
+
+=== 9. How to Set an Unencrypted Password for the User
+
+To set an unencrypted password for the user, we use the following command.
+----
+sudo useradd -p test_password test_user
+----
+This will create a new user with the name “test_user” and an unencrypted password “test_password”.
+
+=== 10. Displaying Help
+
+To display help, we use the following command.
+----
+sudo useradd --help
+----
+This command will display the help section of the useradd command.
+Conclusion
+
+In this article we have discussed the `useradd` command in Linux which is a powerful tool for creating user accounts with various customizations. Overall, we can say that by understanding its options and syntax, system administrators can efficiently manage user accounts on their Linux system.
+
+
+==== How to add User in Linux | useradd Command – FAQs
+
+=== How to add a user in Linux?
+
+To add a new user in Linux, use the useradd command followed by the username. For example, to add a user named “newuser”:
+----
+    sudo useradd newuser
+----
+After creating the user, set a password for the new user:
+----
+    sudo passwd newuser
+----
+
+=== What is the command for adduser in Linux?
+
+The adduser command is a more user-friendly way to add a new user and is often a symbolic link to useradd. To add a user named “newuser”:
+----
+    sudo adduser newuser
+----
+This command will prompt for additional information and set up the user’s home directory and password.
+
+=== How to set user ID in Linux?
+
+To set a specific user ID (UID) while creating a new user, use the -u option with the useradd command. For example, to create a user “newuser” with UID 1001:
+----
+    sudo useradd -u 1001 newuser
+----
+
+=== How to set username in Linux?
+
+To set or change a username in Linux, you generally need to rename the user. Use the usermod command to change the username. For example, to change the username from “olduser” to “newuser”:
+----
+    sudo usermod -l newuser olduser
+----
+Ensure to update the home directory if necessary:
+----
+    sudo usermod -d /home/newuser -m newuser
+----
+
+=== How to list users in Linux?
+
+To list all users in Linux, you can view the /etc/passwd file, which contains user account information:
+----
+    cat /etc/passwd
+----
+For a cleaner list of usernames, you can cut the first field (username) from the /etc/passwd file:
+----
+    cut -d: -f1 /etc/passwd
+----
+Alternatively, use the getent command to list users:
+----
+    getent passwd
+----
+
+=== Syntax of `userdel` Command
+
+The basic syntax of the userdel command is as follows:
+----
+userdel [options] username
+----
+Here,
+
+  -  options: Various command options can be used to customize the behavior of user deletion.
+  -  username: Specifies the name of the user account to be deleted.
+
+Options Available in `userdel` Command
+
+[options="header"]
+|===
+| Option | Description
+
+| -f
+| Force removal of the user account, including home directory and mail spool, even if the user is logged in.
+
+| -r
+| Remove the user’s home directory along with the account. Useful for a complete cleanup.
+
+| -h
+| Display a help message and exit, providing information on command syntax and available options.
+
+| -R
+| Apply changes in the specified CHROOT_DIR, useful for user deletion operations within a chroot environment.
+
+| -Z
+| Remove SELinux user mapping for the user’s login, applicable in SELinux-enabled systems.
+
+| -help
+| Display a help message with the general syntax and available options for the userdel command.
+|===
+
+=== Understanding the `passwd` Command
+
+The passwd command in Linux is a powerful tool that allows system administrators and users to manage password-related tasks. Its primary purpose is to change user passwords, but it offers additional functionalities such as updating password aging policies, unlocking accounts, and more.
+
+Basic Syntax of `passwd` in Linux
+----
+ passwd [options] [username]
+----
+Here,
+
+- [options] = include various parameters to customize the password-changing process.
+
+- [username] = the target user account for which you want to change the password.
+
+Options Available in `passwd` Command in Linux
+
+[options="header"]
+|===
+| Option | Description
+
+| -d, –delete
+| Deletes the user password, making the account password-less.
+
+| -e, –expire
+| Immediately expires the account password, prompting the user to change it on the next login.
+
+| -h, –help
+| Displays help related to the `passwd` command.
+
+| -i, –inactive
+| Sets the number of days after password expiration before the account is deactivated.
+
+| -k, –keep-tokens
+| Changes the password only if it is expired, keeping authentication tokens if not expired.
+
+| -l, –lock
+| Locks the password of the user, preventing login with a password. Other authentication methods like SSH keys can still be used.
+
+| -n, –mindays
+| Changes the minimum number of days between password changes, preventing the user from changing the password for a specified period.
+
+| -q, –quiet
+| Enables quiet mode, suppressing the usual message “Changing password for $user” during password change.
+
+| -r, –repository
+| Changes the password for a specified repository.
+
+| -R, –root
+| Applies changes in the specified directory and uses configuration files from that directory. This temporarily changes the root directory for the passwd process.
+
+| -S, –status
+| Shows the password status of a user, including last change date, minimum age, maximum age, warning period, and inactivity period.
+
+| -a, –all
+| Shows password status for all users. Requires the use of the -S option.
+
+| -u, –unlock
+| Unlocks the password of an account, allowing login with the password.
+
+| -w, –warndays
+| Changes the number of days before password expiration to display a warning.
+
+| -x, –maxdays
+| Sets the maximum number of days a password remains valid. After MAX_DAYS, the user is forced to change the password.
+|===
+
+
+==== 1. How to Change User Password in Linux
+
+To change a user password using the passwd command, follow these steps:
+
+- Step 1: Open a terminal on your Linux system.
+
+- Step 2: Type the following command and press Enter:
+----
+passwd
+----
+ -   If you are not the root user, you will be prompted to enter your current password to proceed.
+  -  You will then be prompted to enter the new password. Type the new password and press Enter.
+  -  Retype the new password when prompted to confirm.
+ -   The password for the specified user account is now changed.
+[NOTE]
+ Linux does not display any characters on the screen while you type the password for security reasons.
+
+==== 2. How to Change Another User’s Password in Linux
+
+To change the password for a user other than the one currently logged in, you can use the following steps:
+
+- Step 1: Open a terminal on your Linux system.
+
+- Step 2: Type the following command and press Enter:
+----
+passwd user1
+----
+
+
+-  If you are not the root user, you may be prompted to enter your current password to proceed.
+  -  You will then be prompted to enter the new password. Type the new password and press Enter. Linux does not display any characters on the screen while you type the password for security reasons.
+ -   Retype the new password when prompted to confirm.
+  -  The password for the user “john” is now changed.
+
+[NOTE]
+sudo can be used to invoke root privileges by normal users, and can change the password for root itself. This is particularly helpful when a user is member of admin group (holds a position in sudoers list (/etc/sudoers) and can use commands with sudo) and the root password is not set, which is case with many common distributions of linux.
+----
+sudo passwd root
+----
+==== 3. How to Change the User Password Forcely
+
+To force a user to change their password at the next login, use the following command:
+----
+passed -e user1
+----
+
+
+This immediately expires the user’s password, requiring them to change it the next time they log in.
+
+==== 4. How to Lock and Unlock User Account in Linux
+
+To lock or unlock a user account, use the following commands:
+
+- To lock the account:
+----
+passwd -l user2
+----
+The password for the user “user2” is now locked, preventing login.
+
+- To unlock the account:
+----
+passwd -u user2
+----
+The password for the user “user2” is now unlocked, allowing login again.
+
+==== 5. How to Set Password Expiry
+
+The -x option allows you to set the maximum number of days a password is valid. Example:
+----
+passwd -x 30 user3
+----
+This sets a maximum password age of 30 days for the user “user3”
+Processing in passwd command:
+
+ -   `Verify current user password` : Once the user enters passwd command, it prompts for current user password, which is verified against the password stored in /etc/shadow file user. The root user can bypass this step and can directly change the password, so as the forgotten passwords may be recovered.
+  -  `Verify password aging information` : In Linux, a user password can be set to expire after a given period of time. Also, a user can be prohibited to change his/her password for a period. This password aging information (and the password itself) is stored in a file /etc/shadow.
+ -   `Change the password` : After authentication, the user is prompted to enter the new password and verify it by retyping the password.
+ -   `/etc/shadow fil`e: The shadow file is a list of colon separated values with 9 fields, as shown below:
+----
+user1:$6$x8wAJRpP$EWC97sXW5tqac10Q2TQyXkR.1l1jdK4VLK1pkZKmA2mbA6UnSGyo94Pis074viWBA3sVbkCptSZzuP2K.y.an/:17887:0:99999:7:::
+----
+
+
+  -  field 1: User name.
+  -  field 2: Encrypted Password.
+  -  field 3: Number of days since January 1, 1970 to when the password was last changed.
+  -  field 4: Minimum number of days for which password can not be changed. (value 0 means it can be changed anytime).
+   - field 5: Number of days after password must be changed. (value 99999 means that the password never expires).
+  -  field 6: Number of days to warn user for expiring password.
+  -  field 7: Number of days after password expires that the account is disabled.
+  -  field 8: The number of days from January 1, 1970 to the date when an account was disabled.
+  -  field 9: This field is reserved for some possible future use.
+
+
+== How to Change User Password in Linux | passwd Command – FAQs
+=== How to Change a User’s Password in Linux?
+
+To change a user’s password in Linux, the passwd command is commonly used. If you are a regular user wanting to change your own password, simply type:
+----
+    passwd
+----
+ -   You will be prompted to enter your current password for verification, followed by the new password twice (the second time for confirmation).
+
+  -  If you are an administrator (or have sudo privileges) and need to change the password for another user, you specify the username after the passwd command:
+----
+    sudo passwd username
+----
+    This will prompt you to enter a new password for the specified user, without needing to enter the current password.
+
+=== What is the passwd command used for besides changing passwords?
+
+Besides changing user passwords, the passwd command also allows for managing various aspects of users’ passwords, including:
+
+    -    Setting Password Expiry Information: Administrators can use passwd to change the password aging/expiry policy.
+   -     Locking and Unlocking User Accounts: passwd can disable or enable user accounts by locking or unlocking them.
+    -    Changing Account or Password Expiry Dates: It allows setting or changing the date when a user’s account will be disabled or when the password must be changed.
+
+==== How to force a user to change their password at next login?
+
+To force a user to change their password at the next login, use the passwd command with the --expire option:
+----
+    sudo passwd --expire username
+----
+    This command effectively expires the password immediately, prompting the user to set a new password the next time they log in.
+
+==== What are some common options for the passwd command?
+
+The passwd command includes several options that provide control over user passwords and accounts:
+
+    -    -d: Deletes a password, making the account passwordless, subject to system policy.
+    -    -e, –expire: Forces the user to change their password at the next login.
+    -    -l, –lock: Locks the user account.
+    -    -u, –unlock: Unlocks the user account.
+    -    -n, –mindays DAYS: Sets the minimum number of days between password changes to DAYS.
+    -    -x, –maxdays DAYS: Sets the maximum number of days the password is valid.
+    -    -w, –warndays DAYS: Sets the number of days a user is warned before their password expires.
+    -    -i, –inactive INACTIVE: Sets the number of days after a password expires until the account is permanently disabled.
+
