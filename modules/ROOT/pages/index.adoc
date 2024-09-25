@@ -22,6 +22,8 @@ Sanjay Nagar, Bengaluru 560094**
 **LinkedIn** : `https://www.linkedin.com/in/Manuv2u`
 
 
+=== Welcome to My  AWS & DevOps World
+
 
 
 === Architecture Insights
@@ -89,7 +91,7 @@ Explore the fundamentals of Git, version control concepts, branching strategies,
 *** xref:Linux:kill.adoc[Linux | `kill` Command]
 *** xref:Linux:ping.adoc[Linux | `ping` Command]
 *** xref:Linux:SecurelyCopy.adoc[Linux | `Securely Copy` Command]
-*** xref:Linux:Sed_command.adoc[Linux | `sed` Command]
+*** xref:Linux:Sed_Command.adoc[Linux | `sed` Command]
 *** xref:Linux:ssh-connection.adoc[Linux | `ssh-connection` Command]
 *** xref:Linux:ssh-key.adoc[Linux | `ssh-key` Command]
 *** xref:Linux:su_vs_su-.adoc[Linux | `su vs su -` Command]
