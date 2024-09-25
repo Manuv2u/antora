@@ -1,11 +1,11 @@
 
-= Introduction to myself
+= Welcome to My  AWS & DevOps World
 
 == **Manu V**
 **Bachelor of Engineering  (2019) +
 Sanjay Nagar, Bengaluru 560094**
 
-**As a DevOps engineer i have around 2 yr of experience with expertise in various tools and technologies related to automating and optimizing deployment pipelines for web applications. Your experience includes working with:**
+**As a DevOps engineer i have around 2 yr of experience with expertise in various tools and technologies related to automating and optimizing deployment pipelines for web applications. my experience includes working with:**
 
 - **Build tools like Maven, Gradle, and NPM.**
 - **CI/CD using GitLab CI.**
@@ -13,16 +13,18 @@ Sanjay Nagar, Bengaluru 560094**
 - **Infrastructure as code using Terraform and Helm.**
 - **Monitoring and logging using Prometheus, Grafana, and Grafana Loki.**
 - **Service mesh with Istio.**
-- **Authentication and authorization with Keycloak.**
-**You manage PostgreSQL databases on EC2 instances, handle updates for multiple schemas, and ensure high availability and security in cloud environments. You focus on delivering efficient and scalable solutions for static web applications and other projects.**
+- **Authentication and authorization with Keycloak.** +
+
+**Manage PostgreSQL databases on EC2 instances & RDS Instance, handle updates for multiple schemas, and ensure high availability and security in cloud environments. Focus on delivering efficient and scalable solutions for static web applications and other projects.**
 
 === Social Media Platform:
+
 **Mail ID** : manuv2u@gmail.com +
 **Github** : `https://github.com/Manuv2u` +
-**LinkedIn** : `https://www.linkedin.com/in/Manuv2u`
+**LinkedIn** : `https://www.linkedin.com/in/Manuv2u` +
 
 
-=== Welcome to My  AWS & DevOps World
+
 
 
 
