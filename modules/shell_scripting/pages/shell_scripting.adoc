@@ -1,0 +1,101 @@
+
+
+
+
+
+#!/bin/bash - shebang (octa trap)
+----
+aws s3 ls | cut -d ' ' -f 3 | grep -E www[.]
+
+----
+
+how to run shell script
+
+give permission
+
+----
+./script.abc
+
+or
+
+bash script.abc
+
+or
+
+#debug
+
+#`set -x` should be mention in script
+
+bash script.abc
+----
+
+awk command,
+grep command,
+egrep command,
+varibale declaration,
+
+
+=== To retrieve vpc data information
+
+----
+aws ec2 describe-vpcs --region us-east-1
+
+or
+
+aws ec2 describe-vpcs --region us-east-1 | jq
+
+or
+
+aws ec2 describe-vpcs --region us-east-1 | jq ".Vpcs[]"
+
+
+#how to get only vpc id
+aws ec2 describe-vpcs --region us-east-1 | jq ".Vpcs[].VpcID"
+
+
+#how to get only vpc id and how to remove ""
+aws ec2 describe-vpcs --region us-east-1 | jq ".Vpcs[].VpcID" -r
+
+or
+
+#how to get only vpc id and how to remove "" and how to
+aws ec2 describe-vpcs --region us-east-1 | jq ".Vpcs[].VpcID" | tr -d '"'
+
+
+#how to get only vpc id and how to remove "" and how to make it uppercase
+aws ec2 describe-vpcs --region us-east-1 | jq ".Vpcs[].VpcID" | tr '[:]'
+
+
+----
+
+
+
+Using script how to achive this
+create file `script.sh`
+and give necessary permissions
+----
+#!/bin/bash
+
+REGION='us-east-1'
+aws ec2 describe-vpcs --region ${REGION} | jq ".Vpcs[].VpcID" | tr '[:]'
+----
+how to pass as variable
+
+----
+#!/bin/bash
+REGION=$1
+aws ec2 describe-vpcs --region ${REGION} | jq ".Vpcs[].VpcID" | tr '[:]'
+----
+
+Run this command
+
+----
+script.sh us-east-1
+----
+
+
+
+
+==== Error code and Exit codes
+
+

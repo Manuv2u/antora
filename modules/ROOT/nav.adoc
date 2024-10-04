@@ -10,6 +10,10 @@
 ** xref:Error_status_code:error_status_code.adoc[HTTP response status codes]
 
 
+
+* Shell Scripting
+** xref:shell_scripting:shell_scripting.adoc[Shell Scripting]
+
 * PYTHON
 ** xref:PYTHON:python.adoc[Python]
 
