@@ -1,0 +1,207 @@
+==== 1. What is a shell script?
+— Answer: A shell script is a text file containing a sequence of commands that are executed by the shell interpreter. It allows automation of repetitive tasks and execution of multiple commands in sequence.
+
+==== 2. Differentiate between a shell and a terminal.
+— Answer: A shell is a command-line interpreter that interprets user commands and executes them. A terminal is a user interface that provides access to the shell. Multiple terminals can run concurrently, each running its own instance of the shell.
+
+==== 3. Explain the difference between absolute and relative paths.
+— Answer: An absolute path specifies the location of a file or directory from the root directory (/) of the file system. A relative path specifies the location of a file or directory relative to the current working directory.
+
+==== 4. What is the shebang (#!) line in a shell script?
+— Answer: The shebang line `( # ! )` is a special line at the beginning of a shell script that indicates the path to the shell interpreter that should be used to execute the script. For example, `#!/bin/bash` specifies that the Bash shell should be used.
+
+==== 5. How do you comment in a shell script?
+— Answer: Comments in shell scripts are preceded by the `#` symbol. Anything after the `#` symbol on a line is considered a comment and is ignored by the shell.
+
+==== 6. What is the difference between $ and $$ in shell scripting?
+— Answer: In shell scripting, `$` is used to reference the value of a variable, whereas `$$` represents the process ID (PID) of the current shell.
+
+==== 7. Explain the difference between the `&&` and `||` operators in shell scripting.
+— Answer: The `&&` operator is used to execute the command following it only if the preceding command succeeds (returns a zero exit status). The `||` operator is used to execute the command following it only if the preceding command fails (returns a non-zero exit status).
+
+==== 8. How do you pass arguments to a shell script?
+— Answer: Arguments can be passed to a shell script as command-line arguments. These arguments can be accessed within the script using special variables such as `$1`, `$2`, etc., representing the first, second, etc., arguments respectively.
+
+==== 9. What is process substitution in shell scripting?
+— Answer: Process substitution is a feature of some shells (such as Bash) that allows the output of a command or commands to be used as input to another command or commands. It is represented by the `<()` and `>()` syntax.
+
+==== 10. Explain the `grep` command in Linux.
+— Answer: The `grep` command is used to search for patterns in text files or streams. It outputs lines that match a specified pattern or regular expression.
+
+==== 11. What is the purpose of the `awk` command in Linux?
+— Answer: The `awk` command is a powerful text processing tool used for pattern scanning and processing. It processes input lines based on patterns and performs actions defined by the user.
+
+==== 12. Explain the purpose of the `tar` command in Linux.
+— Answer: The `tar` command is used to create, view, and extract archives (tarballs) containing multiple files. It is often used for packaging files and directories for distribution or backup purposes.
+
+==== 13. What is SSH and how is it used in Linux?
+— Answer: SSH (Secure Shell) is a cryptographic network protocol used for secure remote access to Linux systems. It provides encrypted communication between the client and the server, allowing users to log in and execute commands on remote machines securely.
+
+==== 14. How do you check system resource usage in Linux?
+— Answer: System resource usage can be checked using commands such as `top`, `htop`, `free`, and `df`. These commands provide information about CPU usage, memory usage, and disk space usage respectively.
+
+These questions cover a range of fundamental concepts and practical skills related to shell scripting and Linux system administration, which are commonly assessed in interviews for DevOps and system administration roles.
+
+==== 15. Shell script count no. of s in mississippi
+----
+x="mississippi"
+grep -o "s" <<<"$x" | wc -l
+----
+
+explanation:
+grep -o “s” <<<”$x”:
+
+*grep:* This command is used to search for patterns in text.
+
+-o: This option tells grep to only output the parts of the text that match the pattern.
+
+*“s”:* This is the pattern we’re searching for, in this case, the letter “s”.
+
+*<<<”$x”:* This feeds the value of the variable $x as input to grep. In simple terms, it’s like saying “search for the letter ‘s’ in the text stored in the variable $x”.
+
+
+*|* (pipe symbol): This symbol is used to pass the output of one command as the input to another command. It’s like connecting two commands together in a pipeline.
+
+*wc -l: wc:* Stands for word count. It’s used to count lines, words, and characters in text.
+*-l:* This option tells wc to count only the lines in the input text. In this case, it counts the number of lines.
+
+Putting it all together, the command grep -o “s” <<<”$x” | wc -l first searches for the letter “s” in the text stored in the variable $x, then it counts the number of lines in the output, which corresponds to the number of times the letter “s” appears in the text.
+
+==== 16. crontab and job scheduling
+
+`crontab` is a command used in Unix-like operating systems to schedule jobs or commands to run periodically at fixed times, dates, or intervals. Here’s an example of how to use `crontab`:
+
+Let’s say you want to schedule a script to run every day at 3:00 AM.
+1. Open your terminal.
+2. Type `crontab -e` and press Enter. This command opens the crontab editor.
+3. If it’s your first time running `crontab -e`, it might prompt you to choose an editor. Select your preferred editor (e.g., nano, vim).
+4. Once the editor opens, add a new line at the end of the file with the following format:
+
+----
+ m h * * * /path/to/your/script.sh
+
+----
+Replace `/path/to/your/script.sh` with the actual path to your script.
+
+- `m` stands for the minute (0–59).
+— `h` stands for the hour (0–23).
+— `*` represents all possible values for that field.
+— So ` * *` means every minute of every hour.
+— Finally, the full line means “run the script at every hour (0–23) and minute (0–59) of every day of every month and every day of the week”.
+
+So, if you want your script to run every day at 3:00 AM, you would set it up like this:
+----
+0 3 * * * /path/to/your/script.sh
+
+----
+5. Save and close the crontab editor. In nano, you can do this by pressing Ctrl + O to write the file and then Ctrl + X to exit.
+
+6. You’ve now set up your cron job. It will run your script at 3:00 AM every day.
+
+Remember, cron uses 24-hour time format, so 3:00 AM is represented as 3. If you wanted to run the script every Sunday at 3:00 AM, you would modify the cron job like this:
+----
+0 3 * * 0 /path/to/your/script.sh
+----
+In this case, `0` in the fifth field represents Sunday.
+
+That’s a basic example of how to use `crontab` to schedule tasks in Unix-like systems.
+
+==== 17. Loops and conditionals in shell
+
+Below are examples of a shell script demonstrating the usage of `if`, `else-if`, and `for` loop constructs:
+
+1. Using `if`, `else-if`, and `else` statements:
+
+----
+#!/bin/bash
+# 1. Prompt user to enter a number
+echo "Enter a number:"
+read num
+# Check if the number is positive, negative, or zero
+if [ $num -gt 0 ]; then
+echo "The number is positive."
+elif [ $num -lt 0 ]; then
+echo "The number is negative."
+else
+echo "The number is zero."
+fi
+
+
+#2. Using a `for` loop to iterate over a list of items:**
+#!/bin/bash
+# Define a list of fruits
+fruits=("Apple" "Banana" "Orange" "Grapes" "Watermelon")
+# Iterate over the list of fruits using a for loop
+echo "List of fruits:"
+for fruit in "${fruits[@]}"
+do
+echo "$fruit"
+done
+----
+In the first script, the user is prompted to enter a number, and then the script checks whether the number is positive, negative, or zero using `if`, `elif`, and `else` statements.
+
+In the second script, a list of fruits is defined, and a `for` loop is used to iterate over each item in the list and print it to the console.
+
+These examples demonstrate the basic usage of `if`, `else-if`, `else`, and `for` loop constructs in shell scripting.
+
+==== 18. Shell script to print only process ids of all processes
+----
+ps -ef | awk -F " " '{print $2}'
+
+----
+==== 19. Hard link vs soft link in linux
+
+In Linux, “hard” and “soft” links are two types of links used to point to files. Here’s a brief explanation of each along with their respective syntax:
+
+Hard Link:
+— A hard link is a direct pointer to the inode (metadata) of a file. It essentially creates a new directory entry that refers to the same underlying data as the original file.
+— Changes made to the original file will affect all hard links pointing to it, as they all reference the same data blocks.
+— Hard links cannot be created for directories.
+— Hard links cannot span across different filesystems.
+----
+Syntax to create a hard link:
+
+ ln <original_file> <hard_link_name>
+
+
+ Example:
+ ```
+ ln myfile.txt myhardlink.txt
+----
+2. Soft Link (Symbolic Link or Symlink):
+— A soft link, also known as a symbolic link or symlink, is a special file that points to another file or directory by its pathname.
+— Unlike a hard link, a soft link simply contains the path of the target file or directory.
+— Soft links can span across different filesystems.
+— Deleting the original file or directory won’t affect the soft link; it will become a “dangling” link pointing to nothing.
+----
+Syntax to create a soft link:
+
+ ln -s <target_file> <soft_link_name>
+
+
+ Example:
+
+ ln -s /path/to/original_file.txt softlink.txt
+----
+Remember to replace `<original_file>`, `<hard_link_name>`, `<target_file>`, and `<soft_link_name>` with the appropriate file names and paths in the commands.
+
+==== 20. Shell scripting disadvantages
+While shell scripting is powerful and widely used for automating tasks in Unix-like operating systems, it also comes with its own set of disadvantages:
+
+1. Portability: Shell scripts are typically written for specific Unix-like operating systems such as Linux or macOS. Porting shell scripts to other platforms, such as Windows, can be challenging due to differences in shell syntax and commands.
+
+2. Performance: Shell scripts are interpreted rather than compiled, which can lead to slower execution compared to compiled languages like C or Java, especially for complex tasks or large data processing.
+
+3. Error Handling: Error handling in shell scripts can be more challenging compared to compiled languages. Shell scripts often rely on return codes or exit statuses of commands, which may not provide detailed information about the cause of errors.
+
+4. Limited Functionality: While shell scripting is suitable for many system administration tasks and simple automation, it may lack the robustness and advanced features available in higher-level programming languages.
+
+5. Security Risks: Writing secure shell scripts requires careful consideration of potential vulnerabilities, such as command injection and improper handling of user input. Insecure shell scripts can pose significant security risks to systems and data.
+
+6. Debugging: Debugging shell scripts can be more difficult compared to compiled languages. Shell scripts may produce cryptic error messages, and debugging tools are often limited, requiring manual inspection of code and output.
+
+7. Complexity: As shell scripts grow in size and complexity, they can become difficult to maintain and understand, especially for developers unfamiliar with shell scripting conventions and best practices.
+
+8. Limited Support for Data Structures: Shell scripting languages like Bash have limited support for complex data structures such as arrays and associative arrays, which can make certain programming tasks more challenging.
+
+Despite these disadvantages, shell scripting remains a valuable tool for system administration, automation, and quick prototyping of tasks in Unix-like environments. It’s essential to understand the limitations and choose the appropriate tool for the task at hand.
