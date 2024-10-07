@@ -17,9 +17,11 @@ Welcome to InterviewInsights, your go-to resource for efficient interview prepar
 
 1. xref:Linux:linux.adoc[Linux - QA]
 
+== Shell Scripting
+
+1. xref:shell_scripting:shellscripting.adoc[Shell Scripting]
 
 == Python
-
 
 1. xref:Python:python.adoc[Python - QA]
 
